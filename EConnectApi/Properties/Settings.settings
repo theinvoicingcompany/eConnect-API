@@ -1,0 +1,39 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="EConnectApi.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="OAUThAppKey" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="OAUThSecret" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="TemplateInvoice" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="EndPointRequestToken" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">https://platform.everbinding.nl/api/requesttoken</Value>
+    </Setting>
+    <Setting Name="Realm" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">platform.everbinding.nl</Value>
+    </Setting>
+    <Setting Name="EndPointAccessToken" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">https://platform.everbinding.nl/api/accesstoken</Value>
+    </Setting>
+    <Setting Name="EndPointAccessResource" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">https://platform.everbinding.nl/api/accessresource</Value>
+    </Setting>
+    <Setting Name="TemplateCreditNote" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="TemplateOrder" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="AccountContactID" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="EntityID" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+  </Settings>
+</SettingsFile>

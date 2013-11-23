@@ -1,0 +1,41 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eConnectApi", "eConnectApi\eConnectApi.csproj", "{140CAAD2-C124-4E4F-8A35-6F654B11B5FE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eConnectApiUnitTests", "eConnectApiUnitTests\eConnectApiUnitTests.csproj", "{993EE77E-E6D4-43B5-8570-463967ED5C31}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eConnectDocEx", "EConnectDocEx\eConnectDocEx.csproj", "{9B7BC9AB-A4F5-446F-8299-6A8EE5A931D1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "App", "App", "{D82F8564-5321-4226-9D05-E11483FDC41C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Api", "Api", "{54326F15-ECA8-43FC-8253-14877839CC28}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{140CAAD2-C124-4E4F-8A35-6F654B11B5FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{140CAAD2-C124-4E4F-8A35-6F654B11B5FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{140CAAD2-C124-4E4F-8A35-6F654B11B5FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{140CAAD2-C124-4E4F-8A35-6F654B11B5FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{993EE77E-E6D4-43B5-8570-463967ED5C31}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{993EE77E-E6D4-43B5-8570-463967ED5C31}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{993EE77E-E6D4-43B5-8570-463967ED5C31}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{993EE77E-E6D4-43B5-8570-463967ED5C31}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9B7BC9AB-A4F5-446F-8299-6A8EE5A931D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9B7BC9AB-A4F5-446F-8299-6A8EE5A931D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9B7BC9AB-A4F5-446F-8299-6A8EE5A931D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9B7BC9AB-A4F5-446F-8299-6A8EE5A931D1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{9B7BC9AB-A4F5-446F-8299-6A8EE5A931D1} = {D82F8564-5321-4226-9D05-E11483FDC41C}
+		{140CAAD2-C124-4E4F-8A35-6F654B11B5FE} = {54326F15-ECA8-43FC-8253-14877839CC28}
+		{993EE77E-E6D4-43B5-8570-463967ED5C31} = {54326F15-ECA8-43FC-8253-14877839CC28}
+	EndGlobalSection
+EndGlobal

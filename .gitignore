@@ -1,0 +1,10 @@
+/*.suo
+/TestResults
+/_ReSharper.EConnect
+/_ReSharper.eVerbinding app
+/EConnectApi/obj
+/EConnectApi/bin
+/EConnectApiUnitTests/obj
+/EConnectApiUnitTests/bin
+/EConnectDocEx/bin
+/EConnectDocEx/obj
