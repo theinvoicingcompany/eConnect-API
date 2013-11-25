@@ -72,7 +72,7 @@ namespace EConnectApiUnitTests
                 <startrowrange/>
             </GetInboxDocuments>";
 
-            var request = new EConnectApi.Definitions.GetInboxDocuments()
+            var request = new GetInboxDocumentsOfAnUser()
             {
                 Filters = new GetDocumentsFiltersBase()
                               {
@@ -82,7 +82,7 @@ namespace EConnectApiUnitTests
                 Startrowrange = string.Empty
             };
 
-            Compare.IsObjectSameAsXml<EConnectApi.Definitions.GetInboxDocuments>(request, xml);
+            Compare.IsObjectSameAsXml<GetInboxDocumentsOfAnUser>(request, xml);
         }
 
         [TestMethod]
@@ -97,7 +97,7 @@ namespace EConnectApiUnitTests
                 <startrowrange/>
             </GetInboxDocuments>";
 
-            var request = new EConnectApi.Definitions.GetInboxDocuments()
+            var request = new GetInboxDocumentsOfAnUser()
             {
                 Filters = new GetDocumentsFiltersBase()
                 {
@@ -108,7 +108,7 @@ namespace EConnectApiUnitTests
                 Startrowrange = string.Empty
             };
 
-            Compare.IsObjectSameAsXml<GetInboxDocuments>(request, xml);
+            Compare.IsObjectSameAsXml<GetInboxDocumentsOfAnUser>(request, xml);
         }
 
         [TestMethod]
@@ -144,7 +144,7 @@ namespace EConnectApiUnitTests
                                {
                                    Documents = new []
                                                    {
-                                                       new GetInboxDocument()
+                                                       new DocumentBase()
                                                            {
                                                                Rowkey = "CUA000000191000001INCC9223370651617362923UA000000191000001",
                                                                SenderAccountId = "A000000191",
@@ -155,7 +155,7 @@ namespace EConnectApiUnitTests
                                                                DocumentId = "RA000000191DMP2000009",
                                                                ExternalId = "XCNIN10280",
                                                                IsRead = false,
-                                                               IsTaks = 0,
+                                                               IsTask = 0,
                                                                LatestStatus = " ",
                                                                LatestStatusCode = " ",
                                                                LatestStatusInfo = " ",

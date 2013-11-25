@@ -7,26 +7,26 @@ namespace EConnectApi
     internal class BaseClient
     {
         private readonly OAuthConsumer _oAuthConsumer;
-        private readonly string _requesterId;
+        protected IEConnectClientConfig Config;
         private RequestToken _requestToken;
 
-        public BaseClient(string requesterId)
+        public BaseClient(IEConnectClientConfig config)
         {
-
-            _requesterId = requesterId;
-            _oAuthConsumer = new OAuthConsumer(); 
+            Config = config;
+            _oAuthConsumer = new OAuthConsumer();
         }
 
         /// <summary>
         ///  Requesting request token
         /// </summary>
         /// <returns></returns>
-        public RequestToken GetRequestToken() { 
+        public RequestToken GetRequestToken()
+        {
             return _oAuthConsumer.GetOAuthRequestToken(
-                Settings.Default.EndPointRequestToken,
-                Settings.Default.Realm,
-                Settings.Default.OAUThAppKey,
-                Settings.Default.OAUThSecret,
+                Config.RequestTokenEndpoint,
+                Config.Realm,
+                Config.ConsumerKey,
+                Config.ConsumerSecret,
                 "Unused",
                 string.Empty); // Empty scope
         }
@@ -35,18 +35,19 @@ namespace EConnectApi
         /// Requesting access token using request token
         /// </summary>
         /// <param name="requestToken"></param>
+        /// <param name="scope">Ex. SEND_DOC</param>
         /// <returns></returns>
         public AccessToken GetAccessToken(RequestToken requestToken, string scope)
         {
             return _oAuthConsumer.GetOAuthAccessToken(
-                Settings.Default.EndPointAccessToken,
-                Settings.Default.Realm,
-                Settings.Default.OAUThAppKey,
-                Settings.Default.OAUThSecret,
+                Config.AccessTokenEndpoint,
+                Config.Realm,
+                Config.ConsumerKey,
+                Config.ConsumerSecret,
                 requestToken.Token,
                 "Unused",
                 requestToken.TokenSecret,
-                scope);  
+                scope);
         }
 
         /// <summary>
@@ -55,21 +56,21 @@ namespace EConnectApi
         /// <param name="accessToken"></param>
         /// <param name="scope"></param>
         /// <param name="xml"></param>
-        /// <param name="requesterId"></param>
         /// <returns></returns>
-        public string Send(AccessToken accessToken, string scope, string xml, string requesterId)
+        public string Send(AccessToken accessToken, string scope, string xml)
         {
-            var xmlResponse = _oAuthConsumer.send(Settings.Default.EndPointAccessResource,
-                                            Settings.Default.Realm,
-                                            Settings.Default.OAUThAppKey,
-                                            Settings.Default.OAUThSecret,
-                                            accessToken.Token,
-                                            accessToken.TokenSecret,
-                                            scope,
-                                            xml,
-                                            requesterId);
+            var xmlResponse = _oAuthConsumer.send(
+                                Config.AccessResourceEndpoint,
+                                Config.Realm,
+                                Config.ConsumerKey,
+                                Config.ConsumerSecret,
+                                accessToken.Token,
+                                accessToken.TokenSecret,
+                                scope,
+                                xml,
+                                Config.RequesterId);
 
-            return xmlResponse; 
+            return xmlResponse;
         }
 
         public T SendRequest<T>(string scope, object body) where T : class
@@ -86,8 +87,8 @@ namespace EConnectApi
             // TODO REFACTOR, remove strings
             string soap = string.Format("<SOAP:Envelope xmlns:SOAP=\"http://schemas.xmlsoap.org/soap/envelope/\"><SOAP:Body>{0}</SOAP:Body></SOAP:Envelope>", xml);
 
-            if (_requestToken == null)
-                _requestToken = GetRequestToken();
+            //if (_requestToken == null)
+            _requestToken = GetRequestToken();
 
             AccessToken accessToken;
             try
@@ -103,8 +104,8 @@ namespace EConnectApi
             }
 
             // Send request
-            var result = Send(accessToken, scope, soap, _requesterId);
-            
+            var result = Send(accessToken, scope, soap);
+
             // Convert string to object
             return GenericXml.Deserialize<T>(result);
         }

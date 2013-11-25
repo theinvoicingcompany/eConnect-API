@@ -10,5 +10,8 @@ namespace EConnectApi.Definitions
 
         [XmlElement(ElementName = "startrowrange")]
         public string Startrowrange { get; set; }
+
+        [XmlElement(ElementName = "filters")]
+        public GetDocumentsFiltersBase Filters { get; set; }
     }
 }

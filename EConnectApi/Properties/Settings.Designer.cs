@@ -13,49 +13,13 @@ namespace EConnectApi.Properties {
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "11.0.0.0")]
-    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
+    public sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
         
         public static Settings Default {
             get {
                 return defaultInstance;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string OAUThAppKey {
-            get {
-                return ((string)(this["OAUThAppKey"]));
-            }
-            set {
-                this["OAUThAppKey"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string OAUThSecret {
-            get {
-                return ((string)(this["OAUThSecret"]));
-            }
-            set {
-                this["OAUThSecret"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string TemplateInvoice {
-            get {
-                return ((string)(this["TemplateInvoice"]));
-            }
-            set {
-                this["TemplateInvoice"] = value;
             }
         }
         
@@ -92,54 +56,6 @@ namespace EConnectApi.Properties {
         public string EndPointAccessResource {
             get {
                 return ((string)(this["EndPointAccessResource"]));
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string TemplateCreditNote {
-            get {
-                return ((string)(this["TemplateCreditNote"]));
-            }
-            set {
-                this["TemplateCreditNote"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string TemplateOrder {
-            get {
-                return ((string)(this["TemplateOrder"]));
-            }
-            set {
-                this["TemplateOrder"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string AccountContactID {
-            get {
-                return ((string)(this["AccountContactID"]));
-            }
-            set {
-                this["AccountContactID"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string EntityID {
-            get {
-                return ((string)(this["EntityID"]));
-            }
-            set {
-                this["EntityID"] = value;
             }
         }
     }

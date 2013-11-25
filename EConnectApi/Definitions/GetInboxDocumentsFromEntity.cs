@@ -4,11 +4,8 @@ namespace EConnectApi.Definitions
 {
     [XmlType(AnonymousType = true, Namespace = "http://ws.vg.pw.com/external/1.0")]
     [XmlRoot(Namespace = "http://ws.vg.pw.com/external/1.0", ElementName = "GetInboxDocuments", IsNullable = false)]
-    public class GetInboxDocumentsFromEntity : GetInboxDocuments
+    public class GetInboxDocumentsFromEntity : GetDocumentsFromEntityBase, IInboxDocumentsRequest
     {
-        /// <summary>
-        /// Get Inbox Documents from Entity
-        /// </summary>
-        public string EntityId { get; set; }
+        // Nothing extra
     }
 }

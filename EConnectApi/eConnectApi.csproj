@@ -45,21 +45,39 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Definitions\DocumentBase.cs" />
     <Compile Include="Definitions\DocumentAsFile.cs" />
+    <Compile Include="Definitions\GetDocumentBase.cs" />
+    <Compile Include="Definitions\GetDocumentsFromEntityBase.cs" />
+    <Compile Include="Definitions\GetInboxDocumentResponse.cs" />
     <Compile Include="Definitions\GetDocumentsBase.cs" />
     <Compile Include="Definitions\GetDocumentsFiltersBase.cs" />
-    <Compile Include="Definitions\GetInboxDocuments.cs" />
+    <Compile Include="Definitions\GetInboxDocument.cs" />
     <Compile Include="Definitions\GetInboxDocumentsFromEntity.cs" />
     <Compile Include="Definitions\GetInboxDocumentsFromGroup.cs" />
+    <Compile Include="Definitions\GetDocumentsFromGroupBase.cs" />
     <Compile Include="Definitions\GetInboxDocumentsOfAnUser.cs" />
+    <Compile Include="Definitions\GetInboxDocumentsResponse.cs" />
+    <Compile Include="Definitions\GetOutboxDocumentResponse.cs" />
+    <Compile Include="Definitions\GetOutboxDocuments.cs" />
+    <Compile Include="Definitions\GetOutboxDocumentsesFromEntity.cs" />
+    <Compile Include="Definitions\GetOutboxDocumentsesFromGroup.cs" />
+    <Compile Include="Definitions\GetOutboxDocumentsesOfAnUser.cs" />
+    <Compile Include="Definitions\GetOutboxDocumentsResponse.cs" />
+    <Compile Include="Definitions\IInboxDocumentRequest.cs" />
+    <Compile Include="Definitions\IInboxDocumentsRequest.cs" />
+    <Compile Include="Definitions\IOutboxDocumentRequest.cs" />
+    <Compile Include="Definitions\IOutboxDocumentsRequest.cs" />
+    <Compile Include="Definitions\RuleApplicable.cs" />
     <Compile Include="Definitions\SendDocumentResponse.cs" />
     <Compile Include="Definitions\SOAP\EnvelopeBody.cs" />
     <Compile Include="Definitions\SOAP\Envelope.cs" />
     <Compile Include="Definitions\SendDocument.cs" />
-    <Compile Include="Definitions\Ubl.cs" />
     <Compile Include="EConnectClient.cs" />
     <Compile Include="BaseClient.cs" />
+    <Compile Include="EConnectClientConfigBase.cs" />
     <Compile Include="Helpers\GenericXml.cs" />
+    <Compile Include="IEConnectClientConfig.cs" />
     <Compile Include="OAuth\AuthorizationHeader.cs" />
     <Compile Include="OAuth\OAuthConsumer.cs" />
     <Compile Include="OAuth\OAuthProtocolException.cs" />
@@ -75,7 +93,7 @@
   <ItemGroup>
     <None Include="app.config" />
     <None Include="Properties\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
+      <Generator>PublicSettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
   </ItemGroup>

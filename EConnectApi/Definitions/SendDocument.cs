@@ -17,7 +17,7 @@ namespace EConnectApi.Definitions
         /// This parameter gives the id of the document that should be sent. 
         /// This parameter should not be entered if the DocumentTemplateId is provided. 
         /// You can find the DocumentId of a document by selecting the document from the 
-        /// Document List section under Documents & Data, and clicking the ​Properties button.
+        /// DocumentBase List section under Documents & Data, and clicking the ​Properties button.
         /// </summary>
         public string DocumentId { get; set; }
 
