@@ -10,5 +10,9 @@ namespace EConnectApi.Definitions
         public bool IsRead { get; set; }
         [XmlElement(ElementName = "SenderEntityId")]
         public string SenderEntityId { get; set; }
+        [XmlElement(ElementName = "CreatedDateTime")]
+        public TimeSpanFilter CreatedDateTime { get; set; }
+        [XmlElement(ElementName = "ModifiedDateTime")]
+        public TimeSpanFilter ModifiedDateTime { get; set; }
     }
 }

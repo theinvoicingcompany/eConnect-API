@@ -20,6 +20,12 @@ namespace EConnectApiUnitTests
                                                            RequesterId = Properties.Settings.Default.RequesterId
                                                        }))
             {
+
+                var document = client.GetDocument(new GetDocument()
+                    {
+                        DocumentId = "RA000000191DMP1000009"
+                    });
+
                 //var doc = new SendDocument()
                 //{
                 //    DocumentTemplateId = "GLDT9223370666504283001RA000000006DTP2000001",
@@ -41,8 +47,8 @@ namespace EConnectApiUnitTests
                 Assert.AreEqual(firstdoc.ConsignmentName, doc3.ConsignmentName);
                 Assert.AreEqual(firstdoc.CreatedDateTime, doc3.CreatedDateTime);
 
-                var docsout = client.GetOutboxDocuments(new GetOutboxDocumentsesOfAnUser() {Limit = 1});
-                var firstout = docsout.DocumentsBase.First();
+                var docsout = client.GetOutboxDocuments(new GetOutboxDocumentsOfAnUser() {Limit = 1});
+                var firstout = docsout.Documents.First();
                 var doc4 = client.GetOutboxDocument(new GetOutboxDocuments() { ConsignmentId = firstdoc.ConsignmentId });
 
                 Assert.AreEqual(firstout.ConsignmentName, doc4.ConsignmentName);

@@ -1,3 +1,5 @@
+using System;
+using System.Runtime.Serialization.Formatters;
 using EConnectApi.Helpers;
 using EConnectApi.OAuth;
 using EConnectApi.Properties;
@@ -75,39 +77,51 @@ namespace EConnectApi
 
         public T SendRequest<T>(string scope, object body) where T : class
         {
-            // Convert object to string
-            var xml = GenericXml.Serialize(body);
-
-            //var soep2 = new Envelope()
-            //                {
-            //                    Body = xml
-            //                };
-            //string ssoep2 = GenericXml.SerializeSoap(soep2);
-
-            // TODO REFACTOR, remove strings
-            string soap = string.Format("<SOAP:Envelope xmlns:SOAP=\"http://schemas.xmlsoap.org/soap/envelope/\"><SOAP:Body>{0}</SOAP:Body></SOAP:Envelope>", xml);
-
-            //if (_requestToken == null)
-            _requestToken = GetRequestToken();
-
-            AccessToken accessToken;
             try
             {
-                // Get access token and reuse request token
-                accessToken = GetAccessToken(_requestToken, scope);
-            }
-            catch
-            {
-                // if fails, get new toke and try it again
+                // Convert object to string
+                var xml = GenericXml.Serialize(body);
+
+                string soap = string.Format("<SOAP:Envelope xmlns:SOAP=\"http://schemas.xmlsoap.org/soap/envelope/\"><SOAP:Body>{0}</SOAP:Body></SOAP:Envelope>", xml);
+
+                //if (_requestToken == null)
                 _requestToken = GetRequestToken();
-                accessToken = GetAccessToken(_requestToken, scope);
+
+                AccessToken accessToken;
+                try
+                {
+                    // Get access token and reuse request token
+                    accessToken = GetAccessToken(_requestToken, scope);
+                }
+                catch
+                {
+                    // if fails, get new toke and try it again
+                    _requestToken = GetRequestToken();
+                    accessToken = GetAccessToken(_requestToken, scope);
+                }
+
+                // Send request
+                var result = Send(accessToken, scope, soap);
+
+                // Convert string to object
+                return GenericXml.Deserialize<T>(result);
             }
+            catch (OAuthProtocolException ex)
+            {
+                SoapFault fault = null;
+                try
+                {
+                    fault = GenericXml.DeserializeSoap<SoapFault>(ex.Message);
 
-            // Send request
-            var result = Send(accessToken, scope, soap);
+                }
+                catch
+                {
+                }
+                if (fault != null)
+                    throw new EConnectClientException(fault);
 
-            // Convert string to object
-            return GenericXml.Deserialize<T>(result);
+                throw new EConnectClientException("Protocol exception", ex);
+            }
         }
 
     }

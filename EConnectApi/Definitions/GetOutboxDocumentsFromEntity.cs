@@ -4,8 +4,7 @@ namespace EConnectApi.Definitions
 {
     [XmlType(AnonymousType = true, Namespace = "http://ws.vg.pw.com/external/1.0")]
     [XmlRoot(Namespace = "http://ws.vg.pw.com/external/1.0", ElementName = "GetOutboxDocuments", IsNullable = false)]
-    public class GetOutboxDocumentsesOfAnUser : GetDocumentsBase, IOutboxDocumentsRequest
+    public class GetOutboxDocumentsFromEntity : GetDocumentsFromEntityBase, IOutboxDocumentsRequest
     {
-        // Nothing extra
     }
 }

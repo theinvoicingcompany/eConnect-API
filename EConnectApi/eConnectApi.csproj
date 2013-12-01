@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>EConnectApi</RootNamespace>
     <AssemblyName>EConnectApi</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -37,6 +37,7 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Net.Http" />
+    <Reference Include="System.Runtime.Serialization.Formatters.Soap" />
     <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -45,10 +46,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Definitions\Company.cs" />
     <Compile Include="Definitions\DocumentBase.cs" />
     <Compile Include="Definitions\DocumentAsFile.cs" />
+    <Compile Include="Definitions\EnquireCompany.cs" />
+    <Compile Include="Definitions\EnquireCompanyResponse.cs" />
+    <Compile Include="Definitions\GetDocument.cs" />
     <Compile Include="Definitions\GetDocumentBase.cs" />
+    <Compile Include="Definitions\GetDocumentResponse.cs" />
+    <Compile Include="Definitions\GetDocumentsFromEntity.cs" />
     <Compile Include="Definitions\GetDocumentsFromEntityBase.cs" />
+    <Compile Include="Definitions\GetDocumentsFromGroup.cs" />
+    <Compile Include="Definitions\GetDocumentsOfAnUser.cs" />
+    <Compile Include="Definitions\GetDocumentsResponse.cs" />
+    <Compile Include="Definitions\GetDocumentStatus.cs" />
+    <Compile Include="Definitions\GetDocumentStatusResponse.cs" />
     <Compile Include="Definitions\GetInboxDocumentResponse.cs" />
     <Compile Include="Definitions\GetDocumentsBase.cs" />
     <Compile Include="Definitions\GetDocumentsFiltersBase.cs" />
@@ -58,24 +70,35 @@
     <Compile Include="Definitions\GetDocumentsFromGroupBase.cs" />
     <Compile Include="Definitions\GetInboxDocumentsOfAnUser.cs" />
     <Compile Include="Definitions\GetInboxDocumentsResponse.cs" />
+    <Compile Include="Definitions\GetInboxDocumentStatus.cs" />
     <Compile Include="Definitions\GetOutboxDocumentResponse.cs" />
     <Compile Include="Definitions\GetOutboxDocuments.cs" />
-    <Compile Include="Definitions\GetOutboxDocumentsesFromEntity.cs" />
-    <Compile Include="Definitions\GetOutboxDocumentsesFromGroup.cs" />
-    <Compile Include="Definitions\GetOutboxDocumentsesOfAnUser.cs" />
+    <Compile Include="Definitions\GetOutboxDocumentsFromEntity.cs" />
+    <Compile Include="Definitions\GetOutboxDocumentsFromGroup.cs" />
+    <Compile Include="Definitions\GetOutboxDocumentsOfAnUser.cs" />
     <Compile Include="Definitions\GetOutboxDocumentsResponse.cs" />
+    <Compile Include="Definitions\GetOutboxDocumentStatus.cs" />
+    <Compile Include="Definitions\IDocumentsRequest.cs" />
     <Compile Include="Definitions\IInboxDocumentRequest.cs" />
     <Compile Include="Definitions\IInboxDocumentsRequest.cs" />
     <Compile Include="Definitions\IOutboxDocumentRequest.cs" />
     <Compile Include="Definitions\IOutboxDocumentsRequest.cs" />
     <Compile Include="Definitions\RuleApplicable.cs" />
+    <Compile Include="Definitions\SearchCompany.cs" />
+    <Compile Include="Definitions\SearchCompanyResponse.cs" />
     <Compile Include="Definitions\SendDocumentResponse.cs" />
+    <Compile Include="Definitions\SetDocumentStatus.cs" />
+    <Compile Include="Definitions\SetDocumentStatusResponse.cs" />
+    <Compile Include="Definitions\SetInboxDocumentStatus.cs" />
+    <Compile Include="Definitions\SetInboxDocumentStatusResponse.cs" />
     <Compile Include="Definitions\SOAP\EnvelopeBody.cs" />
     <Compile Include="Definitions\SOAP\Envelope.cs" />
     <Compile Include="Definitions\SendDocument.cs" />
+    <Compile Include="Definitions\TimeSpanFilter.cs" />
     <Compile Include="EConnectClient.cs" />
     <Compile Include="BaseClient.cs" />
     <Compile Include="EConnectClientConfigBase.cs" />
+    <Compile Include="EConnectClientException.cs" />
     <Compile Include="Helpers\GenericXml.cs" />
     <Compile Include="IEConnectClientConfig.cs" />
     <Compile Include="OAuth\AuthorizationHeader.cs" />

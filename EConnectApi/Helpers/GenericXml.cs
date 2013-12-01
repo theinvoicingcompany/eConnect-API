@@ -1,5 +1,7 @@
 ﻿using System.IO;
 using System.Runtime.CompilerServices;
+using System.Runtime.Serialization.Formatters.Soap;
+using System.Text;
 using System.Xml;
 using System.Xml.Serialization;
 
@@ -13,6 +15,17 @@ namespace EConnectApi.Helpers
 
             using (var sr = new StringReader(input))
                 return (T)ser.Deserialize(sr);
+        }
+
+        public static T DeserializeSoap<T>(string input) where T : class
+        {
+             // SOAP Format defined in .NET using: System.Runtime.Serialization.Formatters.Soap.dll
+             var formatter = new SoapFormatter();
+             // convert string to stream
+             byte[] byteArray = Encoding.ASCII.GetBytes(input);
+             var stream = new MemoryStream(byteArray);
+             //
+             return (T)formatter.Deserialize(stream); 
         }
 
         public static string Serialize(object input)
