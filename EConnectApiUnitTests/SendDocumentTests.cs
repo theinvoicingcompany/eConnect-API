@@ -2,6 +2,7 @@
 using System.Xml.Linq;
 using EConnectApi.Definitions;
 using EConnectApi.Helpers;
+using EConnectApiUnitTests.XmlTest.Helpers;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace EConnectApiUnitTests

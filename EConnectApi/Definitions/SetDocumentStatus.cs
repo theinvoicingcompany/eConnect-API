@@ -8,9 +8,8 @@ namespace EConnectApi.Definitions
 {
     [XmlType(AnonymousType = true, Namespace = "http://ws.vg.pw.com/external/1.0")]
     [XmlRoot(Namespace = "http://ws.vg.pw.com/external/1.0", ElementName = "SetDocumentStatus", IsNullable = false)]
-    public class SetDocumentStatus : GetDocumentBase
+    public class SetDocumentStatus : SetDocumentStatusBase
     {
-        public string Status { get; set; }
-        public int StatusCode { get; set; }
+        public string DocumentId { get; set; }
     }
 }

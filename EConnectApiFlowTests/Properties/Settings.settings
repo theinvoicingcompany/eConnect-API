@@ -1,0 +1,15 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="eConnectApiFlowTests.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="ConsumerKey" Type="System.String" Scope="User">
+      <Value Profile="(Default)">F871KF14CStFDvliq2mOYB9VcfE=</Value>
+    </Setting>
+    <Setting Name="ConsumerSecret" Type="System.String" Scope="User">
+      <Value Profile="(Default)">NcYICCfxa3lDcefjIjI7VbGZPug=</Value>
+    </Setting>
+    <Setting Name="RequesterId" Type="System.String" Scope="User">
+      <Value Profile="(Default)">thieme@selmit.nl</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System;
 using EConnectApi.Helpers;
 using KellermanSoftware.CompareNetObjects;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace EConnectApiUnitTests
+namespace EConnectApiUnitTests.XmlTest.Helpers
 {
     public static class Compare
     {

@@ -5,7 +5,8 @@ namespace EConnectApi.Definitions
     public class Company
     {
         public string CompanyName { get; set; }
-        public string TemporaryIdentifier { get; set; }
+        [XmlElement(ElementName = "TemporaryIdentifier")]
+        public string TemporaryId { get; set; }
         public string StreetName { get; set; }
         public string HouseNumber { get; set; }
         public string HouseNumberSupplement { get; set; }
@@ -16,5 +17,8 @@ namespace EConnectApi.Definitions
         public string Url { get; set; }
         [XmlElement(ElementName = "EMailAddress")]
         public string EmailAddress { get; set; }
+        public string EntityId { get; set; }
+        [XmlElement(ElementName = "KVKNo")]
+        public string KvkNumber { get; set; }
     }
 }

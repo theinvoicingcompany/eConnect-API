@@ -8,3 +8,6 @@
 /EConnectApiUnitTests/bin
 /EConnectDocEx/bin
 /EConnectDocEx/obj
+/packages
+/EConnectApiFlowTests/bin
+/EConnectApiFlowTests/obj

@@ -52,7 +52,7 @@ namespace EConnectApi
             return _client.SendRequest<SetDocumentStatusResponse>("SET_DOC_STATUS", parameters);
         }
 
-        public SetInboxDocumentStatusResponse SetDocumentStatus(SetInboxDocumentStatus parameters)
+        public SetInboxDocumentStatusResponse SetInboxDocumentStatus(SetInboxDocumentStatus parameters)
         {
             return _client.SendRequest<SetInboxDocumentStatusResponse>("SET_INBOX_DOC_STATUS", parameters);
         }
@@ -64,12 +64,12 @@ namespace EConnectApi
 
         public GetDocumentStatusResponse GetInboxDocumentStatus(GetInboxDocumentStatus parameters)
         {
-            return _client.SendRequest<GetDocumentStatusResponse>("GET_INBOX_DOC_STATUS", parameters);
+            return _client.SendRequest<GetInboxDocumentStatusResponse>("GET_INBOX_DOC_STATUS", parameters);
         }
 
         public GetDocumentStatusResponse GetOutboxDocumentStatus(GetOutboxDocumentStatus parameters)
         {
-            return _client.SendRequest<GetDocumentStatusResponse>("GET_OUTBOX_DOC_STATUS", parameters);
+            return _client.SendRequest<GetOutboxDocumentStatusResponse>("GET_OUTBOX_DOC_STATUS", parameters);
         }
 
         public EnquireCompanyResponse EnquireCompany(EnquireCompany parameters)
@@ -85,7 +85,7 @@ namespace EConnectApi
         public void Dispose()
         {
             // Clean up
-            //_client.Close();
+            _client.Dispose();
         }
     }
 }

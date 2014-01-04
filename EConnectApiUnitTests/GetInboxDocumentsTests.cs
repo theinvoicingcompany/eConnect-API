@@ -1,4 +1,5 @@
 ﻿using EConnectApi.Definitions;
+using EConnectApiUnitTests.XmlTest.Helpers;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace EConnectApiUnitTests
@@ -18,7 +19,7 @@ namespace EConnectApiUnitTests
                             {
                                 EntityId = "XCNL10027",
                                 Limit = 25,
-                                Startrowrange = string.Empty
+                                StartRowRange = string.Empty
                             };
 
             Compare.IsObjectSameAsXml<GetInboxDocumentsFromEntity>(request, xml);
@@ -37,7 +38,7 @@ namespace EConnectApiUnitTests
             {
                 GroupId = "XGP3137087487318464",
                 Limit = 25,
-                Startrowrange = string.Empty
+                StartRowRange = string.Empty
             };
 
             Compare.IsObjectSameAsXml<GetInboxDocumentsFromGroup>(request, xml);
@@ -54,7 +55,7 @@ namespace EConnectApiUnitTests
             var request = new GetInboxDocumentsOfAnUser()
             {
                 Limit = 25,
-                Startrowrange = string.Empty
+                StartRowRange = string.Empty
             };
 
             Compare.IsObjectSameAsXml<GetInboxDocumentsOfAnUser>(request, xml);
@@ -79,7 +80,7 @@ namespace EConnectApiUnitTests
                                   IsRead = false
                               },
                 Limit = 25,
-                Startrowrange = string.Empty
+                StartRowRange = string.Empty
             };
 
             Compare.IsObjectSameAsXml<GetInboxDocumentsOfAnUser>(request, xml);
@@ -105,7 +106,7 @@ namespace EConnectApiUnitTests
                     SenderEntityId = "XCNL10027"
                 },
                 Limit = 25,
-                Startrowrange = string.Empty
+                StartRowRange = string.Empty
             };
 
             Compare.IsObjectSameAsXml<GetInboxDocumentsOfAnUser>(request, xml);

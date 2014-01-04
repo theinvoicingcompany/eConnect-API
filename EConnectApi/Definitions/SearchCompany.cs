@@ -29,12 +29,13 @@ namespace EConnectApi.Definitions
         /// This parameter gives the KvK no of the company which is being searched. Providing a KVK no will always return a unique result.
         /// </summary>
         [XmlElement(ElementName = "KVKNo")]
-        public string KvkNo { get; set; }
+        public string KvkNumber { get; set; }
 
         /// <summary>
         /// This parameter gives the identifier of the company which is being searched. Providing a temporary identifier will always return a unique result.
         /// </summary>
-        public string TemporaryIdentifier { get; set; }
+        [XmlElement(ElementName = "TemporaryIdentifier")]
+        public string TemporaryId { get; set; }
 
         /// <summary>
         /// This parameter gives the searchKey parameter from the previous batch of search results.

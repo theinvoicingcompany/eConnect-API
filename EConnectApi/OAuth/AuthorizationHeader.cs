@@ -47,7 +47,7 @@ namespace EConnectApi.OAuth
     {
       var sb = new StringBuilder();
       sb.Append("OAuth ");
-      sb.AppendFormat("realm=\"{0}\", ", Realm);
+      //sb.AppendFormat("realm=\"{0}\", ", Realm);
       sb.AppendFormat("{0}=\"{1}\", ", OAuthProtocolParameter.ConsumerKey.GetStringValue(), OAuthUtils.UrlEncode(ConsumerKey));
       sb.AppendFormat("{0}=\"{1}\", ", OAuthProtocolParameter.SignatureMethod.GetStringValue(), SignatureMethod);
       sb.AppendFormat("{0}=\"{1}\", ", OAuthProtocolParameter.Signature.GetStringValue(), OAuthUtils.UrlEncode(Signature));

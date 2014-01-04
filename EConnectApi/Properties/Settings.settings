@@ -1,18 +1,18 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="EConnectApi.Properties" GeneratedClassName="Settings">
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(DefaultStatus)" GeneratedClassNamespace="EConnectApi.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
     <Setting Name="EndPointRequestToken" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">https://platform.everbinding.nl/api/requesttoken</Value>
+      <Value Profile="(DefaultStatus)">https://platform.everbinding.nl/api/requesttoken</Value>
     </Setting>
     <Setting Name="Realm" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">platform.everbinding.nl</Value>
+      <Value Profile="(DefaultStatus)">platform.everbinding.nl</Value>
     </Setting>
     <Setting Name="EndPointAccessToken" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">https://platform.everbinding.nl/api/accesstoken</Value>
+      <Value Profile="(DefaultStatus)">https://platform.everbinding.nl/api/accesstoken</Value>
     </Setting>
     <Setting Name="EndPointAccessResource" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">https://platform.everbinding.nl/api/accessresource</Value>
+      <Value Profile="(DefaultStatus)">https://platform.everbinding.nl/api/accessresource</Value>
     </Setting>
   </Settings>
 </SettingsFile>

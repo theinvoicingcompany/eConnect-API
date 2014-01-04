@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Runtime.Serialization.Formatters;
 using EConnectApi.Helpers;
 using EConnectApi.OAuth;
@@ -6,20 +7,23 @@ using EConnectApi.Properties;
 
 namespace EConnectApi
 {
-    internal class BaseClient
+    internal class BaseClient : IDisposable
     {
         private readonly OAuthConsumer _oAuthConsumer;
         protected IEConnectClientConfig Config;
-        private RequestToken _requestToken;
+        protected AccessTokenManager Manager;
 
         public BaseClient(IEConnectClientConfig config)
         {
             Config = config;
+            // Underlying OAuth client
             _oAuthConsumer = new OAuthConsumer();
+            // Helper to store access tokens
+            Manager = new AccessTokenManager();
         }
 
         /// <summary>
-        ///  Requesting request token
+        ///  Requesting request token, 1st Leg of OAuth
         /// </summary>
         /// <returns></returns>
         public RequestToken GetRequestToken()
@@ -34,7 +38,7 @@ namespace EConnectApi
         }
 
         /// <summary>
-        /// Requesting access token using request token
+        /// Requesting access token using request token, 2nd Leg of OAuth
         /// </summary>
         /// <param name="requestToken"></param>
         /// <param name="scope">Ex. SEND_DOC</param>
@@ -79,26 +83,24 @@ namespace EConnectApi
         {
             try
             {
+                var accessToken = Manager.GetTokenOrNull(scope);
+
+                // if token is null we must request new access token
+                if (accessToken == null)
+                {
+                    // Obtain the Request Token - 1st Leg of OAuth
+                    var requestToken = GetRequestToken();
+                    // Trade the Request Token and Verfier for the Access Token - 2nd Leg of OAuth
+                    accessToken = GetAccessToken(requestToken, scope);
+                    // Store access token so we can reuse it for future calls
+                    Manager.Store(scope, accessToken);
+                }
+
                 // Convert object to string
                 var xml = GenericXml.Serialize(body);
 
+                // Wrap soap message object
                 string soap = string.Format("<SOAP:Envelope xmlns:SOAP=\"http://schemas.xmlsoap.org/soap/envelope/\"><SOAP:Body>{0}</SOAP:Body></SOAP:Envelope>", xml);
-
-                //if (_requestToken == null)
-                _requestToken = GetRequestToken();
-
-                AccessToken accessToken;
-                try
-                {
-                    // Get access token and reuse request token
-                    accessToken = GetAccessToken(_requestToken, scope);
-                }
-                catch
-                {
-                    // if fails, get new toke and try it again
-                    _requestToken = GetRequestToken();
-                    accessToken = GetAccessToken(_requestToken, scope);
-                }
 
                 // Send request
                 var result = Send(accessToken, scope, soap);
@@ -108,21 +110,28 @@ namespace EConnectApi
             }
             catch (OAuthProtocolException ex)
             {
-                SoapFault fault = null;
                 try
                 {
-                    fault = GenericXml.DeserializeSoap<SoapFault>(ex.Message);
-
+                    // try to parse exception to SoapFault to reuse EConnect API error message
+                    var fault = GenericXml.DeserializeSoap<SoapFault>(ex.Message);
+                    if (fault != null)
+                        throw new EConnectClientException(fault);
                 }
-                catch
+                finally
                 {
+                    // Exceptions like error 500
+                    throw new EConnectClientException("Protocol exception", ex);
                 }
-                if (fault != null)
-                    throw new EConnectClientException(fault);
-
-                throw new EConnectClientException("Protocol exception", ex);
+            }
+            catch(Exception ex)
+            {
+                throw new EConnectClientException("Unknow EConnectClientException", ex);
             }
         }
 
+        public void Dispose()
+        {
+            // Nothing yet. Would be nice to clean up the http connections
+        }
     }
 }

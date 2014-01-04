@@ -4,9 +4,8 @@ namespace EConnectApi.Definitions
 {
     [XmlType(AnonymousType = true)]
     [XmlRoot(Namespace = "", IsNullable = false)]
-    public class GetDocumentsResponse
+    public class GetDocumentsResponse : GetDocumentsResponseBase
     {
-        [XmlElement(ElementName = "tuple")]
-        public DocumentBase[] Documents { get; set; }
+
     }
 }

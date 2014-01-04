@@ -2,6 +2,7 @@
 using System.Xml.Linq;
 using EConnectApi.Definitions;
 using EConnectApi.Helpers;
+using EConnectApiUnitTests.XmlTest.Helpers;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace EConnectApiUnitTests
@@ -79,7 +80,7 @@ namespace EConnectApiUnitTests
                 DocumentViewerId =
                     "GLDV9223370666504282968RA000000006DVRA000000006DTP2000001999998P3",
                 DocumentViewerName = "SimplerInvoicing Factuur - UBL2.0 Standard",
-                PossibleConsignmentStatuses =
+                RawPossibleConsignmentStatuses =
                     "consignmentstatus1:Afgeleverd:10,consignmentstatus2:Gelezen:20,consignmentstatus3:Verwerkt:30,consignmentstatus4:Goedgekeurd:40,consignmentstatus5:Afgewezen:50,defaultstatus:Afgeleverd:10"
             };
 

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using EConnectApi.Definitions;
+using EConnectApiUnitTests.XmlTest.Helpers;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace EConnectApiUnitTests
@@ -27,8 +28,8 @@ namespace EConnectApiUnitTests
                                 CountryCode = "NL",
                                 CompanyName = "lat",
                                 City = "UTRECHT",
-                                KvkNo = string.Empty,
-                                TemporaryIdentifier = string.Empty,
+                                KvkNumber = string.Empty,
+                                TemporaryId = string.Empty,
                                 Limit = 2
                             };
 
@@ -62,7 +63,7 @@ namespace EConnectApiUnitTests
                         new Company()
                             {
                                 CompanyName = "L.A.T. WARD",
-                                TemporaryIdentifier = "897301048",
+                                TemporaryId = "897301048",
                                 StreetName = "BETHLEHEMWEG",
                                 HouseNumber = "11",
                                 HouseNumberSupplement = string.Empty,

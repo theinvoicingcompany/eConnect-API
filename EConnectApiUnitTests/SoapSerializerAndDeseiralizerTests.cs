@@ -1,11 +1,6 @@
-﻿using System;
-using System.IO;
-using System.Runtime.Serialization.Formatters;
-using System.Text;
-using EConnectApi.Definitions.SOAP;
+﻿using System.Runtime.Serialization.Formatters;
 using EConnectApi.Helpers;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Runtime.Serialization.Formatters.Soap;
 
 namespace EConnectApiUnitTests
 {

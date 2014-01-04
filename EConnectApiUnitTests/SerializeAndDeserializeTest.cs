@@ -36,24 +36,6 @@ namespace EConnectApiUnitTests
                 </pwns:attachments1>
             </pwns:document_instance>";
 
-        //        public static string RequestSample =
-        //            @"<SOAP:Envelope xmlns:SOAP=""http://schemas.xmlsoap.org/soap/envelope/"">
-        //                <SOAP:Body>
-        //                    " + UblSample + @"
-        //                </SOAP:Body>
-        //            </SOAP:Envelope>";
-
-        //[TestMethod]
-        //public void TestUBL()
-        //{
-
-        //    var ubl = XElement.Parse(UblSample);
-            
-
-        //    var name = ubl.Element("pwns:FullNameemp").Value;
-
-        //}
-
         [TestMethod]
         public void SendDocumentSerializeAndDeserialize()
         {

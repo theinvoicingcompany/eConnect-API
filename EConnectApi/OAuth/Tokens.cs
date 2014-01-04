@@ -1,4 +1,5 @@
-﻿using System.Collections.Specialized;
+﻿using System;
+using System.Collections.Specialized;
 using System.Web;
 
 namespace EConnectApi.OAuth
@@ -40,8 +41,10 @@ namespace EConnectApi.OAuth
 
     internal class AccessToken : TokenBase
     {
+        public DateTime CreatedDateTime { get; protected set; }
         public AccessToken()
         {
+            CreatedDateTime = DateTime.Now;
         }
     }
 }
