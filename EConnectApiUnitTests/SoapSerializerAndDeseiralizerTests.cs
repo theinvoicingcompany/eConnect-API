@@ -1,4 +1,8 @@
-﻿using System.Runtime.Serialization.Formatters;
+﻿using System.IO;
+using System.Linq;
+using System.Runtime.Serialization.Formatters;
+using System.Xml.Linq;
+using EConnectApi.Definitions;
 using EConnectApi.Helpers;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -53,5 +57,18 @@ namespace EConnectApiUnitTests
 
             var obj = GenericXml.DeserializeSoap<SoapFault>(xml);
         }
+
+        [TestMethod]
+        public void TestSoapEnvelop()
+        {
+            var soap = @"<SOAP:Envelope xmlns:SOAP=""http://schemas.xmlsoap.org/soap/envelope/""><SOAP:Header/><SOAP:Body>
+<GetInboxDocumentsResponse><tuple><rowkey>CUA000000191000001INCC9223370645588146187UA000000191000001</rowkey><SenderAccountId>A000000191</SenderAccountId><SenderAccountName>selmit.nl</SenderAccountName><CreatedDateTime>1391266631316</CreatedDateTime><ConsignmentId>CUA000000191000001INCC9223370645588146187UA000000191000001</ConsignmentId><ConsignmentName>Afas test factuur c1f45965-5749-4951-9eba-a0af08852e6b</ConsignmentName><DocumentId>RA000000191DMP2000014</DocumentId><ExternalId>XCNIN10637</ExternalId><IsRead>false</IsRead><IsTask>0</IsTask><LatestStatusCode>10</LatestStatusCode><LatestStatusInfo>UA000000191000001:Thieme:A000000191:selmit.nl:1391266630248</LatestStatusInfo><LatestStatus>Afgeleverd:UA000000191000001:Thieme:A000000191:selmit.nl:1391266630245</LatestStatus><MasterTemplateId>RA000000006DTP2000001</MasterTemplateId><MasterTemplateName>SimplerInvoicing Factuur - UBL2.0 Standard</MasterTemplateName><Subject>Afas test factuur c1f45965-5749-4951-9eba-a0af08852e6b</Subject><StandardTemplateId>GLDT9223370666504283001RA000000006DTP2000001</StandardTemplateId><StandardTemplateName>SimplerInvoicing Factuur - UBL2.0 Standard</StandardTemplateName><DocumentTemplateId>GLDT9223370666504283001RA000000006DTP2000001</DocumentTemplateId><TrackingMessage>EM0001</TrackingMessage><DocumentTemplateName>SimplerInvoicing Factuur - UBL2.0 Standard</DocumentTemplateName><TemplateSchemaId>RTSP2000003</TemplateSchemaId><Type>Inbox</Type><SenderUserId>UA000000191000001</SenderUserId><SenderUserName>Thieme</SenderUserName><DocumentViewerId>GLDV9223370666504282968RA000000006DVRA000000006DTP2000001999998P3</DocumentViewerId><DocumentViewerName>SimplerInvoicing Factuur - UBL2.0 Standard</DocumentViewerName></tuple><startrowrange>CUA000000191000001INCC9223370647483476971UA000000191000001</startrowrange></GetInboxDocumentsResponse></SOAP:Body></SOAP:Envelope>";
+
+            XDocument xDoc = XDocument.Load(new StringReader(soap));
+            var unwrappedResponse = xDoc.Descendants((XNamespace) "http://schemas.xmlsoap.org/soap/envelope/" + "Body")
+                .First()
+                .FirstNode;
+        }
+
     }
 }

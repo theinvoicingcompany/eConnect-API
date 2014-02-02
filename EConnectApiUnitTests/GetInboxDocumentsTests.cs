@@ -128,7 +128,7 @@ namespace EConnectApiUnitTests
                         <ExternalId>XCNIN10280</ExternalId>
                         <IsRead>false</IsRead>
                         <IsTask>0</IsTask>
-                        <LatestStatusCode> </LatestStatusCode>
+                        <LatestStatusCode>10</LatestStatusCode>
                         <LatestStatusInfo> </LatestStatusInfo>
                         <LatestStatus> </LatestStatus>
                         <Subject>Afas test factuur</Subject>
@@ -150,7 +150,7 @@ namespace EConnectApiUnitTests
                                                                Rowkey = "CUA000000191000001INCC9223370651617362923UA000000191000001",
                                                                SenderAccountId = "A000000191",
                                                                SenderAccountName = "selmit.nl",
-                                                               CreatedDateTime = 1385237412946,
+                                                               RawCreatedDateTime = 1385237412946,
                                                                ConsignmentId = "CUA000000191000001INCC9223370651617362923UA000000191000001",
                                                                ConsignmentName = "Afas test factuur",
                                                                DocumentId = "RA000000191DMP2000009",
@@ -158,7 +158,7 @@ namespace EConnectApiUnitTests
                                                                IsRead = false,
                                                                IsTask = 0,
                                                                LatestStatus = " ",
-                                                               LatestStatusCode = " ",
+                                                               LatestStatusCode = 10,
                                                                LatestStatusInfo = " ",
                                                                Subject = "Afas test factuur",
                                                                StandardTemplateId = "GLDT9223370666504283001RA000000006DTP2000001",

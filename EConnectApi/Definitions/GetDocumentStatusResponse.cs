@@ -7,7 +7,7 @@ namespace EConnectApi.Definitions
     public class GetDocumentStatusResponse
     {
         public string Status { get; set; }
-        public string StatusCode { get; set; }
+        public int StatusCode { get; set; }
         public string StatusSetByUserId { get; set; }
         public string StatusSetByUserName { get; set; }
         public string StatusSetByAccountId { get; set; }

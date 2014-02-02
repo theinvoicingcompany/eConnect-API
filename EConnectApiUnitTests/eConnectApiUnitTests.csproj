@@ -72,6 +72,7 @@
     <Compile Include="GetInboxDocumentTests.cs" />
     <Compile Include="SoapSerializerAndDeseiralizerTests.cs" />
     <Compile Include="GetInboxDocumentStatusTest.cs" />
+    <Compile Include="DateTimeConverterTests.cs" />
     <Compile Include="XmlTest\Helpers\Compare.cs" />
   </ItemGroup>
   <ItemGroup>

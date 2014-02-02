@@ -14,8 +14,10 @@ namespace EConnectApiFlowTests
             var doc = EConnect.Client.GetInboxDocuments(new GetInboxDocumentsOfAnUser() { Limit = 1}).Documents.First();
 
             var result = EConnect.Client.GetDocument(new GetDocument() { DocumentId = doc.DocumentId });
-            Assert.AreEqual(result.CreatedDateTime, doc.CreatedDateTime);
+            // DateTime can be different because of sending and leaving the document outbox
+            // Assert.AreEqual(result.CreatedDateTime, doc.CreatedDateTime);
             Assert.AreEqual(result.DocumentId, doc.DocumentId);
+            Assert.AreEqual(doc.Subject, result.Subject);
         }
     }
 }

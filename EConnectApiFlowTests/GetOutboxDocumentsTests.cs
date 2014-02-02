@@ -8,24 +8,31 @@ namespace EConnectApiFlowTests
     [TestClass]
     public class GetOutboxDocumentsTests
     {
+        protected DocumentBase OutboxDocument;
+
+        public GetOutboxDocumentsTests()
+        {
+            var result = EConnect.Client.GetOutboxDocuments(new GetOutboxDocumentsOfAnUser() { Limit = 1 });
+            Assert.IsNotNull(result);
+            OutboxDocument = result.Documents.Single();
+        }
+
         [TestMethod]
         public void GetOutboxDocuments_Paging()
         {
-            var outboxDocument = EConnect.Client.GetOutboxDocuments(new GetOutboxDocumentsOfAnUser() { Limit = 1 }).Documents.First();
-
             var result = EConnect.Client.GetOutboxDocuments(new GetOutboxDocumentsOfAnUser() { Limit = 2 });
             Assert.IsNotNull(result);
             var doc = result.Documents.First();
-            Assert.AreEqual(outboxDocument.Rowkey, doc.Rowkey);
-            Assert.AreEqual(outboxDocument.CreatedDateTime, doc.CreatedDateTime);
-            Assert.AreEqual(outboxDocument.DocumentId, doc.DocumentId);
+            Assert.AreEqual(OutboxDocument.Rowkey, doc.Rowkey);
+            Assert.AreEqual(OutboxDocument.CreatedDateTime, doc.CreatedDateTime);
+            Assert.AreEqual(OutboxDocument.DocumentId, doc.DocumentId);
 
             var result2 = EConnect.Client.GetOutboxDocuments(new GetOutboxDocumentsOfAnUser() { Limit = 2, StartRowRange = result.StartRowRange });
             Assert.IsNotNull(result2);
             var doc2 = result2.Documents.First();
             Assert.AreEqual(result.StartRowRange, doc2.Rowkey);
-            Assert.AreNotEqual(outboxDocument.CreatedDateTime, doc2.CreatedDateTime);
-            Assert.AreNotEqual(outboxDocument.DocumentId, doc2.DocumentId);
+            Assert.AreNotEqual(OutboxDocument.CreatedDateTime, doc2.CreatedDateTime);
+            Assert.AreNotEqual(OutboxDocument.DocumentId, doc2.DocumentId);
         }
 
         [TestMethod]
@@ -36,7 +43,7 @@ namespace EConnectApiFlowTests
                     EntityId = ""
                 });
 
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
 
         [TestMethod]
@@ -47,17 +54,13 @@ namespace EConnectApiFlowTests
                     GroupId = "XGL1138485213468291",
                     Limit = 1
                 });
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
 
         [TestMethod]
         public void GetOutboxDocuments_OfAnUser()
         {
-            EConnect.Client.GetOutboxDocuments(new GetOutboxDocumentsOfAnUser()
-                {
-                    Limit = 1
-                });
-            throw new NotImplementedException();
+            Assert.IsNotNull(OutboxDocument);
         }
     }
 }

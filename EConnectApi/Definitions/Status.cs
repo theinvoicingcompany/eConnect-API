@@ -14,16 +14,15 @@ namespace EConnectApi.Definitions
             if (cols.Length <= 1) return;
             CodeName = cols[0];
             Name = cols[1];
-            Code = cols[2];
-            //var statuscode = cols[2];
-            //int iStatuscode;
-            //int.TryParse(statuscode, out iStatuscode);
-            //Code = iStatuscode;
+            var statuscode = cols[2];
+            int iStatuscode;
+            int.TryParse(statuscode, out iStatuscode);
+            Code = iStatuscode;
         }
 
         internal string CodeName { get; set; }
         public string Name { get; set; }
-        public string Code { get; set; }
+        public int Code { get; set; }
 
         protected bool Equals(Status other)
         {
@@ -34,7 +33,7 @@ namespace EConnectApi.Definitions
         {
             unchecked
             {
-                return ((Name != null ? Name.GetHashCode() : 0) * 397) ^ (Code != null ? Code.GetHashCode() : 0);
+                return ((Name != null ? Name.GetHashCode() : 0) * 397) ^ (Code.GetHashCode());
             }
         }
 

@@ -104,6 +104,9 @@
     <Compile Include="BaseClient.cs" />
     <Compile Include="EConnectClientConfigBase.cs" />
     <Compile Include="EConnectClientException.cs" />
+    <Compile Include="Helpers\DateTimeConverter.cs" />
+    <Compile Include="Helpers\DateTimeExtension.cs" />
+    <Compile Include="Helpers\DoubleExtension.cs" />
     <Compile Include="Helpers\GenericXml.cs" />
     <Compile Include="IEConnectClientConfig.cs" />
     <Compile Include="OAuth\AuthorizationHeader.cs" />

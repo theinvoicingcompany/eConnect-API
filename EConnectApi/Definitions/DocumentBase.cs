@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Xml.Linq;
 using System.Xml.Serialization;
+using EConnectApi.Helpers;
 
 namespace EConnectApi.Definitions
 {
@@ -24,11 +26,21 @@ namespace EConnectApi.Definitions
         public string SenderEntityId { get; set; }
         public string SenderEntityName { get; set; }
 
-        public long CreatedDateTime { get; set; }
+        [XmlIgnore]
+        public DateTime CreatedDateTime { get; set; }
+        // Proxied property
+        [XmlElement(ElementName = "CreatedDateTime")]
+        public double RawCreatedDateTime
+        {
+            get { return CreatedDateTime.ToJavaTimestamp(); }
+            set { CreatedDateTime = value.ToDateTime(); }
+        }
 
         private string _rawPossibleConsignmentStatuses;
         private Statuses _possibleStatuses;
-        [XmlElement(ElementName = "PossibleConsignmentStatuses")]
+        
+        // TODO disable because of change in api
+        //[XmlElement(ElementName = "PossibleConsignmentStatuses")]
         public string RawPossibleConsignmentStatuses
         {
             get { return _rawPossibleConsignmentStatuses; }
@@ -56,7 +68,7 @@ namespace EConnectApi.Definitions
         public int IsTask { get; set; }
         public string LatestStatus { get; set; }
         public string LatestStatusInfo { get; set; }
-        public string LatestStatusCode { get; set; }
+        public int LatestStatusCode { get; set; }
 
         public string ReceiverEntityId { get; set; }
         public string ReceiverEntityName { get; set; }
