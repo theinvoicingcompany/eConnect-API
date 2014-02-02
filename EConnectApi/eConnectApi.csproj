@@ -51,6 +51,10 @@
     <Compile Include="Definitions\GetDocumentsResponseBase.cs" />
     <Compile Include="Definitions\GetInboxDocumentStatusResponse.cs" />
     <Compile Include="Definitions\GetOutboxDocumentStatusResponse.cs" />
+    <Compile Include="Definitions\RequestAppIntegration.cs" />
+    <Compile Include="Definitions\RequestAppIntegrationResponse.cs" />
+    <Compile Include="Definitions\RequestIntegrationCredentials.cs" />
+    <Compile Include="Definitions\RequestIntegrationCredentialsResponse.cs" />
     <Compile Include="Definitions\SetDocumentStatusBase.cs" />
     <Compile Include="Definitions\Status.cs" />
     <Compile Include="Definitions\Statuses.cs" />

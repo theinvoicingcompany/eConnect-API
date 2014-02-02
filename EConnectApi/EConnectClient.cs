@@ -82,6 +82,18 @@ namespace EConnectApi
             return _client.SendRequest<SearchCompanyResponse>("SEARCH_COMPANY", parameters);
         }
 
+        public RequestAppIntegrationResponse RequestAppIntegration(RequestAppIntegration parameters)
+        {
+            return _client.SendRequest<RequestAppIntegrationResponse>("APP_INTEGRATION", parameters);
+        }
+
+        public RequestIntegrationCredentialsResponse RequestIntegrationCredentials(RequestIntegrationCredentials parameters)
+        {
+            return _client.SendRequest<RequestIntegrationCredentialsResponse>("APP_INTEGRATION", parameters);
+        }
+
+       
+
         public void Dispose()
         {
             // Clean up
