@@ -35,6 +35,8 @@ namespace EConnectApiFlowTests
             doc = EConnect.Client.GetDocument(new GetDocument() { DocumentId = Document.DocumentId });
             statuses = doc.PossibleStatuses;
 
+            Assert.IsNotNull(statuses, "PossibleStatuses is null");
+
             var result = EConnect.Client.SetDocumentStatus(new SetDocumentStatus()
                 {
                     DocumentId = Document.DocumentId,

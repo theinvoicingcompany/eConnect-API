@@ -13,7 +13,7 @@ namespace EConnectApiFlowTests
         {
             var result = EConnect.Client.GetDocuments(new GetDocumentsOfAnUser() { Limit = 1 });
             Assert.IsNotNull(result);
-            Document = result.Documents.Single();
+            Document = EConnect.Client.GetDocument(new GetDocument() { DocumentId = result.Documents.Single().DocumentId });
         }
 
         [TestMethod]

@@ -11,13 +11,13 @@ namespace EConnectApiFlowTests
         [TestMethod]
         public void GetDocument_ByDocumentId()
         {
-            var doc = EConnect.Client.GetInboxDocuments(new GetInboxDocumentsOfAnUser() { Limit = 1}).Documents.First();
+            var doc = EConnect.Client.GetDocuments(new GetDocumentsOfAnUser() { Limit = 1}).Documents.First();
 
             var result = EConnect.Client.GetDocument(new GetDocument() { DocumentId = doc.DocumentId });
             // DateTime can be different because of sending and leaving the document outbox
             // Assert.AreEqual(result.CreatedDateTime, doc.CreatedDateTime);
             Assert.AreEqual(result.DocumentId, doc.DocumentId);
-            Assert.AreEqual(doc.Subject, result.Subject);
+            Assert.AreEqual(doc.ExternalId, result.ExternalId);
         }
     }
 }

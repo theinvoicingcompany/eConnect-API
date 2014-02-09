@@ -39,8 +39,8 @@ namespace EConnectApi.Definitions
         private string _rawPossibleConsignmentStatuses;
         private Statuses _possibleStatuses;
         
-        // TODO disable because of change in api
-        //[XmlElement(ElementName = "PossibleConsignmentStatuses")]
+
+        [XmlElement(ElementName = "PossibleConsignmentStatuses")]
         public string RawPossibleConsignmentStatuses
         {
             get { return _rawPossibleConsignmentStatuses; }

@@ -107,13 +107,16 @@ namespace EConnectApi
                 // Send request
                 var result = Send(accessToken, scope, soap);
 
-                XDocument xDoc = XDocument.Load(new StringReader(result));
-                var unwrappedResponse = xDoc.Descendants((XNamespace)"http://schemas.xmlsoap.org/soap/envelope/" + "Body")
-                    .First()
-                    .FirstNode.ToString();
+                // Convert string to object
+                return GenericXml.Deserialize<T>(result);
+
+                //XDocument xDoc = XDocument.Load(new StringReader(result));
+                //var unwrappedResponse = xDoc.Descendants((XNamespace)"http://schemas.xmlsoap.org/soap/envelope/" + "Body")
+                //    .First()
+                //    .FirstNode.ToString();
 
                 // Convert string to object
-                return GenericXml.Deserialize<T>(unwrappedResponse);
+                //return GenericXml.Deserialize<T>(unwrappedResponse);
             }
             catch (OAuthProtocolException ex)
             {
