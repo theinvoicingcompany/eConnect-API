@@ -8,7 +8,7 @@ namespace EConnectApiFlowTests
     public class RequestAppIntegrationTests
     {
         [TestMethod]
-        public void RequestIntegrationCredential()
+        public void RequestAppIntegration()
         {
             var result = EConnect.Client.RequestAppIntegration(new RequestAppIntegration()
                 {

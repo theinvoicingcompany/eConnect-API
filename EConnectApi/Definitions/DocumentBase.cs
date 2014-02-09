@@ -52,6 +52,13 @@ namespace EConnectApi.Definitions
             }
         }
 
+        [XmlElement(ElementName = "PossibleDocumentStatuses")]
+        public string RawPossibleDocumentStatuses
+        {
+            get { return RawPossibleConsignmentStatuses; }
+            set { RawPossibleConsignmentStatuses = value; }
+        }
+
         [XmlIgnore]
         public Statuses PossibleStatuses
         {
