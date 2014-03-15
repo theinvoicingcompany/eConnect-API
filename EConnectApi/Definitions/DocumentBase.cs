@@ -75,7 +75,7 @@ namespace EConnectApi.Definitions
         public int IsTask { get; set; }
         public string LatestStatus { get; set; }
         public string LatestStatusInfo { get; set; }
-        public int LatestStatusCode { get; set; }
+        public string LatestStatusCode { get; set; } // no int, because it can contains text
 
         public string ReceiverEntityId { get; set; }
         public string ReceiverEntityName { get; set; }

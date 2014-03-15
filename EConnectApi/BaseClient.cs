@@ -30,13 +30,13 @@ namespace EConnectApi
         /// <returns></returns>
         public RequestToken GetRequestToken()
         {
-            return _oAuthConsumer.GetOAuthRequestToken(
+            return SafeExecutor(() => _oAuthConsumer.GetOAuthRequestToken(
                 Config.RequestTokenEndpoint,
                 Config.Realm,
                 Config.ConsumerKey,
                 Config.ConsumerSecret,
                 "Unused",
-                string.Empty); // Empty scope
+                string.Empty));
         }
 
         /// <summary>
@@ -45,7 +45,7 @@ namespace EConnectApi
         /// <param name="requestToken"></param>
         /// <param name="scope">Ex. SEND_DOC</param>
         /// <returns></returns>
-        public AccessToken GetAccessToken(RequestToken requestToken, string scope)
+        protected AccessToken GetAccessToken(RequestToken requestToken, string scope)
         {
             return _oAuthConsumer.GetOAuthAccessToken(
                 Config.AccessTokenEndpoint,
@@ -65,7 +65,7 @@ namespace EConnectApi
         /// <param name="scope"></param>
         /// <param name="xml"></param>
         /// <returns></returns>
-        public string Send(AccessToken accessToken, string scope, string xml)
+        protected string Send(AccessToken accessToken, string scope, string xml)
         {
             var xmlResponse = _oAuthConsumer.send(
                                 Config.AccessResourceEndpoint,
@@ -83,7 +83,7 @@ namespace EConnectApi
 
         public T SendRequest<T>(string scope, object body) where T : class
         {
-            try
+            return SafeExecutor(() =>
             {
                 var accessToken = Manager.GetTokenOrNull(scope);
 
@@ -117,31 +117,35 @@ namespace EConnectApi
 
                 // Convert string to object
                 //return GenericXml.Deserialize<T>(unwrappedResponse);
-            }
-            catch (OAuthProtocolException ex)
-            {
-                try
-                {
-                    // try to parse exception to SoapFault to reuse EConnect API error message
-                    var fault = GenericXml.DeserializeSoap<SoapFault>(ex.Message);
-                    if (fault != null)
-                        throw new EConnectClientException(fault);
-                }
-                finally
-                {
-                    // Exceptions like error 500
-                    throw new EConnectClientException("Protocol exception", ex);
-                }
-            }
-            catch(Exception ex)
-            {
-                throw new EConnectClientException("Unknow EConnectClientException", ex);
-            }
+            });
         }
 
         public void Dispose()
         {
             // Nothing yet. Would be nice to clean up the http connections
+        }
+
+        private T SafeExecutor<T>(Func<T> action)
+        {
+            try
+            {
+                return action();
+            }
+            catch (OAuthProtocolException ex)
+            {
+                // try to parse exception to SoapFault to reuse EConnect API error message
+                var fault = GenericXml.DeserializeSoap<SoapFault>(ex.Message);
+                if (fault != null)
+                {
+                    throw new EConnectClientException(fault);
+                }
+                // Exceptions like error 500
+                throw new EConnectClientException("Protocol exception", ex);
+            }
+            catch (Exception ex)
+            {
+                throw new EConnectClientException("Unknow EConnectClientException", ex);
+            }
         }
     }
 }

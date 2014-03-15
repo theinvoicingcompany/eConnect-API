@@ -24,7 +24,7 @@ namespace EConnectApiUnitTests
             var request = new GetInboxDocumentStatusResponse()
                 {
                     Status = "Gelezen",
-                    StatusCode = 20,
+                    StatusCode = "20",
                     StatusSetByUserId = "UA000000191000001",
                     StatusSetByUserName = "Thieme",
                     StatusSetByAccountId = "A000000191",

@@ -53,11 +53,100 @@ namespace EConnectApiFlowTests
         [TestMethod]
         public void GetInboxDocuments_OfAnUser()
         {
-            EConnect.Client.GetInboxDocuments(new GetInboxDocumentsOfAnUser()
+            var docs = EConnect.Client.GetInboxDocuments(new GetInboxDocumentsOfAnUser()
                 {
                     Limit = 1
                 });
-            throw new NotImplementedException();
+            Assert.AreEqual(1, docs.Documents.Length);
         }
+
+        [TestMethod]
+        public void GetInboxDocuments_FilterIsRead()
+        {
+            var docs = EConnect.Client.GetInboxDocuments(new GetInboxDocumentsOfAnUser()
+            {
+                Filters = new GetDocumentsFiltersBase()
+                    {
+                        IsRead = false
+                    }
+            });
+            Assert.AreEqual(0, docs.Documents.Count(a => a.IsRead), "Is Read should be false");
+
+            var docs2 = EConnect.Client.GetInboxDocuments(new GetInboxDocumentsOfAnUser()
+            {
+                Filters = new GetDocumentsFiltersBase()
+                {
+                    IsRead = true
+                }
+            });
+            Assert.AreEqual(0, docs2.Documents.Count(a => !a.IsRead), "Is Read should be true");
+            Assert.AreNotEqual(docs.Documents.First().ConsignmentId, docs2.Documents.First().ConsignmentId);
+        }
+
+        [TestMethod]
+        public void GetInboxDocuments_FilterCreatedDateTimeFrom()
+        {
+            var form = DateTime.Now.AddDays(-3);
+            var docs = EConnect.Client.GetInboxDocuments(new GetInboxDocumentsOfAnUser()
+            {
+                Filters = new GetDocumentsFiltersBase()
+                {
+                    CreatedDateTime = new TimeSpanFilter() { From = form}
+                }
+            });
+            Assert.AreEqual(0, docs.Documents.Count(a => a.CreatedDateTime < form), "Filter is not applied");
+        }
+
+        [TestMethod]
+        public void GetInboxDocuments_FilterCreatedDateTimeTo()
+        {
+            var to = DateTime.Now.AddDays(-3);
+            var docs = EConnect.Client.GetInboxDocuments(new GetInboxDocumentsOfAnUser()
+            {
+                Filters = new GetDocumentsFiltersBase()
+                {
+                    CreatedDateTime = new TimeSpanFilter() { To = to }
+                }
+            });
+            Assert.AreEqual(0, docs.Documents.Count(a => a.CreatedDateTime > to), "Filter is not applied");
+        }
+
+        [TestMethod]
+        public void GetInboxDocuments_FilterCreatedDateTimeToAndFrom()
+        {
+            var to = DateTime.Now.AddDays(-3);
+            var from = DateTime.Now.AddDays(-8);
+            var docs = EConnect.Client.GetInboxDocuments(new GetInboxDocumentsOfAnUser()
+            {
+                Filters = new GetDocumentsFiltersBase()
+                {
+                    CreatedDateTime = new TimeSpanFilter() { To = to, From = from}
+                }
+            });
+            Assert.AreEqual(0, docs.Documents.Count(a => a.CreatedDateTime > to && a.CreatedDateTime < from), "Filter is not applied");
+        }
+
+        [TestMethod]
+        public void GetInboxDocuments_FilterModifiedDateTimeToAndFrom()
+        {
+            var to = DateTime.Now.AddDays(-3);
+            var from = DateTime.Now.AddDays(-8);
+            var docs = EConnect.Client.GetInboxDocuments(new GetInboxDocumentsOfAnUser()
+            {
+                Filters = new GetDocumentsFiltersBase()
+                {
+                    ModifiedDateTime = new TimeSpanFilter() { To = to, From = from }
+                },
+                Limit = 1
+            });
+
+            if(!docs.Documents.Any())
+                return;
+
+            var doc = EConnect.Client.GetInboxDocument(new GetInboxDocument()
+                {
+                    ConsignmentId = docs.Documents.First().ConsignmentId
+                });
+            }
     }
 }

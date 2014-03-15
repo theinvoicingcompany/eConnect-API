@@ -12,6 +12,14 @@ namespace EConnectApi
             _client = new BaseClient(config);
         }
 
+        /// <summary>
+        /// Check EConnect connectiong with credentials
+        /// </summary>
+        public void Ping()
+        {
+            _client.GetRequestToken();
+        }
+
         public SendDocumentResponse SendDocument(SendDocument document)
         {
             return _client.SendRequest<SendDocumentResponse>("SEND_DOC", document);
@@ -91,8 +99,6 @@ namespace EConnectApi
         {
             return _client.SendRequest<RequestIntegrationCredentialsResponse>("APP_INTEGRATION", parameters);
         }
-
-       
 
         public void Dispose()
         {

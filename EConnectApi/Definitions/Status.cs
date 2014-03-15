@@ -11,18 +11,19 @@ namespace EConnectApi.Definitions
         public Status(string rawstatus)
         {
             var cols = rawstatus.Split(':');
-            if (cols.Length <= 1) return;
+            if (cols.Length <= 2) return;
             CodeName = cols[0];
             Name = cols[1];
-            var statuscode = cols[2];
-            int iStatuscode;
-            int.TryParse(statuscode, out iStatuscode);
-            Code = iStatuscode;
+            Code = cols[2];
+            //var statuscode = cols[2];
+            //int iStatuscode;
+            //int.TryParse(statuscode, out iStatuscode);
+            //Code = iStatuscode;
         }
 
         internal string CodeName { get; set; }
         public string Name { get; set; }
-        public int Code { get; set; }
+        public string Code { get; set; }
 
         protected bool Equals(Status other)
         {

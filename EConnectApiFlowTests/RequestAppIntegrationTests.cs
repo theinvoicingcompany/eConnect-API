@@ -1,4 +1,5 @@
 ﻿using System;
+using EConnectApi;
 using EConnectApi.Definitions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -7,26 +8,43 @@ namespace EConnectApiFlowTests
     [TestClass]
     public class RequestAppIntegrationTests
     {
-        [TestMethod]
-        public void RequestAppIntegration()
-        {
-            var result = EConnect.Client.RequestAppIntegration(new RequestAppIntegration()
-                {
-                    To = "A000000202"
-                });
+        //[TestMethod]
+        //public void RequestAppIntegration()
+        //{
+        //    using (var client = new EConnectClient(new EConnectClientConfigBase()
+        //        {
+        //            ConsumerKey = "",
+        //            ConsumerSecret = "",
+        //            RequesterId = ""
+        //        }
+        //        ))
+        //    {
+        //        var integration = client.RequestAppIntegration(new RequestAppIntegration()
+        //            {
+        //                To = ""
+        //            });
 
-            throw new NotImplementedException();
-        }
+        //        Assert.IsNotNull(integration.IntegrationRequestId);
+        //        Assert.AreNotEqual(string.Empty, integration.IntegrationRequestId);
 
-        [TestMethod]
-        public void RequestIntegrationCredentials()
-        {
-            var result = EConnect.Client.RequestIntegrationCredentials(new RequestIntegrationCredentials()
-            {
-                IntegrationRequestId = "A000000202"
-            });
-            
-            throw new NotImplementedException();
-        }
+        //        var credentials = client.RequestIntegrationCredentials(new RequestIntegrationCredentials()
+        //            {
+        //                IntegrationRequestId = integration.IntegrationRequestId
+        //            });
+
+        //        Assert.IsNotNull(credentials.AppIntegrationKey);
+
+        //         using (var client2 = new EConnectClient(new EConnectClientConfigBase()
+        //        {
+        //            ConsumerKey = credentials.AppIntegrationKey,
+        //            ConsumerSecret = credentials.AppIntegrationSecret,
+        //            RequesterId = credentials.ApproverId // ?
+        //        }
+        //        ))
+        //         {
+        //             client2.Ping();
+        //         }
+        //    }
+        //}
     }
 }

@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace EConnectApiFlowTests
 {
-    public class EConnect
+    public static class EConnect
     {
         private static EConnectClient _client;
 

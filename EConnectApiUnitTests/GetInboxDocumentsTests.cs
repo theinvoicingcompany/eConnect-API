@@ -158,7 +158,7 @@ namespace EConnectApiUnitTests
                                                                IsRead = false,
                                                                IsTask = 0,
                                                                LatestStatus = " ",
-                                                               LatestStatusCode = 10,
+                                                               LatestStatusCode = "10",
                                                                LatestStatusInfo = " ",
                                                                Subject = "Afas test factuur",
                                                                StandardTemplateId = "GLDT9223370666504283001RA000000006DTP2000001",

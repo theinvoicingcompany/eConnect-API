@@ -1,5 +1,4 @@
 ﻿using System.IO;
-using System.Runtime.CompilerServices;
 using System.Runtime.Serialization.Formatters.Soap;
 using System.Text;
 using System.Xml;
@@ -12,7 +11,7 @@ namespace EConnectApi.Helpers
         public static T Deserialize<T>(string input) where T : class
         {
             var ser = new XmlSerializer(typeof(T));
-
+            
             using (var sr = new StringReader(input))
                 return (T)ser.Deserialize(sr);
         }

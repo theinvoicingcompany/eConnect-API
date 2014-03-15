@@ -5,11 +5,11 @@ namespace EConnectApi.Definitions
 {
     public class Statuses
     {
-        protected int LatestStatusCode;
+        protected string LatestStatusCode;
         protected Status[] AllStatuses;
         protected readonly string CodeNameDefaultStatus = "defaultstatus";
 
-        public Statuses(string possibleConsignmentStatuses, int latestStatusCode)
+        public Statuses(string possibleConsignmentStatuses, string latestStatusCode)
         {
             LatestStatusCode = latestStatusCode;
 

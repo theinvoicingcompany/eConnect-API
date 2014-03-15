@@ -225,7 +225,6 @@ namespace EConnectApi.OAuth
       protocolParameters.Add(new ProtocolParameter(OAuthProtocolParameter.Scope.GetStringValue(), scope));
 
       string signatureBaseString = GenerateSignatureBaseString(url, httpMethod, protocolParameters);
-      System.Diagnostics.Debug.WriteLine(signatureBaseString);
 
       var signature = GenerateSignature(consumerSecret, signatureMethod, signatureBaseString, tokenSecret);
       return new AuthorizeHeader(realm, consumerKey, signatureMethod.GetStringValue(), signature, timestamp, nounce, OAuthVersion, token, verifier, scope);
@@ -234,10 +233,6 @@ namespace EConnectApi.OAuth
 
     public AuthorizeHeader send(string url, string realm, string consumerKey, string consumerSecret, string token, string tokenSecret, string scope, SignatureMethod signatureMethod = SignatureMethod.HMACSHA1, string httpMethod = "POST")
     {
-      System.Diagnostics.Debug.WriteLine("");
-      System.Diagnostics.Debug.WriteLine(token);
-      System.Diagnostics.Debug.WriteLine(tokenSecret);
-      System.Diagnostics.Debug.WriteLine("----");
       var timestamp = GenerateTimeStamp();
       var nounce = GenerateNonce(timestamp);
 
@@ -251,7 +246,6 @@ namespace EConnectApi.OAuth
       protocolParameters.Add(new ProtocolParameter(OAuthProtocolParameter.Scope.GetStringValue(), scope));
 
       string signatureBaseString = GenerateSignatureBaseString(url, httpMethod, protocolParameters);
-      System.Diagnostics.Debug.WriteLine(signatureBaseString);
 
       var signature = GenerateSignature(consumerSecret, signatureMethod, signatureBaseString, tokenSecret);
       return new AuthorizeHeader(realm, consumerKey, signatureMethod.GetStringValue(), signature, timestamp, nounce, OAuthVersion, token, "DUMMY VERIFIER", scope);
