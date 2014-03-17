@@ -30,7 +30,7 @@ namespace EConnectApi.Definitions
         public DateTime CreatedDateTime { get; set; }
         // Proxied property
         [XmlElement(ElementName = "CreatedDateTime")]
-        public double RawCreatedDateTime
+        public long RawCreatedDateTime
         {
             get { return CreatedDateTime.ToJavaTimestamp(); }
             set { CreatedDateTime = value.ToDateTime(); }

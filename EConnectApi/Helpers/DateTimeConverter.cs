@@ -15,7 +15,7 @@ namespace EConnectApi.Helpers
         /// </summary>
         /// <param name="javaTimeStamp"></param>
         /// <returns>Datetime</returns>
-        public static DateTime ToDateTime(double javaTimeStamp)
+        public static DateTime ToDateTime(long javaTimeStamp)
         {
             return EPoch.AddMilliseconds(javaTimeStamp).ToLocalTime();
         }
@@ -25,9 +25,9 @@ namespace EConnectApi.Helpers
         /// </summary>
         /// <param name="dt"></param>
         /// <returns>Time in milliseconds</returns>
-        public static double ToJavaTimestamp(DateTime dt)
+        public static long ToJavaTimestamp(DateTime dt)
         {
-            return (dt.ToLocalTime() - EPoch.ToLocalTime()).TotalMilliseconds;
+            return (long)(dt.ToLocalTime() - EPoch.ToLocalTime()).TotalMilliseconds;
         }
     }
 }

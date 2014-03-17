@@ -10,7 +10,7 @@ namespace EConnectApi.Definitions
         public DateTime? From { get; set; }
         // Proxied property
         [XmlElement(ElementName = "from")]
-        public double RawFrom
+        public long RawFrom
         {
             get { return From.GetValueOrDefault().ToJavaTimestamp(); }
             set { From = value.ToDateTime(); }
@@ -23,7 +23,7 @@ namespace EConnectApi.Definitions
         public DateTime? To { get; set; }
         // Proxied property
         [XmlElement(ElementName = "to")]
-        public double RawTo
+        public long RawTo
         {
             get { return To.GetValueOrDefault().ToJavaTimestamp(); }
             set { To = value.ToDateTime(); }

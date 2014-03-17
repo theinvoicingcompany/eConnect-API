@@ -21,5 +21,19 @@ namespace EConnectApiUnitTests
             var stamp = DateTimeConverter.ToJavaTimestamp(dt);
             Assert.AreEqual(javaTimeStamp, stamp);
         }
+
+        [TestMethod]
+        public void DateTimeConverterJavaToDateTimeAndBackTest()
+        {
+            // Get stamp
+            var stamp = DateTime.Now.ToJavaTimestamp();
+            // Convert back to datetime
+            var dt = DateTimeConverter.ToDateTime(stamp);
+            // And again back to stamp
+            var stamp2 = DateTimeConverter.ToJavaTimestamp(dt);
+            
+            Assert.AreEqual(stamp, stamp2);
+        }
+
     }
 }

@@ -86,7 +86,7 @@ namespace EConnectApiFlowTests
         [TestMethod]
         public void GetInboxDocuments_FilterCreatedDateTimeFrom()
         {
-            var form = DateTime.Now.AddDays(-3);
+            var form = DateTime.Now.AddDays(-30);
             var docs = EConnect.Client.GetInboxDocuments(new GetInboxDocumentsOfAnUser()
             {
                 Filters = new GetDocumentsFiltersBase()
@@ -94,6 +94,10 @@ namespace EConnectApiFlowTests
                     CreatedDateTime = new TimeSpanFilter() { From = form}
                 }
             });
+
+            if (docs.Documents == null || !docs.Documents.Any())
+                Assert.Inconclusive("No documents found: {0}", docs);
+            
             Assert.AreEqual(0, docs.Documents.Count(a => a.CreatedDateTime < form), "Filter is not applied");
         }
 
@@ -108,6 +112,10 @@ namespace EConnectApiFlowTests
                     CreatedDateTime = new TimeSpanFilter() { To = to }
                 }
             });
+
+            if (docs.Documents == null || !docs.Documents.Any())
+                Assert.Inconclusive("No documents found: {0}", docs);
+
             Assert.AreEqual(0, docs.Documents.Count(a => a.CreatedDateTime > to), "Filter is not applied");
         }
 
@@ -115,7 +123,7 @@ namespace EConnectApiFlowTests
         public void GetInboxDocuments_FilterCreatedDateTimeToAndFrom()
         {
             var to = DateTime.Now.AddDays(-3);
-            var from = DateTime.Now.AddDays(-8);
+            var from = DateTime.Now.AddDays(-80);
             var docs = EConnect.Client.GetInboxDocuments(new GetInboxDocumentsOfAnUser()
             {
                 Filters = new GetDocumentsFiltersBase()
@@ -123,6 +131,10 @@ namespace EConnectApiFlowTests
                     CreatedDateTime = new TimeSpanFilter() { To = to, From = from}
                 }
             });
+
+            if (docs.Documents == null || !docs.Documents.Any())
+                Assert.Inconclusive("No documents found: {0}", docs);
+
             Assert.AreEqual(0, docs.Documents.Count(a => a.CreatedDateTime > to && a.CreatedDateTime < from), "Filter is not applied");
         }
 
@@ -130,7 +142,7 @@ namespace EConnectApiFlowTests
         public void GetInboxDocuments_FilterModifiedDateTimeToAndFrom()
         {
             var to = DateTime.Now.AddDays(-3);
-            var from = DateTime.Now.AddDays(-8);
+            var from = DateTime.Now.AddDays(-80);
             var docs = EConnect.Client.GetInboxDocuments(new GetInboxDocumentsOfAnUser()
             {
                 Filters = new GetDocumentsFiltersBase()
@@ -140,8 +152,8 @@ namespace EConnectApiFlowTests
                 Limit = 1
             });
 
-            if(!docs.Documents.Any())
-                return;
+            if (docs.Documents == null || !docs.Documents.Any())
+                Assert.Inconclusive("No documents found: {0}", docs);
 
             var doc = EConnect.Client.GetInboxDocument(new GetInboxDocument()
                 {
