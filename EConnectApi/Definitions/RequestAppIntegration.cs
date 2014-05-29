@@ -11,5 +11,17 @@ namespace EConnectApi.Definitions
         /// </summary>
         [XmlElement(ElementName = "to")]
         public string To { get; set; }
+
+        /// <summary>
+        /// Login Id or Email Id to whom the integration / on-boarding request has to be sent. Compulsory parameter if 'to' field is a KvK value.
+        /// </summary>
+        [XmlElement(ElementName = "Email")]
+        public string EmailAdress { get; set; }
+
+        /// <summary>
+        /// It should be set to "true" if the requester company pays for all the transactions of the integration.
+        /// </summary>
+        public bool PayByRequester { get; set; }
+
     }
 }
