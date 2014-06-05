@@ -89,5 +89,10 @@ namespace EConnectApi.Definitions
         //[XmlTextAttribute()]
         //[XmlElement(ElementName = "text")]
         //public string[] Text { get; set; }
+
+        /// <summary>
+        /// UBL
+        /// </summary>
+        public XElement Payload { get; set; }
     }
 }
