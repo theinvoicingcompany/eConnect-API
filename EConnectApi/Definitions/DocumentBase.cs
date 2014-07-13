@@ -77,6 +77,9 @@ namespace EConnectApi.Definitions
         public string LatestStatusInfo { get; set; }
         public string LatestStatusCode { get; set; } // no int, because it can contains text
 
+        public string MasterTemplateId { get; set; }
+        public string MasterTemplateName { get; set; }
+
         public string ReceiverEntityId { get; set; }
         public string ReceiverEntityName { get; set; }
 
@@ -86,6 +89,12 @@ namespace EConnectApi.Definitions
         public string DocumentViewerId { get; set; }
         public string DocumentViewerName { get; set; }
 
+        public string TrackingMessage { get; set; }
+
+        public string DocumentTemplateId { get; set; }
+        public string DocumentTemplateName { get; set; }
+        public string TemplateSchemaId { get; set; }
+        
         //[XmlTextAttribute()]
         //[XmlElement(ElementName = "text")]
         //public string[] Text { get; set; }
