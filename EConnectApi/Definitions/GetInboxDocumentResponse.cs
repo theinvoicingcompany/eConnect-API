@@ -1,4 +1,3 @@
-using System.Xml.Linq;
 using System.Xml.Serialization;
 
 namespace EConnectApi.Definitions

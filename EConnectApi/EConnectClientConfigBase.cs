@@ -1,5 +1,3 @@
-using System;
-
 namespace EConnectApi
 {
     public class EConnectClientConfigBase : IEConnectClientConfig

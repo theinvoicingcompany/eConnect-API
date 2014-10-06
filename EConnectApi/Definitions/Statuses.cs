@@ -12,8 +12,9 @@ namespace EConnectApi.Definitions
         public Statuses(string possibleConsignmentStatuses, string latestStatusCode)
         {
             LatestStatusCode = latestStatusCode;
-
-            if (string.IsNullOrWhiteSpace(possibleConsignmentStatuses))
+            // Since .net 4 we could use IsNullOrWhiteSpace 
+            // if (string.IsNullOrWhiteSpace(possibleConsignmentStatuses))
+            if (possibleConsignmentStatuses == null || string.IsNullOrEmpty(possibleConsignmentStatuses.Trim()))
             {
                 AllStatuses = new Status[0];
                 return;

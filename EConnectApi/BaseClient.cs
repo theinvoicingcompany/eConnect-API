@@ -1,11 +1,7 @@
 using System;
-using System.IO;
-using System.Linq;
 using System.Runtime.Serialization.Formatters;
-using System.Xml.Linq;
 using EConnectApi.Helpers;
 using EConnectApi.OAuth;
-using EConnectApi.Properties;
 
 namespace EConnectApi
 {

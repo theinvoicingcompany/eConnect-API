@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Reflection;
 using System.Security.Cryptography;
 using System.Text;
-using EConnectApi.OAuth;
 
 // See Matlus.FederatedIdentity
 namespace EConnectApi.OAuth

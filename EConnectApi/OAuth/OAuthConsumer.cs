@@ -2,7 +2,6 @@
 using System.Net;
 using System;
 using System.Text;
-using EConnectApi.OAuth;
 
 // See Matlus.FederatedIdentity
 namespace EConnectApi.OAuth
