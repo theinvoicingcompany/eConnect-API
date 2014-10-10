@@ -47,6 +47,9 @@
     <Compile Include="AccessTokenManager.cs" />
     <Compile Include="AccessTokenStoreItem.cs" />
     <Compile Include="Definitions\Company.cs" />
+    <Compile Include="Definitions\FileWrapper.cs" />
+    <Compile Include="Definitions\GetDocumentPdf.cs" />
+    <Compile Include="Definitions\GetDocumentPdfResponse.cs" />
     <Compile Include="Definitions\GetDocumentsResponseBase.cs" />
     <Compile Include="Definitions\GetInboxDocumentStatusResponse.cs" />
     <Compile Include="Definitions\GetOutboxDocumentStatusResponse.cs" />
@@ -54,6 +57,9 @@
     <Compile Include="Definitions\RequestAppIntegrationResponse.cs" />
     <Compile Include="Definitions\RequestIntegrationCredentials.cs" />
     <Compile Include="Definitions\RequestIntegrationCredentialsResponse.cs" />
+    <Compile Include="Definitions\SendDocumentBase.cs" />
+    <Compile Include="Definitions\SendDocumentFor.cs" />
+    <Compile Include="Definitions\SendDocumentForHeader.cs" />
     <Compile Include="Definitions\SetDocumentStatusBase.cs" />
     <Compile Include="Definitions\Status.cs" />
     <Compile Include="Definitions\Statuses.cs" />

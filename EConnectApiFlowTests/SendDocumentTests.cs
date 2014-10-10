@@ -27,7 +27,7 @@ namespace EConnectApiFlowTests
             var doc = new SendDocument()
             {
                 DocumentTemplateId = "GLDT9223370666504283001RA000000006DTP2000001",
-                Subject = "Afas test factuur "+Guid.NewGuid(),
+                Subject = "Afas test factuur " + Guid.NewGuid(),
                 Recipient = "thieme@selmit.nl",
                 RecipientEmailId = "thieme@selmit.nl",
                 Payload = ubl,
@@ -41,7 +41,7 @@ namespace EConnectApiFlowTests
 
 
             var outboxdoc =
-                EConnect.Client.GetOutboxDocument(new GetOutboxDocument() {ConsignmentId = result.ConsignmentId});
+                EConnect.Client.GetOutboxDocument(new GetOutboxDocument() { ConsignmentId = result.ConsignmentId });
 
             Assert.AreEqual(doc.Subject, outboxdoc.Subject);
             Assert.AreEqual(doc.DocumentTemplateId, outboxdoc.StandardTemplateId);
@@ -61,6 +61,31 @@ namespace EConnectApiFlowTests
             };
 
             EConnect.Client.SendDocument(doc);
+        }
+
+        [TestMethod]
+        [DeploymentItem(@"TestData\UBLWITHATTACHEMENT.txt", "OutputDir")]
+        public void SendDocumentFor()
+        {
+            const string fileName = @"OutputDir\UBLWITHATTACHEMENT.txt";
+            Assert.IsNotNull(fileName);
+            Assert.IsTrue(File.Exists(fileName), "deployment not successfull");
+
+            string ubltext = File.ReadAllText(fileName);
+            Assert.IsFalse(string.IsNullOrEmpty(ubltext), "test file seems to be empty");
+
+            var ubl = XElement.Parse(ubltext);
+            Assert.IsNotNull(ubl);
+
+            var doc = new SendDocumentFor()
+            {
+                DocumentTemplateId = "GLDT9223370666504283001RA000000006DTP2000001",
+                Subject = "Test factuur " + Guid.NewGuid(),
+                Recipient = "NL:KVK:00006661",
+                Payload = ubl,
+            };
+
+            EConnect.Client.SendDocumentFor("NL:KVK:00006663", doc);
         }
     }
 }

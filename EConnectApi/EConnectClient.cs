@@ -6,7 +6,7 @@ namespace EConnectApi
     public class EConnectClient : IDisposable
     {
         private readonly BaseClient _client;
- 
+
         public EConnectClient(IEConnectClientConfig config)
         {
             _client = new BaseClient(config);
@@ -25,6 +25,14 @@ namespace EConnectApi
             return _client.SendRequest<SendDocumentResponse>("SEND_DOC", document);
         }
 
+        public SendDocumentForResponse SendDocumentFor(string senderId, SendDocumentFor document)
+        {
+            return _client.SendRequest<SendDocumentForResponse>("SEND_DOC_FOR", document, new SendDocumentForHeader()
+            {
+                SenderId = senderId
+            });
+        }
+
         public GetDocumentsResponse GetDocuments(IDocumentsRequest parameters)
         {
             return _client.SendRequest<GetDocumentsResponse>("RETRIEVE_DOCS", parameters);
@@ -33,6 +41,11 @@ namespace EConnectApi
         public GetDocumentResponse GetDocument(GetDocument parameters)
         {
             return _client.SendRequest<GetDocumentResponse>("RETRIEVE_DOC", parameters);
+        }
+
+        public GetDocumentPdfResponse GetDocumentPdf(GetDocumentPdf parameters)
+        {
+            return _client.SendRequest<GetDocumentPdfResponse>("RETRIEVE_DOC", parameters);
         }
 
         public GetInboxDocumentsResponse GetInboxDocuments(IInboxDocumentsRequest parameters)

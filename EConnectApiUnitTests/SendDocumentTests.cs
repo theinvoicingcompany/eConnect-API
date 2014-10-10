@@ -1,7 +1,5 @@
-﻿using System;
-using System.Xml.Linq;
+﻿using System.Xml.Linq;
 using EConnectApi.Definitions;
-using EConnectApi.Helpers;
 using EConnectApiUnitTests.XmlTest.Helpers;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -64,5 +62,17 @@ namespace EConnectApiUnitTests
             //var back = GenericXml.Deserialize<SendDocument>(test);
             Compare.IsObjectSameAsXml<SendDocument>(request, xml);
         }
+
+
+        [TestMethod]
+        public void SendDocumentForHeader()
+        {
+            string xml = "<SenderId>test</SenderId>";
+            var obj = new SendDocumentForHeader() { SenderId = "test" };
+
+            Compare.IsObjectSameAsXml<SendDocumentForHeader>(obj, xml);
+        }
+
+
     }
 }

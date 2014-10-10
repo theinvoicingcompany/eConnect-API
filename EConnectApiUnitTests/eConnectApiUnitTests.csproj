@@ -58,6 +58,8 @@
   </Choose>
   <ItemGroup>
     <Compile Include="AccessTokenManagerTest.cs" />
+    <Compile Include="FileWrapperTest.cs" />
+    <Compile Include="GetDocumentPdfTest.cs" />
     <Compile Include="Statuses.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>

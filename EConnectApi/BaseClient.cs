@@ -77,7 +77,7 @@ namespace EConnectApi
             return xmlResponse;
         }
 
-        public T SendRequest<T>(string scope, object body) where T : class
+        public T SendRequest<T>(string scope, object body, object header = null) where T : class
         {
             return SafeExecutor(() =>
             {
@@ -94,11 +94,16 @@ namespace EConnectApi
                     Manager.Store(scope, accessToken);
                 }
 
+                string headerxml = string.Empty;
+                if (header != null)
+                {
+                    headerxml = string.Format("<SOAP:Header>{0}</SOAP:Header>", GenericXml.Serialize(header));
+                }
                 // Convert object to string
-                var xml = GenericXml.Serialize(body);
-
+                var bodyxml = GenericXml.Serialize(body);
+                
                 // Wrap soap message object
-                string soap = string.Format("<SOAP:Envelope xmlns:SOAP=\"http://schemas.xmlsoap.org/soap/envelope/\"><SOAP:Body>{0}</SOAP:Body></SOAP:Envelope>", xml);
+                string soap = string.Format("<SOAP:Envelope xmlns:SOAP=\"http://schemas.xmlsoap.org/soap/envelope/\">{0}<SOAP:Body>{1}</SOAP:Body></SOAP:Envelope>", headerxml, bodyxml);
 
                 // Send request
                 var result = Send(accessToken, scope, soap);

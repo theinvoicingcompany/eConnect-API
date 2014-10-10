@@ -53,6 +53,7 @@
   <ItemGroup>
     <Compile Include="EConnect.cs" />
     <Compile Include="EConnectClientTest.cs" />
+    <Compile Include="GetDocumentPdf.cs" />
     <Compile Include="GetDocumentStatusTests.cs" />
     <Compile Include="GetInboxDocumentStatusTests.cs" />
     <Compile Include="GetOutboxDocumentStatusTests.cs" />
@@ -81,6 +82,7 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <None Include="TestData\small.pdf" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\eConnectApi\eConnectApi.csproj">
