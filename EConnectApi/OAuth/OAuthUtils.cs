@@ -230,7 +230,7 @@ namespace EConnectApi.OAuth
     }
 
 
-    public AuthorizeHeader send(string url, string realm, string consumerKey, string consumerSecret, string token, string tokenSecret, string scope, SignatureMethod signatureMethod = SignatureMethod.HMACSHA1, string httpMethod = "POST")
+    public AuthorizeHeader send(string url, string realm, string consumerKey, string consumerSecret, string token, string verifier, string tokenSecret, string scope, SignatureMethod signatureMethod = SignatureMethod.HMACSHA1, string httpMethod = "POST")
     {
       var timestamp = GenerateTimeStamp();
       var nounce = GenerateNonce(timestamp);
@@ -242,12 +242,13 @@ namespace EConnectApi.OAuth
       protocolParameters.Add(new ProtocolParameter(OAuthProtocolParameter.Nounce.GetStringValue(), nounce));
       protocolParameters.Add(new ProtocolParameter(OAuthProtocolParameter.Version.GetStringValue(), OAuthVersion));
       protocolParameters.Add(new ProtocolParameter(OAuthProtocolParameter.Token.GetStringValue(), token));
+      //protocolParameters.Add(new ProtocolParameter(OAuthProtocolParameter.Verifier.GetStringValue(), verifier));
       protocolParameters.Add(new ProtocolParameter(OAuthProtocolParameter.Scope.GetStringValue(), scope));
 
       string signatureBaseString = GenerateSignatureBaseString(url, httpMethod, protocolParameters);
 
       var signature = GenerateSignature(consumerSecret, signatureMethod, signatureBaseString, tokenSecret);
-      return new AuthorizeHeader(realm, consumerKey, signatureMethod.GetStringValue(), signature, timestamp, nounce, OAuthVersion, token, "DUMMY VERIFIER", scope);
+      return new AuthorizeHeader(realm, consumerKey, signatureMethod.GetStringValue(), signature, timestamp, nounce, OAuthVersion, token, verifier, scope);
     }
   
   }

@@ -10,6 +10,7 @@ namespace EConnectApi
                 AccessTokenEndpoint = Properties.Settings.Default.EndPointAccessToken;
                 AccessResourceEndpoint = Properties.Settings.Default.EndPointAccessResource;
                 Realm = Properties.Settings.Default.Realm;
+                Verifier = Properties.Settings.Default.Verifier;
             }
             catch
             {
@@ -17,6 +18,7 @@ namespace EConnectApi
                 AccessTokenEndpoint = "https://platform.everbinding.nl/api/accesstoken";
                 AccessResourceEndpoint = "https://platform.everbinding.nl/api/accessresource";
                 Realm = "platform.everbinding.nl";
+                Verifier = "Unused";
             }
         }
         public string RequestTokenEndpoint { get; protected set; }
@@ -27,5 +29,6 @@ namespace EConnectApi
         public string ConsumerKey { get; set; }
         public string ConsumerSecret { get; set; }
         public string RequesterId { get; set; }
+        public string Verifier { get; set; }
     }
 }

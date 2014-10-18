@@ -36,5 +36,10 @@
         /// The user that an app wishes to act on behalf of
         /// </summary>
         string RequesterId { get; set; }
+
+        /// <summary>
+        /// OAuth Verifier
+        /// </summary>
+        string Verifier { get; set; }
     }
 }

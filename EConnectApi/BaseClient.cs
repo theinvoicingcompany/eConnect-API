@@ -31,7 +31,7 @@ namespace EConnectApi
                 Config.Realm,
                 Config.ConsumerKey,
                 Config.ConsumerSecret,
-                "Unused",
+                Config.Verifier,
                 string.Empty));
         }
 
@@ -41,7 +41,7 @@ namespace EConnectApi
         /// <param name="requestToken"></param>
         /// <param name="scope">Ex. SEND_DOC</param>
         /// <returns></returns>
-        protected AccessToken GetAccessToken(RequestToken requestToken, string scope)
+        public AccessToken GetAccessToken(RequestToken requestToken, string scope)
         {
             return _oAuthConsumer.GetOAuthAccessToken(
                 Config.AccessTokenEndpoint,
@@ -49,7 +49,7 @@ namespace EConnectApi
                 Config.ConsumerKey,
                 Config.ConsumerSecret,
                 requestToken.Token,
-                "Unused",
+                Config.Verifier,
                 requestToken.TokenSecret,
                 scope);
         }
@@ -69,6 +69,7 @@ namespace EConnectApi
                                 Config.ConsumerKey,
                                 Config.ConsumerSecret,
                                 accessToken.Token,
+                                Config.Verifier,
                                 accessToken.TokenSecret,
                                 scope,
                                 xml,

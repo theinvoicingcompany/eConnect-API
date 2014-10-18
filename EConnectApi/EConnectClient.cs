@@ -113,6 +113,20 @@ namespace EConnectApi
             return _client.SendRequest<RequestIntegrationCredentialsResponse>("APP_INTEGRATION", parameters);
         }
 
+        public bool HasAppIntergrationPermission()
+        {
+            try
+            {
+                var req = _client.GetRequestToken();
+                var token = _client.GetAccessToken(req, "APP_INTEGRATION");
+                return token != null;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
         public void Dispose()
         {
             // Clean up

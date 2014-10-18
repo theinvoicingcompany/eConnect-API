@@ -112,11 +112,11 @@ namespace EConnectApi.OAuth
         }
 
 
-        public string send(string userInfoEndpoint, string realm, string consumerKey, string consumerSecret, string token, string tokenSecret, string scope, string payload, string requestorId, SignatureMethod signatureMethod = SignatureMethod.HMACSHA1)
+        public string send(string userInfoEndpoint, string realm, string consumerKey, string consumerSecret, string token, string verifier, string tokenSecret, string scope, string payload, string requestorId, SignatureMethod signatureMethod = SignatureMethod.HMACSHA1)
         {
             string responseText = "";
             var oAuthUtils = new OAuthUtils();
-            var authorizationHeader = oAuthUtils.send(userInfoEndpoint, realm, consumerKey, consumerSecret, token, tokenSecret, scope, signatureMethod, "POST");
+            var authorizationHeader = oAuthUtils.send(userInfoEndpoint, realm, consumerKey, consumerSecret, token, verifier, tokenSecret, scope, signatureMethod, "POST");
 
             var request = WebRequest.Create(userInfoEndpoint + "?xoauth_requestor_id=" + requestorId);
             request.Headers.Add("Authorization", authorizationHeader.ToString());

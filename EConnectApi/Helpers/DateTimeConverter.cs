@@ -4,7 +4,7 @@ namespace EConnectApi.Helpers
 {
     static class DateTimeConverter
     {
-        private static readonly DateTime EPoch = new DateTime(1970, 1, 1);
+        private static readonly DateTime EPoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
 
         /// <summary>
         /// Convert Java timestamp to DateTime
@@ -14,7 +14,7 @@ namespace EConnectApi.Helpers
         /// <returns>Datetime</returns>
         public static DateTime ToDateTime(long javaTimeStamp)
         {
-            return EPoch.AddMilliseconds(javaTimeStamp).ToLocalTime();
+            return EPoch.AddMilliseconds(javaTimeStamp);
         }
 
         /// <summary>
@@ -24,7 +24,7 @@ namespace EConnectApi.Helpers
         /// <returns>Time in milliseconds</returns>
         public static long ToJavaTimestamp(DateTime dt)
         {
-            return (long)(dt.ToLocalTime() - EPoch.ToLocalTime()).TotalMilliseconds;
+            return (long)(dt.ToUniversalTime() - EPoch).TotalMilliseconds;
         }
     }
 }
