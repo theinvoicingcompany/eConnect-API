@@ -102,7 +102,7 @@ namespace EConnectApi
                 }
                 // Convert object to string
                 var bodyxml = GenericXml.Serialize(body);
-                
+
                 // Wrap soap message object
                 string soap = string.Format("<SOAP:Envelope xmlns:SOAP=\"http://schemas.xmlsoap.org/soap/envelope/\">{0}<SOAP:Body>{1}</SOAP:Body></SOAP:Envelope>", headerxml, bodyxml);
 
@@ -127,6 +127,26 @@ namespace EConnectApi
             // Nothing yet. Would be nice to clean up the http connections
         }
 
+        /// <summary>
+        /// try to parse exception to SoapFault to reuse EConnect API error message
+        /// </summary>
+        /// <param name="ex"></param>
+        /// <param name="fault"></param>
+        /// <returns></returns>
+        private bool TryParseSoapFault(Exception ex, out SoapFault fault)
+        {
+            try
+            {
+                fault = GenericXml.DeserializeSoap<SoapFault>(ex.Message);
+                return true;
+            }
+            catch
+            {
+                fault = null;
+                return false;
+            }
+        }
+
         private T SafeExecutor<T>(Func<T> action)
         {
             try
@@ -135,9 +155,8 @@ namespace EConnectApi
             }
             catch (OAuthProtocolException ex)
             {
-                // try to parse exception to SoapFault to reuse EConnect API error message
-                var fault = GenericXml.DeserializeSoap<SoapFault>(ex.Message);
-                if (fault != null)
+                SoapFault fault;
+                if (TryParseSoapFault(ex, out fault))
                 {
                     throw new EConnectClientException(fault);
                 }
