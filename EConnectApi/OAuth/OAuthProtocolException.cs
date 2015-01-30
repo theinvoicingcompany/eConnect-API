@@ -4,7 +4,7 @@ using System.Runtime.Serialization;
 // See Matlus.FederatedIdentity
 namespace EConnectApi.OAuth
 {
-    internal class OAuthProtocolException : Exception
+    internal class OAuthProtocolException : EConnectClientException
   {
     public OAuthProtocolException(string message)
       : base(message)

@@ -161,7 +161,7 @@ namespace EConnectApi
                     throw new EConnectClientException(fault);
                 }
                 // Exceptions like error 500
-                throw new EConnectClientException("Protocol exception", ex);
+                throw;
             }
             catch (Exception ex)
             {

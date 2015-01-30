@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+    <metadata>
+        <id>eConnectApi</id>
+        <version>$version$</version>
+        <authors>Thieme</authors>
+        <owners>Johan,Thieme</owners>
+        <projectUrl>http://help.everbinding.nl/content/api-application-programming-interface</projectUrl>
+        <iconUrl>http://everbinding.nl/wp-content/uploads/2014/10/favicon.png</iconUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>Documentation: http://help.everbinding.nl/content/api-application-programming-interface
+Source code: https://github.com/johanschaeffer/eConnect-API</description>
+        <summary />
+        <releaseNotes>eConnectApi package</releaseNotes>
+        <tags>eConnectApi EConnect eVerbinding</tags>
+    </metadata>
+    <files>
+        <file src="Content\EConnect.example" target="content\EConnect.example" />
+        <file src="bin\$configuration$\EConnectApi.dll" target="lib\EConnectApi.dll" />
+        <file src="bin\$configuration$\EConnectApi.dll.config" target="lib\EConnectApi.dll.config" />
+    </files>
+</package>

@@ -14,7 +14,7 @@ namespace EConnectApiFlowTests
             var search = EConnect.Client.SearchCompany(new SearchCompany()
                 {
                     CountryCode = "NL",
-                    CompanyName = "lat",
+                    CompanyName = "L.A.T. WARD",
                     City = "UTRECHT",
                     KvkNumber = "",
                     TemporaryId = "",

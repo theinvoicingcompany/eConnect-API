@@ -110,6 +110,7 @@
     <Compile Include="Definitions\SetInboxDocumentStatusResponse.cs" />
     <Compile Include="Definitions\SendDocument.cs" />
     <Compile Include="Definitions\TimeSpanFilter.cs" />
+    <None Include="Content\EConnect.example" />
     <Compile Include="EConnectClient.cs" />
     <Compile Include="BaseClient.cs" />
     <Compile Include="EConnectClientConfigBase.cs" />
@@ -133,6 +134,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="eConnectApi.nuspec">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>PublicSettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -142,6 +146,10 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>echo Generating nuget package..
+nuget pack -Symbols "$(ProjectPath)" -IncludeReferencedProjects -Prop Configuration=Release</PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

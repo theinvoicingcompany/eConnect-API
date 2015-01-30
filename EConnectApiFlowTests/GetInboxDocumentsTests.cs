@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using EConnectApi;
 using EConnectApi.Definitions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -91,26 +92,27 @@ namespace EConnectApiFlowTests
             {
                 Filters = new GetDocumentsFiltersBase()
                 {
-                    CreatedDateTime = new TimeSpanFilter() { From = form}
+                    ModifiedDateTime = new TimeSpanFilter() { From = form },
                 }
             });
 
             if (docs.Documents == null || !docs.Documents.Any())
                 Assert.Inconclusive("No documents found: {0}", docs);
-            
+
             Assert.AreEqual(0, docs.Documents.Count(a => a.CreatedDateTime < form), "Filter is not applied");
         }
 
         [TestMethod]
         public void GetInboxDocuments_FilterCreatedDateTimeTo()
         {
-            var to = DateTime.Now.AddDays(-3);
+            var to = DateTime.Now.AddDays(-30);
             var docs = EConnect.Client.GetInboxDocuments(new GetInboxDocumentsOfAnUser()
             {
                 Filters = new GetDocumentsFiltersBase()
                 {
                     CreatedDateTime = new TimeSpanFilter() { To = to }
-                }
+                },
+                Limit = 2
             });
 
             if (docs.Documents == null || !docs.Documents.Any())
@@ -128,7 +130,7 @@ namespace EConnectApiFlowTests
             {
                 Filters = new GetDocumentsFiltersBase()
                 {
-                    CreatedDateTime = new TimeSpanFilter() { To = to, From = from}
+                    CreatedDateTime = new TimeSpanFilter() { To = to, From = from }
                 }
             });
 
@@ -159,6 +161,88 @@ namespace EConnectApiFlowTests
                 {
                     ConsignmentId = docs.Documents.First().ConsignmentId
                 });
+        }
+
+
+        [TestMethod]
+        public void Test()
+        {
+            //var docs1 = EConnect.Client.GetOutboxDocuments(new GetOutboxDocumentsFromEntity()
+            //{
+            //    EntityId = "XCNL10199"
+            //});
+
+
+
+            //foreach (var doc in docs1.Documents)
+            //{
+            //    var details = EConnect.Client.GetOutboxDocument(new GetOutboxDocument()
+            //    {
+            //        ExternalId = doc.ExternalId
+            //    });
+            //}
+            //return;
+            using (var client = new EConnectClient(new EConnectClientConfigBase()
+            {
+                ConsumerKey = "6a3341766962614242516f42327a6f6",
+                ConsumerSecret = "546350584335416f306a42423264314",
+                RequesterId = "thieme.vanselm@gmail.com"
+            }))
+            {
+                var docs = client.GetOutboxDocuments(new GetOutboxDocumentsFromEntity()
+                {
+                    EntityId = "XCNL10019",
+                    Filters = new GetDocumentsFiltersBase()
+                    {
+                        CreatedDateTime = new TimeSpanFilter() {RawFrom = 1393113600000}
+                    },
+                    Limit = 1
+                });
+
+                foreach (var doc in docs.Documents)
+                {
+                    try
+                    {
+                        var details = client.GetOutboxDocument(new GetOutboxDocument()
+                        {
+                            ExternalId = doc.ExternalId
+                        });
+                    }
+                    catch (Exception)
+                    {
+                        
+                        continue;
+                    }
+                   
+                }
+
+                //var docs = client.GetInboxDocuments(new GetInboxDocumentsFromEntity()
+                //{
+                //    EntityId = "XCNL10019",
+                //    Filters = new GetDocumentsFiltersBase()
+                //    {
+                //        CreatedDateTime = new TimeSpanFilter() { RawFrom = 1393113600000 }
+                //    },
+                //    Limit = 128
+                //});
+
+                //bool found = false;
+                //foreach (var doc in docs.Documents )
+                //{
+                //    if (doc.ExternalId == "XCNIN10993")
+                //    {
+                //        found = true;
+                //    }
+                //}
+
+                //foreach (var doc in docs.Documents)
+                //{
+                //    var details = client.GetInboxDocument(new GetInboxDocument()
+                //    {
+                //        ExternalId = doc.ExternalId
+                //    });
+                //}
             }
+        }
     }
 }

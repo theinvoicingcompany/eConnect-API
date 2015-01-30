@@ -12,15 +12,18 @@ namespace EConnectApiFlowTests
 
         public GetOutboxDocumentsTests()
         {
-            var result = EConnect.Client.GetOutboxDocuments(new GetOutboxDocumentsOfAnUser() { Limit = 1 });
-            Assert.IsNotNull(result);
-            OutboxDocument = result.Documents.Single();
+            //var result = EConnect.Client.GetOutboxDocuments(new GetOutboxDocumentsOfAnUser() { Limit = 2 });
+            //Assert.IsNotNull(result);
+            //OutboxDocument = result.Documents.Single();
         }
 
         [TestMethod]
         public void GetOutboxDocuments_Paging()
         {
-            var result = EConnect.Client.GetOutboxDocuments(new GetOutboxDocumentsOfAnUser() { Limit = 2 });
+            var result = EConnect.Client.GetOutboxDocuments(new GetOutboxDocumentsOfAnUser() { Limit = 2, Filters = new GetDocumentsFiltersBase()
+            {
+                ModifiedDateTime = new TimeSpanFilter() { From = new DateTime(2014, 7, 1, 1, 1, 1) }
+            }});
             Assert.IsNotNull(result);
             var doc = result.Documents.First();
             Assert.AreEqual(OutboxDocument.Rowkey, doc.Rowkey);
@@ -40,7 +43,7 @@ namespace EConnectApiFlowTests
         {
             EConnect.Client.GetOutboxDocuments(new GetOutboxDocumentsFromEntity()
                 {
-                    EntityId = ""
+                    EntityId = "XCNL10199"
                 });
 
             //throw new NotImplementedException();
