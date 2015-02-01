@@ -29,6 +29,7 @@ namespace EConnectApi
         public EConnectClientException(string message, Exception inner)
             : base(message, inner)
         {
+            Details = message;
         }
 
         protected EConnectClientException(

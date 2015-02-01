@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net;
 using System.Runtime.Serialization;
 
 // See Matlus.FederatedIdentity
@@ -9,6 +10,7 @@ namespace EConnectApi.OAuth
     public OAuthProtocolException(string message)
       : base(message)
     {
+        Details = "Protocol or network issue";
     }
 
     public OAuthProtocolException(string message, Exception innerException)
