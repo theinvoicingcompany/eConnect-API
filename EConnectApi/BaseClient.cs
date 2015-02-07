@@ -158,6 +158,10 @@ namespace EConnectApi
                 SoapFault fault;
                 if (TryParseSoapFault(ex, out fault))
                 {
+                    if (fault.FaultString == "Invalid signature.  Check OAuth credentials." || fault.FaultString == "Invalid consumer key or no such app available in registry")
+                    {
+                        throw new UnauthorizedException(fault);
+                    }
                     throw new EConnectClientException(fault);
                 }
                 // Exceptions like error 500

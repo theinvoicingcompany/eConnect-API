@@ -110,7 +110,7 @@
     <Compile Include="Definitions\SetInboxDocumentStatusResponse.cs" />
     <Compile Include="Definitions\SendDocument.cs" />
     <Compile Include="Definitions\TimeSpanFilter.cs" />
-    <None Include="Content\EConnect.example" />
+    <Compile Include="UnauthorizedException.cs" />
     <Compile Include="EConnectClient.cs" />
     <Compile Include="BaseClient.cs" />
     <Compile Include="EConnectClientConfigBase.cs" />
@@ -149,7 +149,8 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>echo Generating nuget package..
-nuget pack -Symbols "$(ProjectPath)" -IncludeReferencedProjects -Prop Configuration=Debug</PostBuildEvent>
+"$(SolutionDir)\.nuget\nuget.exe" pack -Symbols "$(ProjectPath)" -IncludeReferencedProjects -Prop Configuration=Debug
+echo Copy and execute: $(SolutionDir).nuget\nuget.exe Push $(ProjectDir)$(OutDir)eConnectApi.@(VersionNumber).nupkg</PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
     <PreBuildEvent>
@@ -162,4 +163,18 @@ nuget pack -Symbols "$(ProjectPath)" -IncludeReferencedProjects -Prop Configurat
   <Target Name="AfterBuild">
   </Target>
   -->
+  <Target Name="PostBuildMacros">
+    <GetAssemblyIdentity AssemblyFiles="$(TargetPath)">
+      <Output TaskParameter="Assemblies" ItemName="Targets" />
+    </GetAssemblyIdentity>
+    <ItemGroup>
+      <VersionNumber Include="@(Targets->'%(Version)')" />
+    </ItemGroup>
+  </Target>
+  <PropertyGroup>
+    <PostBuildEventDependsOn>
+    $(PostBuildEventDependsOn);
+    PostBuildMacros;
+  </PostBuildEventDependsOn>
+  </PropertyGroup>
 </Project>

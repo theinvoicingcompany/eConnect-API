@@ -15,7 +15,6 @@ Source code: https://github.com/johanschaeffer/eConnect-API</description>
         <tags>eConnectApi EConnect eVerbinding</tags>
     </metadata>
     <files>
-        <file src="Content\EConnect.example" target="content\EConnect.example" />
         <file src="bin\$configuration$\EConnectApi.dll.config" target="lib\net35\EConnectApi.dll.config" />
     </files>
 </package>

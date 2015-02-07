@@ -11,7 +11,7 @@ namespace EConnectApiFlowTests
     public class EConnectClientTest
     {
         [TestMethod]
-        [ExpectedException(typeof(EConnectClientException), "Invalid consumer key or no such app available in registry")]
+        [ExpectedException(typeof(UnauthorizedException), "Invalid consumer key or no such app available in registry")]
         public void WrongConsumerKey()
         {
             var client = new EConnectClient(new EConnectClientConfigBase()
@@ -24,7 +24,7 @@ namespace EConnectApiFlowTests
         }
 
         [TestMethod]
-        [ExpectedException(typeof(EConnectClientException), "Invalid signature.  Check OAuth credentials.")]
+        [ExpectedException(typeof(UnauthorizedException), "Invalid signature.  Check OAuth credentials.")]
         public void WrongConsumerSecret()
         {
             var client = new EConnectClient(new EConnectClientConfigBase()
