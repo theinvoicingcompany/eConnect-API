@@ -1,8 +1,10 @@
 ﻿using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using EConnectApi;
+using EConnectApi.Definitions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace EConnectApiFlowTests
@@ -15,12 +17,13 @@ namespace EConnectApiFlowTests
         public void WrongConsumerKey()
         {
             var client = new EConnectClient(new EConnectClientConfigBase()
-                {
-                    ConsumerKey = "wrong",
-                    ConsumerSecret = Properties.Settings.Default.ConsumerSecret,
-                    RequesterId = Properties.Settings.Default.RequesterId
-                });
-            client.Ping();
+                                            {
+                                                ConsumerKey = "wrong",
+                                                ConsumerSecret = Properties.Settings.Default.ConsumerSecret,
+                                                RequesterId = Properties.Settings.Default.RequesterId
+                                            });
+
+            client.GetInboxDocument(new GetInboxDocument());
         }
 
         [TestMethod]

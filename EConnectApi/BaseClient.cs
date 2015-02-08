@@ -24,15 +24,24 @@ namespace EConnectApi
         ///  Requesting request token, 1st Leg of OAuth
         /// </summary>
         /// <returns></returns>
-        public RequestToken GetRequestToken()
+        private RequestToken _getRequestToken()
         {
-            return SafeExecutor(() => _oAuthConsumer.GetOAuthRequestToken(
+            return _oAuthConsumer.GetOAuthRequestToken(
                 Config.RequestTokenEndpoint,
                 Config.Realm,
                 Config.ConsumerKey,
                 Config.ConsumerSecret,
                 Config.Verifier,
-                string.Empty));
+                string.Empty);
+        }
+
+        /// <summary>
+        ///  Requesting request token, 1st Leg of OAuth
+        /// </summary>
+        /// <returns></returns>
+        public RequestToken GetRequestToken()
+        {
+            return SafeExecutor(_getRequestToken);
         }
 
         /// <summary>
@@ -88,7 +97,7 @@ namespace EConnectApi
                 if (accessToken == null)
                 {
                     // Obtain the Request Token - 1st Leg of OAuth
-                    var requestToken = GetRequestToken();
+                    var requestToken = _getRequestToken();
                     // Trade the Request Token and Verfier for the Access Token - 2nd Leg of OAuth
                     accessToken = GetAccessToken(requestToken, scope);
                     // Store access token so we can reuse it for future calls
