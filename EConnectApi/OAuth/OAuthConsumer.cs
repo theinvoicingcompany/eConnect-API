@@ -122,7 +122,7 @@ namespace EConnectApi.OAuth
             request.Headers.Add("Authorization", authorizationHeader.ToString());
             request.ContentType = "text/xml; charset=utf-8";
             request.Method = "POST";
-            var bytes = Encoding.ASCII.GetBytes(payload);
+            var bytes = Encoding.UTF8.GetBytes(payload);
             request.ContentLength = bytes.Length;
             if (bytes.Length > 0)
             {

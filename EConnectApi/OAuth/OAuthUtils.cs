@@ -62,7 +62,7 @@ namespace EConnectApi.OAuth
       var buffer = new byte[256];
       random.NextBytes(buffer);
       var hmacsha1 = new HMACSHA1();
-      hmacsha1.Key = Encoding.ASCII.GetBytes(Encoding.ASCII.GetString(buffer));      
+      hmacsha1.Key = Encoding.UTF8.GetBytes(Encoding.UTF8.GetString(buffer));      
       return ComputeHash(hmacsha1, timestamp);
     }
 
@@ -73,7 +73,7 @@ namespace EConnectApi.OAuth
       if (string.IsNullOrEmpty(data))
         throw new ArgumentNullException("data");
 
-      byte[] buffer = System.Text.Encoding.ASCII.GetBytes(data);
+      byte[] buffer = System.Text.Encoding.UTF8.GetBytes(data);
       byte[] bytes = hashAlgorithm.ComputeHash(buffer);
 
       return Convert.ToBase64String(bytes);
@@ -153,8 +153,8 @@ namespace EConnectApi.OAuth
         case SignatureMethod.HMACSHA1:
           var hmacsha1 = new HMACSHA1();
           var beforeEncoding = String.Format("{0}&{1}", UrlEncode(consumerSecret), String.IsNullOrEmpty(tokenSecret) ? "" : UrlEncode(tokenSecret));
-          var beforeComputeHash = Encoding.ASCII.GetBytes(beforeEncoding);
-          hmacsha1.Key = Encoding.ASCII.GetBytes(beforeEncoding);
+          var beforeComputeHash = Encoding.UTF8.GetBytes(beforeEncoding);
+          hmacsha1.Key = Encoding.UTF8.GetBytes(beforeEncoding);
           return ComputeHash(hmacsha1, signatureBaseString);
         case SignatureMethod.PLAINTEXT:
           throw new NotImplementedException("PLAINTEXT Signature Method type is not yet implemented");
