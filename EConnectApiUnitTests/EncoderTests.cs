@@ -19,5 +19,12 @@ namespace EConnectApiUnitTests
             Assert.AreEqual(null, Encoder.MailAddressForUrl(null));
             Assert.AreEqual(string.Empty, Encoder.MailAddressForUrl(string.Empty));
         }
+
+        [TestMethod]
+        public void WrongMailAddress()
+        {
+            Assert.AreEqual("XCNL10019", Encoder.MailAddressForUrl("XCNL10019"));
+            Assert.AreEqual("XCNL%2b10019", Encoder.MailAddressForUrl("XCNL+10019"));
+        }
     }
 }

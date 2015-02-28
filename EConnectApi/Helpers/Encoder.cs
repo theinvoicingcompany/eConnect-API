@@ -2,7 +2,7 @@
 
 namespace EConnectApi.Helpers
 {
-    public static class Encoder
+    internal static class Encoder
     {
         /// <summary>
         /// Url Encode mail address (except @ sign)
@@ -18,6 +18,9 @@ namespace EConnectApi.Helpers
                 return mail;
 
             var index = mail.IndexOf('@');
+            if (index < 0)
+                return HttpUtility.UrlEncode(mail);
+
             return HttpUtility.UrlEncode(mail.Substring(0, index)) + mail.Substring(index);
         }
     }
