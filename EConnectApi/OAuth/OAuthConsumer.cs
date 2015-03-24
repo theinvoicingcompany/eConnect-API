@@ -47,10 +47,14 @@ namespace EConnectApi.OAuth
             request.Method = "POST";
             try
             {
-                using (var requestStream = request.GetRequestStream())
                 using (var response = request.GetResponse())
                 using (var responseStream = response.GetResponseStream())
                 {
+                    if (responseStream == null)
+                    {
+                        throw new Exception("Error responseStream is null");
+                    }
+
                     var reader = new StreamReader(responseStream);
                     var responseText = reader.ReadToEnd();
                     reader.Close();
@@ -61,11 +65,18 @@ namespace EConnectApi.OAuth
             }
             catch (WebException e)
             {
-                using (var resp = e.Response)
-                using (StreamReader sr = new StreamReader(resp.GetResponseStream()))
+                using (var responseStream = e.Response.GetResponseStream())
                 {
-                    var errorMessage = sr.ReadToEnd();
-                    throw new OAuthProtocolException(errorMessage, e);
+                    if (responseStream == null)
+                    {
+                        throw new Exception("Error responseStream is null");
+                    }
+
+                    using (StreamReader sr = new StreamReader(responseStream))
+                    {
+                        var errorMessage = sr.ReadToEnd();
+                        throw new OAuthProtocolException(errorMessage, e);
+                    }
                 }
             }
         }
@@ -140,19 +151,29 @@ namespace EConnectApi.OAuth
                 }
                 try
                 {
-                    var response = request.GetResponse();
+                    using (var response = request.GetResponse())
                     using (var responseStream = response.GetResponseStream())
                     {
+                        if (responseStream == null)
+                        {
+                            throw new Exception("Error responseStream is null");
+                        }
+
                         var reader = new StreamReader(responseStream);
                         responseText = reader.ReadToEnd();
-                        reader.Close();                        
+                        reader.Close();
                     }
                 }
                 catch (WebException e)
                 {
-                    using (var resp = e.Response)
+                    using (var responseStream =  e.Response.GetResponseStream())
                     {
-                        using (StreamReader sr = new StreamReader(resp.GetResponseStream()))
+                        if (responseStream == null)
+                        {
+                            throw new Exception("Error responseStream is null");
+                        }
+                        
+                        using (StreamReader sr = new StreamReader(responseStream))
                         {
                             var errorMessage = sr.ReadToEnd();
                             throw new OAuthProtocolException(errorMessage, e);
