@@ -130,6 +130,7 @@ namespace EConnectApi.OAuth
             var authorizationHeader = oAuthUtils.send(userInfoEndpoint, realm, consumerKey, consumerSecret, token, verifier, tokenSecret, scope, signatureMethod, "POST");
 
             var request = WebRequest.Create(userInfoEndpoint + "?xoauth_requestor_id=" + requestorId);
+            request.Timeout = 180000;
             request.Headers.Add("Authorization", authorizationHeader.ToString());
             request.ContentType = "text/xml; charset=utf-8";
             request.Method = "POST";
@@ -166,18 +167,25 @@ namespace EConnectApi.OAuth
                 }
                 catch (WebException e)
                 {
-                    using (var responseStream =  e.Response.GetResponseStream())
+                    try
                     {
-                        if (responseStream == null)
+                        using (var responseStream = e.Response.GetResponseStream())
                         {
-                            throw new Exception("Error responseStream is null");
+                            if (responseStream == null)
+                            {
+                                throw new Exception("Error responseStream is null");
+                            }
+
+                            using (StreamReader sr = new StreamReader(responseStream))
+                            {
+                                var errorMessage = sr.ReadToEnd();
+                                throw new OAuthProtocolException(errorMessage, e);
+                            }
                         }
-                        
-                        using (StreamReader sr = new StreamReader(responseStream))
-                        {
-                            var errorMessage = sr.ReadToEnd();
-                            throw new OAuthProtocolException(errorMessage, e);
-                        }
+                    }
+                    finally
+                    {
+                        throw e;
                     }
                 }
             }
