@@ -43,6 +43,7 @@ namespace EConnectApi.OAuth
         {
             var normalizedEndpoint = NormalizeUrl(endPoint);
             var request = WebRequest.Create(normalizedEndpoint);
+            request.Timeout = 180000;
             request.Headers.Add("Authorization", authorizationHeader.ToString());
             request.Method = "POST";
             try
@@ -65,18 +66,25 @@ namespace EConnectApi.OAuth
             }
             catch (WebException e)
             {
-                using (var responseStream = e.Response.GetResponseStream())
+                try
                 {
-                    if (responseStream == null)
+                    using (var responseStream = e.Response.GetResponseStream())
                     {
-                        throw new Exception("Error responseStream is null");
-                    }
+                        if (responseStream == null)
+                        {
+                            throw new Exception("Error responseStream is null");
+                        }
 
-                    using (StreamReader sr = new StreamReader(responseStream))
-                    {
-                        var errorMessage = sr.ReadToEnd();
-                        throw new OAuthProtocolException(errorMessage, e);
+                        using (StreamReader sr = new StreamReader(responseStream))
+                        {
+                            var errorMessage = sr.ReadToEnd();
+                            throw new OAuthProtocolException(errorMessage, e);
+                        }
                     }
+                }
+                finally
+                {
+                    throw e;
                 }
             }
         }
