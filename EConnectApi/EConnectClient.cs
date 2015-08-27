@@ -127,6 +127,16 @@ namespace EConnectApi
             }
         }
 
+        /// <summary>
+        /// Share documents & consignments to other users or groups
+        /// </summary>
+        /// <param name="parameters"></param>
+        /// <returns></returns>
+        public ShareDocumentResponse ShareDocument(ShareDocument parameters)
+        {
+            return _client.SendRequest<ShareDocumentResponse>("SHARE_DOC", parameters);
+        }
+
         public void Dispose()
         {
             // Clean up

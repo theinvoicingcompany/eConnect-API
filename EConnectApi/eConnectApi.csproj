@@ -68,6 +68,7 @@
     <Compile Include="Definitions\SendDocumentFor.cs" />
     <Compile Include="Definitions\SendDocumentForHeader.cs" />
     <Compile Include="Definitions\SetDocumentStatusBase.cs" />
+    <Compile Include="Definitions\ShareDocument.cs" />
     <Compile Include="Definitions\Status.cs" />
     <Compile Include="Definitions\Statuses.cs" />
     <Compile Include="Definitions\DocumentBase.cs" />
