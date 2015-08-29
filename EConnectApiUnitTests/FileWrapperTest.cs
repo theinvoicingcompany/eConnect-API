@@ -8,29 +8,33 @@ namespace EConnectApiUnitTests
     [TestClass]
     public class FileWrapperTest
     {
-        private string base64 = @"MjAxNC8wNi8yNCAxNDoyODowOSBTdGFydGluZyBjeWd3aW
-                            oyODowOSBVc2VyIGhhcyBiYWNrdXAvcmVzdG9yZSByaWdodHMN
-                            CjIwMTQvMDYvMjQgMTQ6Mjg6MDkgaW9fc3RyZWFtX2N5Z2ZpbGU6
-                            IGZvcGVuKC9ldGMvc2V0dXAvc2V0dXAucmMpIGZhaWxlZCAyIE5vIHN1
-                            Y2ggZmlsZSBvciBkaXJlY3Rvcg==";
+        const string _TestTextFile = @"OutputDir\small_base64.txt";
+        const string _TestPdfFile = @"OutputDir\small.pdf";
 
         [TestMethod]
-        public void WriteFile()
+        [DeploymentItem(@"TestData\small.pdf", "OutputDir")]
+        public void ReadFile()
         {
-            var file = new FileWrapper("test.pdf", base64);
-            file.Store(@"C://Temp/");
+            var file = new GetDocumentPdfResponse();
+            var bytes = File.ReadAllBytes(_TestPdfFile);
+            file.Load(_TestPdfFile);
+            
+            Assert.AreEqual(bytes.Length, file.Contents.Length);
+            Assert.AreEqual(bytes[10], file.Contents[10]);
+            Assert.AreEqual(Convert.ToBase64String(bytes), file.PdfVersionFile);
         }
 
         [TestMethod]
-        public void ReadFile()
+        [DeploymentItem(@"TestData\small_base64.txt", "OutputDir")]
+        [DeploymentItem(@"TestData\small.pdf", "OutputDir")]
+        public void WriteFile()
         {
-            var testfile = @"C://Temp/econnecttest.pdf";  
-            var file = new GetDocumentPdfResponse();
-            var bytes = File.ReadAllBytes(testfile);
-            file.Load(testfile);
-            Assert.AreEqual(bytes, file.Contents);
-            Assert.AreEqual(Convert.ToBase64String(bytes), file.PdfVersionFile);
-            file.Store(@"C://Temp/", "econnecttestnew.pdf");
+            var base64 = File.ReadAllText(_TestTextFile);
+            var file = new FileWrapper("small_frombase64.pdf", base64);
+            file.Store(@"OutputDir\");
+            var pdffile = File.ReadAllBytes(@"OutputDir\small_frombase64.pdf");
+            var bytes = File.ReadAllBytes(_TestPdfFile);
+            Assert.AreEqual(bytes.Length, pdffile.Length);
         }
     }
 }
