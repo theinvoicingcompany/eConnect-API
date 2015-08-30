@@ -57,6 +57,8 @@
     <Compile Include="Definitions\FileWrapper.cs" />
     <Compile Include="Definitions\GetAccountDetails.cs" />
     <Compile Include="Definitions\GetAccountDetailsResponse.cs" />
+    <Compile Include="Definitions\GetCompanies.cs" />
+    <Compile Include="Definitions\GetCompaniesResponse.cs" />
     <Compile Include="Definitions\GetDocumentPdf.cs" />
     <Compile Include="Definitions\GetDocumentPdfResponse.cs" />
     <Compile Include="Definitions\GetDocumentsResponseBase.cs" />

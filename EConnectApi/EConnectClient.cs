@@ -141,6 +141,11 @@ namespace EConnectApi
         {
             return _client.SendRequest<GetAccountDetailsResponse>("GET_PROFILE", new GetAccountDetails());
         }
+
+        public GetCompaniesResponse GetCompanies(GetCompanies parameters)
+        {
+            return _client.SendRequest<GetCompaniesResponse>("GET_PROFILE", parameters);
+        }
         
         public void Dispose()
         {
