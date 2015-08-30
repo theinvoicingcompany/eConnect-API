@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using EConnectApi.Definitions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -22,6 +23,7 @@ namespace EConnectApiUnitTests
             Assert.AreEqual(bytes.Length, file.Contents.Length);
             Assert.AreEqual(bytes[10], file.Contents[10]);
             Assert.AreEqual(Convert.ToBase64String(bytes), file.PdfVersionFile);
+            Assert.IsTrue(bytes.SequenceEqual(file.Contents));
         }
 
         [TestMethod]
@@ -34,7 +36,9 @@ namespace EConnectApiUnitTests
             file.Store(@"OutputDir\");
             var pdffile = File.ReadAllBytes(@"OutputDir\small_frombase64.pdf");
             var bytes = File.ReadAllBytes(_TestPdfFile);
+            
             Assert.AreEqual(bytes.Length, pdffile.Length);
+            Assert.IsTrue(bytes.SequenceEqual(pdffile));
         }
     }
 }

@@ -37,9 +37,9 @@ namespace EConnectApiFlowTests
                                                    }))
             {
                 var doc = client.GetDocument(new GetDocument()
-                                   {
-                                       DocumentId = res.DocumentId
-                                   });
+                                             {
+                                                 DocumentId = res.DocumentId
+                                             });
 
                 //Assert.AreEqual(res.DocumentId, doc.DocumentId);
             }

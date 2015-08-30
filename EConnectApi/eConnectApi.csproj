@@ -55,6 +55,8 @@
     <Compile Include="AccessTokenStoreItem.cs" />
     <Compile Include="Definitions\Company.cs" />
     <Compile Include="Definitions\FileWrapper.cs" />
+    <Compile Include="Definitions\GetAccountDetails.cs" />
+    <Compile Include="Definitions\GetAccountDetailsResponse.cs" />
     <Compile Include="Definitions\GetDocumentPdf.cs" />
     <Compile Include="Definitions\GetDocumentPdfResponse.cs" />
     <Compile Include="Definitions\GetDocumentsResponseBase.cs" />
@@ -69,6 +71,7 @@
     <Compile Include="Definitions\SendDocumentForHeader.cs" />
     <Compile Include="Definitions\SetDocumentStatusBase.cs" />
     <Compile Include="Definitions\ShareDocument.cs" />
+    <Compile Include="Definitions\ShareDocumentResponse.cs" />
     <Compile Include="Definitions\Status.cs" />
     <Compile Include="Definitions\Statuses.cs" />
     <Compile Include="Definitions\DocumentBase.cs" />

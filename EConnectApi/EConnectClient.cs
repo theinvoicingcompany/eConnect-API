@@ -137,6 +137,11 @@ namespace EConnectApi
             return _client.SendRequest<ShareDocumentResponse>("SHARE_DOC", parameters);
         }
 
+        public GetAccountDetailsResponse GetAccountDetails()
+        {
+            return _client.SendRequest<GetAccountDetailsResponse>("GET_PROFILE", new GetAccountDetails());
+        }
+        
         public void Dispose()
         {
             // Clean up
