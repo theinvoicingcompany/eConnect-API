@@ -8,6 +8,10 @@ namespace EConnectApi.Definitions
     [XmlRoot(Namespace = "", IsNullable = false)]
     public class GetAccountDetailsResponse
     {
+        public string UserId { get; set; }
+
+        public string UserName { get; set; }
+
         public string FaxNumber { get; set; }
         public string PhoneNumber { get; set; }
 
@@ -35,7 +39,7 @@ namespace EConnectApi.Definitions
         public string Description { get; set; }
         public string Email { get; set; }
         public string PricingPlanName { get; set; }
-        public string TotalUsersCount { get; set; }
+        public int TotalUsersCount { get; set; }
         public string Website { get; set; }
 
         public FinancialDetails FinancialInfo { get; set; }

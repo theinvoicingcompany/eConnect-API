@@ -147,7 +147,6 @@ namespace EConnectApiUnitTests
                                                    {
                                                        new DocumentBase()
                                                            {
-                                                               Rowkey = "CUA000000191000001INCC9223370651617362923UA000000191000001",
                                                                SenderAccountId = "A000000191",
                                                                SenderAccountName = "selmit.nl",
                                                                RawCreatedDateTime = 1385237412946,
