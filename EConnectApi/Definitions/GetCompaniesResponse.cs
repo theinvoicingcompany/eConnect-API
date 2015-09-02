@@ -36,7 +36,7 @@ namespace EConnectApi.Definitions
             public string Url { get; set; }
             public string HouseNumber { get; set; }
             public bool IsRegisteredToPeppol { get; set; }
-            public string IsVerified { get; set; }
+            public bool IsVerified { get; set; }
             public int MemberCount { get; set; }
             public string PostalCode { get; set; }
             public string StreetName { get; set; }
@@ -60,5 +60,8 @@ namespace EConnectApi.Definitions
 
         [XmlElement(ElementName = "cursor")]
         public string Cursor { get; set; }
+
+        [XmlElement(ElementName = "startrowrange")]
+        public string StartRowRange { get; set; }
     }
 }

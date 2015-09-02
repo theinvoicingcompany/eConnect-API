@@ -8,12 +8,17 @@ namespace EConnectApi.Definitions
     {
         public class GetCompaniesFilters
         {
-            public bool MyCompaniesOnly { get; set; }
-            public bool VerfiedOnly { get; set; }
+            public bool ShouldSerializeMyCompaniesOnly() { return MyCompaniesOnly.HasValue; }
+            public bool? MyCompaniesOnly { get; set; }
+
+            public bool ShouldSerializeVerifiedOnly() { return VerifiedOnly.HasValue; }
+            public bool? VerifiedOnly { get; set; }
+
+            public bool ShouldSerializeSimplerInvoicingRegisteredOnly() { return SimplerInvoicingRegisteredOnly.HasValue; }
             /// <summary>
             /// Only peppol registered companies
             /// </summary>
-            public bool SimplerInvoicingRegisteredOnly { get; set; }
+            public bool? SimplerInvoicingRegisteredOnly { get; set; }
             public string Administrator { get; set; }
         }
 
@@ -22,7 +27,6 @@ namespace EConnectApi.Definitions
 
         protected byte PagerLimit = 20;
 
-        [XmlElement(ElementName = "limit")]
         public byte Limit
         {
             get { return PagerLimit; }
@@ -35,5 +39,9 @@ namespace EConnectApi.Definitions
 
         [XmlElement(ElementName = "cursor")]
         public string Cursor { get; set; }
+
+
+        [XmlElement(ElementName = "startrowrange")]
+        public string StartRowRange { get; set; }
     }
 }

@@ -31,8 +31,8 @@ namespace EConnectApiFlowTests
 
             using (var client = new EConnectClient(new EConnectClientConfigBase()
                                                    {
-                                                       ConsumerKey = "4750576f464264645852384a596f644",
-                                                       ConsumerSecret = "4b6873535150557a744a6c634a51574",
+                                                       ConsumerKey = "",
+                                                       ConsumerSecret = "",
                                                        RequesterId = "thieme@selmit.nl"
                                                    }))
             {
