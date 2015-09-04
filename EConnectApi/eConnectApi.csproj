@@ -63,6 +63,8 @@
     <Compile Include="Definitions\GetDocumentPdfResponse.cs" />
     <Compile Include="Definitions\GetDocumentsResponseBase.cs" />
     <Compile Include="Definitions\GetInboxDocumentStatusResponse.cs" />
+    <Compile Include="Definitions\GetIntegrationRequests.cs" />
+    <Compile Include="Definitions\GetIntegrationRequestsResponse.cs" />
     <Compile Include="Definitions\GetOutboxDocumentStatusResponse.cs" />
     <Compile Include="Definitions\GetTemplates.cs" />
     <Compile Include="Definitions\GetTemplatesResponse.cs" />
@@ -133,7 +135,6 @@
     <Compile Include="Helpers\DateTimeConverter.cs" />
     <Compile Include="Helpers\DateTimeExtension.cs" />
     <Compile Include="Helpers\DoubleExtension.cs" />
-    <Compile Include="Helpers\Encoder.cs" />
     <Compile Include="Helpers\GenericXml.cs" />
     <Compile Include="IEConnectClientConfig.cs" />
     <Compile Include="OAuth\AuthorizationHeader.cs" />

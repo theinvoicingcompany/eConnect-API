@@ -78,7 +78,9 @@
     <Compile Include="SetInboxDocumentStatusTests.cs" />
     <Compile Include="EnquireCompanyTests.cs" />
     <Compile Include="RequestAppIntegrationTests.cs" />
+    <Compile Include="Settings.cs" />
     <Compile Include="ShareDocumentTest.cs" />
+    <Compile Include="GetIntegrationRequestsTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

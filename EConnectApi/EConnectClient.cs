@@ -158,6 +158,16 @@ namespace EConnectApi
             return _client.SendRequest<GetTemplatesResponse>("GET_PROFILE", parameters);
         }
 
+        public GetIntegrationRequestsResponse GetIntegrationRequests(GetIntegrationRequests parameters = null)
+        {
+            if (parameters == null)
+                parameters = new GetIntegrationRequests();
+
+            return _client.SendRequest<GetIntegrationRequestsResponse>("GET_PROFILE", parameters);
+        }
+
+        
+
         public void Dispose()
         {
             // Clean up

@@ -3,13 +3,22 @@
   <Profiles />
   <Settings>
     <Setting Name="ConsumerKey" Type="System.String" Scope="User">
-      <Value Profile="(Default)">4e4f4e54596638434b4a71397271327</Value>
+      <Value Profile="(Default)">554e626351597663375241505879527</Value>
     </Setting>
     <Setting Name="ConsumerSecret" Type="System.String" Scope="User">
-      <Value Profile="(Default)">34766674336b5130524842426f4c414</Value>
+      <Value Profile="(Default)">5735514e37564e52595735536d76497</Value>
     </Setting>
     <Setting Name="RequesterId" Type="System.String" Scope="User">
-      <Value Profile="(Default)">thieme@selmit.nl</Value>
+      <Value Profile="(Default)">everbinding.elien+testeen@gmail.com</Value>
+    </Setting>
+    <Setting Name="ConsumerKey2" Type="System.String" Scope="User">
+      <Value Profile="(Default)">34735845686c684b4d6c534f696f6c6</Value>
+    </Setting>
+    <Setting Name="ConsumerSecret2" Type="System.String" Scope="User">
+      <Value Profile="(Default)">75356e556f577256383947546351704</Value>
+    </Setting>
+    <Setting Name="RequesterId2" Type="System.String" Scope="User">
+      <Value Profile="(Default)">everbinding.elien+testtwee@gmail.com</Value>
     </Setting>
   </Settings>
 </SettingsFile>
