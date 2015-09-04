@@ -7,33 +7,24 @@ namespace EConnectApiFlowTests
     public class SearchCompanyTests
     {
         [TestMethod]
-        public void SearchCompanyFromExample()
+        public void SearchCompanyEConnect()
         {
             // http://help.everbinding.nl/content/api-search-company
 
             var search = EConnect.Client.SearchCompany(new SearchCompany()
                 {
-                    CountryCode = "NL",
-                    CompanyName = "L.A.T. WARD",
-                    City = "UTRECHT",
-                    KvkNumber = "",
-                    TemporaryId = "",
-                    Limit = 2
+                      CompanyName = "eVerbinding"
                 });
 
-            Assert.IsNotNull(search.SearchKey);
-            Assert.AreNotEqual(string.Empty, search.SearchKey);
-            Assert.AreEqual(2, search.Companies.Length);
-
             var company = search.Companies[0];
-            Assert.AreEqual("L.A.T. WARD", company.CompanyName);
-            Assert.AreEqual("897301048", company.TemporaryId);
-            Assert.AreEqual("BETHLEHEMWEG", company.StreetName);
-            Assert.AreEqual("11", company.HouseNumber);
-            Assert.AreEqual(string.Empty, company.HouseNumberSupplement);
-            Assert.AreEqual("3513 CV", company.PostalCode);
-            Assert.AreEqual(string.Empty, company.Url);
-            Assert.AreEqual(string.Empty, company.EmailAddress);
+            Assert.AreEqual("eConnect International B.V.", company.CompanyName);
+            Assert.AreEqual("NL:KVK:54441587", company.TemporaryId);
+            Assert.AreEqual("Herenweg", company.StreetName);
+            Assert.AreEqual("115", company.HouseNumber);
+            //Assert.AreEqual(string.Empty, company.HouseNumberSupplement);
+            Assert.AreEqual("2402ND", company.PostalCode);
+            //Assert.AreEqual(string.Empty, company.Url);
+            //Assert.AreEqual(string.Empty, company.EmailAddress);
         }
 
         [TestMethod]
@@ -93,7 +84,7 @@ namespace EConnectApiFlowTests
                 });
 
             Assert.AreEqual(1, search.Companies.Length);
-            Assert.AreEqual("SELMIT", search.Companies[0].CompanyName);
+            Assert.AreEqual("SelmIT", search.Companies[0].CompanyName);
         }       
     }
 }

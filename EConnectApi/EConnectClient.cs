@@ -149,7 +149,15 @@ namespace EConnectApi
 
             return _client.SendRequest<GetCompaniesResponse>("GET_PROFILE", parameters);
         }
-        
+
+        public GetTemplatesResponse GetTemplates(GetTemplates parameters = null)
+        {
+            if (parameters == null)
+                parameters = new GetTemplates();
+
+            return _client.SendRequest<GetTemplatesResponse>("GET_PROFILE", parameters);
+        }
+
         public void Dispose()
         {
             // Clean up

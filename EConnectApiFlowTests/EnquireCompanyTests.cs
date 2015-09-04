@@ -15,23 +15,8 @@ namespace EConnectApiFlowTests
                     EntityId = "XCNL10199"
                 });
 
-            Assert.AreEqual("SELMIT", result.CompanyName);
-            Assert.AreEqual("Nederland", result.Country);
-            Assert.AreEqual("920582389", result.TemporaryId);
-            Assert.AreEqual("50560190", result.KvkNumber);
-        }
-
-        [TestMethod]
-        public void EnquireCompany_ByTemporaryId()
-        {
-            var result = EConnect.Client.EnquireCompany(new EnquireCompany()
-            {
-                TemporaryId = "920582389"
-            });
-
-            Assert.AreEqual("SELMIT", result.CompanyName);
-            Assert.AreEqual("Nederland", result.Country);
-            Assert.AreEqual("920582389", result.TemporaryId);
+            Assert.AreEqual("SelmIT", result.CompanyName);
+            Assert.AreEqual("NL:KVK:50560190", result.TemporaryId);
             Assert.AreEqual("50560190", result.KvkNumber);
         }
     }
