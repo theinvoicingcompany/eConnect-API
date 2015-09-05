@@ -61,6 +61,7 @@
     <Compile Include="GetOutboxDocumentStatusTests.cs" />
     <Compile Include="GetOutboxDocumentsTests.cs" />
     <Compile Include="GetTemplatesTest.cs" />
+    <Compile Include="Helpers\DateUtils.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="GetInboxDocumentTests.cs" />
     <Compile Include="GetInboxDocumentsTests.cs" />
@@ -77,10 +78,9 @@
     <Compile Include="SetDocumentStatusTests.cs" />
     <Compile Include="SetInboxDocumentStatusTests.cs" />
     <Compile Include="EnquireCompanyTests.cs" />
-    <Compile Include="RequestAppIntegrationTests.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="ShareDocumentTest.cs" />
-    <Compile Include="GetIntegrationRequestsTests.cs" />
+    <Compile Include="IntegrationTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
