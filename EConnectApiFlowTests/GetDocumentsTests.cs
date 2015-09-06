@@ -23,7 +23,7 @@ namespace EConnectApiFlowTests
             var result2 = EConnect.Client.GetDocuments(new GetDocumentsOfAnUser() { Limit = 2, StartRowRange = result.StartRowRange });
             Assert.IsNotNull(result2);
             var doc2 = result2.Documents.First();
-            Assert.AreEqual(result.StartRowRange, doc2.Rowkey);
+            Assert.AreEqual(result.StartRowRange, doc2.Rowkey, "RowStartRowRange and RowKey are not equal");
             Assert.AreNotEqual(document.CreatedDateTime, doc2.CreatedDateTime);
             Assert.AreNotEqual(document.DocumentId, doc2.DocumentId);
         }

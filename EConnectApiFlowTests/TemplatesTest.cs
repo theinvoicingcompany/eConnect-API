@@ -6,7 +6,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace EConnectApiFlowTests
 {
     [TestClass]
-    public class GetTemplatesTest
+    public class TemplatesTest
     {
         [TestMethod]
         public void GetTemplates()

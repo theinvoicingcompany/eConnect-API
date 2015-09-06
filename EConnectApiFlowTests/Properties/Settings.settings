@@ -20,5 +20,11 @@
     <Setting Name="RequesterId2" Type="System.String" Scope="User">
       <Value Profile="(Default)">everbinding.elien+testtwee@gmail.com</Value>
     </Setting>
+    <Setting Name="EntityId" Type="System.String" Scope="User">
+      <Value Profile="(Default)">XCNL10019</Value>
+    </Setting>
+    <Setting Name="EntityId2" Type="System.String" Scope="User">
+      <Value Profile="(Default)">XCNL10018</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

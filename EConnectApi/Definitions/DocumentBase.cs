@@ -10,8 +10,8 @@ namespace EConnectApi.Definitions
         [XmlElement(ElementName = "rowkey")]
         public string Rowkey { get; set; }
 
-        public string DocumentId { get; set; }
-        public string ExternalId { get; set; }
+        public string DocumentId { get; set; } // doc
+        public string ExternalId { get; set; } // doc
         public string ConsignmentId { get; set; }
         public string ConsignmentName { get; set; }
         public string Subject { get; set; }
@@ -33,6 +33,7 @@ namespace EConnectApi.Definitions
             get { return CreatedDateTime.ToJavaTimestamp(); }
             set { CreatedDateTime = value.ToDateTime(); }
         }
+
 
         private string _rawPossibleConsignmentStatuses;
         private Statuses _possibleStatuses;
@@ -71,9 +72,9 @@ namespace EConnectApi.Definitions
         public bool IsRead { get; set; }
         // TODO: Check IsTask is not bool?
         public int IsTask { get; set; }
-        public string LatestStatus { get; set; }
-        public string LatestStatusInfo { get; set; }
-        public string LatestStatusCode { get; set; } // no int, because it can contains text
+        public string LatestStatus { get; set; } // doc
+        public string LatestStatusInfo { get; set; } // doc
+        public string LatestStatusCode { get; set; } // doc, no int, because it can contains text
 
         public string MasterTemplateId { get; set; }
         public string MasterTemplateName { get; set; }
@@ -81,16 +82,16 @@ namespace EConnectApi.Definitions
         public string ReceiverEntityId { get; set; }
         public string ReceiverEntityName { get; set; }
 
-        public string StandardTemplateId { get; set; }
-        public string StandardTemplateName { get; set; }
+        public string StandardTemplateId { get; set; } // doc   
+        public string StandardTemplateName { get; set; } // doc
 
-        public string DocumentViewerId { get; set; }
-        public string DocumentViewerName { get; set; }
+        public string DocumentViewerId { get; set; } // doc
+        public string DocumentViewerName { get; set; } // doc
 
         public string TrackingMessage { get; set; }
 
-        public string DocumentTemplateId { get; set; }
-        public string DocumentTemplateName { get; set; }
+        public string DocumentTemplateId { get; set; } // doc 
+        public string DocumentTemplateName { get; set; } // doc
         public string TemplateSchemaId { get; set; }
         
         //[XmlTextAttribute()]
@@ -101,5 +102,83 @@ namespace EConnectApi.Definitions
         /// UBL
         /// </summary>
         public XElement Payload { get; set; }
+
+
+
+        #region NEW_IN_DOC
+        public string AccountId { get; set; }
+
+        public string AccountName { get; set; }
+
+        public string DocumentName { get; set; }
+
+        public string Description { get; set; }
+
+        [XmlElement(ElementName = "DocExURI")]
+        public string RawDocEx
+        {
+            get { return DocEx == null ? null : DocEx.ToString(); }
+            set
+            {
+                try
+                {
+                    DocEx = value == null ? null : new Uri(value);
+                }
+                catch
+                {
+                    DocEx = null;
+                }
+            }
+        }
+
+        [XmlIgnore]
+        public Uri DocEx { get; set; }
+
+        public string OwnerUserId { get; set; }
+        public string OwnerUserName { get; set; }
+
+        public string FolderId { get; set; }
+
+        public string FolderName { get; set; }
+
+        public string IsDocumentSent { get; set; } // No bool
+
+
+        [XmlIgnore]
+        public DateTime ModifiedDateTime { get; set; }
+        // Proxied property
+        [XmlElement(ElementName = "ModifiedDateTime")]
+        public long RawModifiedDateTime
+        {
+            get { return ModifiedDateTime.ToJavaTimestamp(); }
+            set { ModifiedDateTime = value.ToDateTime(); }
+        }
+
+        public string ModifiedByUserName { get; set; }
+        public string ModifiedByUserId { get; set; }
+
+
+        [XmlElement(ElementName = "DocumentViewerImageURL")]
+        public string RawDocumentViewerImageUrl
+        {
+            get { return DocumentViewerImageUrl == null ? null : DocumentViewerImageUrl.ToString(); }
+            set
+            {
+                try
+                {
+                    DocumentViewerImageUrl = value == null ? null : new Uri(value);
+                }
+                catch
+                {
+                    DocumentViewerImageUrl = null;
+                }
+            }
+        }
+
+        [XmlIgnore]
+        public Uri DocumentViewerImageUrl { get; set; }
+
+        #endregion
+
     }
 }

@@ -10,6 +10,7 @@ namespace EConnectApi.Definitions
         public string DocumentId { get; set; }
         public DocumentType DocumentType { get; set; }
 
+        public bool ShouldSerializePermission() { return Permission.HasValue; }
         /// <summary>
         /// Specify a global permission for all recipients
         /// </summary>
