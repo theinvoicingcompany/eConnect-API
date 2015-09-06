@@ -178,6 +178,8 @@ namespace EConnectApi.Definitions
         [XmlIgnore]
         public Uri DocumentViewerImageUrl { get; set; }
 
+        public string TemplateSource { get; set; }
+
         #endregion
 
     }

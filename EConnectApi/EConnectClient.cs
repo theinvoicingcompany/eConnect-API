@@ -166,7 +166,15 @@ namespace EConnectApi
             return _client.SendRequest<GetIntegrationRequestsResponse>("GET_PROFILE", parameters);
         }
 
-        
+        public CreateDocumentResponse CreateDocument(CreateDocument parameters)
+        {
+            return _client.SendRequest<CreateDocumentResponse>("CREATE_DOC", parameters);
+        }
+
+        public UpdateDocumentResponse UpdateDocument(UpdateDocument parameters)
+        {
+            return _client.SendRequest<UpdateDocumentResponse>("UPDATE_DOC", parameters);
+        }
 
         public void Dispose()
         {

@@ -54,6 +54,8 @@
     <Compile Include="AccessTokenManager.cs" />
     <Compile Include="AccessTokenStoreItem.cs" />
     <Compile Include="Definitions\Company.cs" />
+    <Compile Include="Definitions\CreateDocument.cs" />
+    <Compile Include="Definitions\CreateDocumentResponse.cs" />
     <Compile Include="Definitions\FileWrapper.cs" />
     <Compile Include="Definitions\GetAccountDetails.cs" />
     <Compile Include="Definitions\GetAccountDetailsResponse.cs" />
@@ -127,6 +129,8 @@
     <Compile Include="Definitions\SetInboxDocumentStatusResponse.cs" />
     <Compile Include="Definitions\SendDocument.cs" />
     <Compile Include="Definitions\TimeSpanFilter.cs" />
+    <Compile Include="Definitions\UpdateDocument.cs" />
+    <Compile Include="Definitions\UpdateDocumentResponse.cs" />
     <Compile Include="UnauthorizedException.cs" />
     <Compile Include="EConnectClient.cs" />
     <Compile Include="BaseClient.cs" />

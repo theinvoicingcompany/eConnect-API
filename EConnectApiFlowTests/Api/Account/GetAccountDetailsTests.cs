@@ -1,10 +1,10 @@
 using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace EConnectApiFlowTests
+namespace EConnectApiFlowTests.Api.Account
 {
     [TestClass]
-    public class GetAccountDetailsTest
+    public class GetAccountDetailsTests
     {
         [TestMethod]
         public void GetAccountDetails()

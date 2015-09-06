@@ -1,13 +1,11 @@
 using System.Linq;
-using System.Text;
-using EConnectApi;
 using EConnectApi.Definitions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace EConnectApiFlowTests
+namespace EConnectApiFlowTests.Api.Document
 {
     [TestClass]
-    public class ShareDocumentTest
+    public class ShareDocumentTests
     {
         public void AreSameDocuments(DocumentBase target, DocumentBase actual)
         {

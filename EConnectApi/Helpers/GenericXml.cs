@@ -85,35 +85,30 @@ namespace EConnectApi.Helpers
 
 #if DEBUG
 
-        private static void XmlSerializer_OnUnknownElement(object sender, XmlElementEventArgs e)
-        {
-            Debug.WriteLine(string.Format("Unexpected element: {0} as line {1}, column {2}", e.Element.Name, e.LineNumber, e.LinePosition));
-        }
 
         private static void XmlSerializer_OnUnknownNode(object sender, XmlNodeEventArgs e)
         {
-            Debug.WriteLine(string.Format("Unexpected node: {0} as line {1}, column {2}", e.LocalName, e.LineNumber, e.LinePosition));
+            Debug.WriteLine(string.Format("Unexpected {0} for {1}: {2} as line {3}, column {4}", e.NodeType, e.ObjectBeingDeserialized, e.Name, e.LineNumber, e.LinePosition), "Warning");
         }
 
         private static void XmlSerializer_OnUnknownAttribute(object sender, XmlAttributeEventArgs e)
         {
-            Debug.WriteLine(string.Format("Unexpected attribute: {0} as line {1}, column {2}", e.Attr.Name, e.LineNumber, e.LinePosition));
+            Debug.WriteLine(string.Format("Unexpected attribute for {0}: {1} as line {2}, column {3}", e.ObjectBeingDeserialized, e.Attr.Name, e.LineNumber, e.LinePosition), "Warning");
         }
 
         private static void XmlSerializer_OnUnreferencedObject(object sender, UnreferencedObjectEventArgs e)
         {
-            Debug.WriteLine(string.Format("UnreferencedObject: {0}, UnreferencedId: {1}", e.UnreferencedObject, e.UnreferencedId));
+            Debug.WriteLine(string.Format("UnreferencedObject: {0}, UnreferencedId: {1}", e.UnreferencedObject, e.UnreferencedId), "Warning");
         }
 
         private static void AttachDebugger(ref XmlSerializer ser)
         {
-            ser.UnknownElement += XmlSerializer_OnUnknownElement;
-            //ser.UnknownNode += XmlSerializer_OnUnknownNode;
+            ser.UnknownNode += XmlSerializer_OnUnknownNode;
             ser.UnknownAttribute += XmlSerializer_OnUnknownAttribute;
             ser.UnreferencedObject += XmlSerializer_OnUnreferencedObject;
         }
 
-        public static void LogPropertiesWithNullValues(object input) 
+        public static void LogPropertiesWithNullValues(object input)
         {
             var type = input.GetType();
             var props = type.GetProperties().Where(p => p.PropertyType.FullName.StartsWith("EConnectApi."));
@@ -121,24 +116,24 @@ namespace EConnectApi.Helpers
             {
                 if (prop.PropertyType.IsArray)
                 {
-                    var array = (object[]) prop.GetValue(input, null);
+                    var array = (object[])prop.GetValue(input, null);
                     foreach (var o in array)
                     {
-                        if(o!=null)
+                        if (o != null)
                             LogPropertiesWithNullValues(o);
                     }
-                 
+
                     continue;
                 }
                 var val = prop.GetValue(input, null);
                 if (val != null)
                     LogPropertiesWithNullValues(val);
             }
-          
 
-            var empty = type.GetProperties().Where(p => p.GetValue(input, null) == null).Select(p => p.Name).ToArray();
+
+            var empty = type.GetProperties().Where(p => p.GetValue(input, null) == null && !p.GetCustomAttributes(false).Any(a => a is XmlIgnoreAttribute)).Select(p => p.Name.StartsWith("Raw") ? p.Name.Substring(3) : p.Name).ToArray();
             if (empty.Length > 0)
-                Debug.WriteLine(string.Format("Null properties for {0}: {1}", type, string.Join(", ", empty)), "Warning");
+                Debug.WriteLine(string.Format("Null properties for {0}: " + Environment.NewLine + "\t\t{1}", type, string.Join(", " + Environment.NewLine + "\t\t", empty)), "Warning");
         }
 
 #endif

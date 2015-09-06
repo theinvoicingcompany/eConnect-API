@@ -51,15 +51,18 @@
     </CodeAnalysisDependentAssemblyPaths>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Api\Document\CreateDocumentTests.cs" />
+    <Compile Include="Api\Document\UpdateDocumentTests.cs" />
     <Compile Include="EConnect.cs" />
     <Compile Include="EConnectClientTest.cs" />
-    <Compile Include="GetAccountDetailsTest.cs" />
+    <Compile Include="Api\Account\GetAccountDetailsTests.cs" />
     <Compile Include="GetCompaniesTest.cs" />
     <Compile Include="GetDocumentPdf.cs" />
     <Compile Include="GetDocumentStatusTests.cs" />
     <Compile Include="GetInboxDocumentStatusTests.cs" />
     <Compile Include="GetOutboxDocumentStatusTests.cs" />
     <Compile Include="GetOutboxDocumentsTests.cs" />
+    <Compile Include="Helpers\TestResources.cs" />
     <Compile Include="TemplatesTest.cs" />
     <Compile Include="Helpers\DateUtils.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -79,7 +82,7 @@
     <Compile Include="SetInboxDocumentStatusTests.cs" />
     <Compile Include="EnquireCompanyTests.cs" />
     <Compile Include="Settings.cs" />
-    <Compile Include="ShareDocumentTest.cs" />
+    <Compile Include="Api\Document\ShareDocumentTests.cs" />
     <Compile Include="IntegrationTests.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -102,6 +105,11 @@
     <Content Include="TestData\UBLWITHATTACHEMENT.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Api\Company\" />
+    <Folder Include="Api\Inbox\" />
+    <Folder Include="Api\Outbox\" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
