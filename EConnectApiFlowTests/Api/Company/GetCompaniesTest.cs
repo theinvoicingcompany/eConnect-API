@@ -1,10 +1,9 @@
-using System;
 using System.Linq;
 using EConnectApi;
 using EConnectApi.Definitions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace EConnectApiFlowTests
+namespace EConnectApiFlowTests.Api.Company
 {
     [TestClass]
     public class GetCompaniesTest

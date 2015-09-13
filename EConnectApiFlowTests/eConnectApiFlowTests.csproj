@@ -56,7 +56,7 @@
     <Compile Include="EConnect.cs" />
     <Compile Include="EConnectClientTest.cs" />
     <Compile Include="Api\Account\GetAccountDetailsTests.cs" />
-    <Compile Include="GetCompaniesTest.cs" />
+    <Compile Include="Api\Company\GetCompaniesTest.cs" />
     <Compile Include="GetDocumentPdf.cs" />
     <Compile Include="GetDocumentStatusTests.cs" />
     <Compile Include="GetInboxDocumentStatusTests.cs" />
@@ -76,7 +76,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="SearchCompanyTests.cs" />
-    <Compile Include="SendDocumentTests.cs" />
+    <Compile Include="Api\Document\SendDocumentTests.cs" />
     <Compile Include="GetDocumentsTests.cs" />
     <Compile Include="SetDocumentStatusTests.cs" />
     <Compile Include="SetInboxDocumentStatusTests.cs" />
@@ -91,6 +91,9 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <Content Include="TestData\InvoiceNoAttachmentForRecipient2.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="TestData\small.pdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -107,7 +110,6 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Api\Company\" />
     <Folder Include="Api\Inbox\" />
     <Folder Include="Api\Outbox\" />
   </ItemGroup>

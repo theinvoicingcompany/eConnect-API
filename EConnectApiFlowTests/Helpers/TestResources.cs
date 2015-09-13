@@ -8,6 +8,7 @@ namespace EConnectApiFlowTests.Helpers
     {
         private static XElement XmlReader(string filename)
         {
+            filename = filename.Replace(@"TestData\", "");
             Assert.IsNotNull(filename);
             Assert.IsTrue(File.Exists(filename), "deployment not successfull");
 
@@ -29,12 +30,12 @@ namespace EConnectApiFlowTests.Helpers
             }
         }
 
-        public static XElement Invoice1
+        public const string InvoiceNoAttachmentForRecipient2Path = @"TestData\InvoiceNoAttachmentForRecipient2.xml";
+        public static XElement InvoiceNoAttachmentForRecipient2
         {
             get
             {
-                const string filename = @"OutputDir\UBLWITHATTACHEMENT.txt";
-                return XmlReader(filename);
+                return XmlReader(InvoiceNoAttachmentForRecipient2Path);
             }
         }
     }
