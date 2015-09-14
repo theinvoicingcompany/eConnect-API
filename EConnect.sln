@@ -10,6 +10,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Api", "Api", "{54326F15-ECA8-43FC-8253-14877839CC28}"
 	ProjectSection(SolutionItems) = preProject
 		howto-deploy.txt = howto-deploy.txt
+		setup.md = setup.md
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eConnectApiFlowTests", "eConnectApiFlowTests\eConnectApiFlowTests.csproj", "{1CC7B2A5-D7FE-409D-B373-51DBD6C7D491}"
