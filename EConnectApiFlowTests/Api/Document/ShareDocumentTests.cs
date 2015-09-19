@@ -7,7 +7,7 @@ namespace EConnectApiFlowTests.Api.Document
     [TestClass]
     public class ShareDocumentTests
     {
-        public void AreSameDocuments(DocumentBase target, DocumentBase actual)
+        public void AreSameDocuments(DocumentBase target, DocumentDetails actual)
         {
             Assert.AreEqual(target.DocumentId, actual.DocumentId);
             Assert.AreEqual(target.Subject, actual.Subject);
@@ -81,7 +81,7 @@ namespace EConnectApiFlowTests.Api.Document
                 DocumentId = doc.DocumentId
             });
 
-            AreSameDocuments(doc, doc2);
+            AreSameDocuments(doc as DocumentBase, doc2);
         }
     }
 }

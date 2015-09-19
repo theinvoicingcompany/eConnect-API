@@ -62,6 +62,7 @@
     <Compile Include="GetInboxDocumentStatusTests.cs" />
     <Compile Include="GetOutboxDocumentStatusTests.cs" />
     <Compile Include="GetOutboxDocumentsTests.cs" />
+    <Compile Include="Helpers\DocumentsRequesterFilters.cs" />
     <Compile Include="Helpers\TestResources.cs" />
     <Compile Include="TemplatesTest.cs" />
     <Compile Include="Helpers\DateUtils.cs" />
@@ -69,7 +70,7 @@
     <Compile Include="GetInboxDocumentTests.cs" />
     <Compile Include="GetInboxDocumentsTests.cs" />
     <Compile Include="GetOutboxDocumentTests.cs" />
-    <Compile Include="GetDocumentTests.cs" />
+    <Compile Include="Api\Document\GetDocumentTests.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
@@ -77,8 +78,8 @@
     </Compile>
     <Compile Include="SearchCompanyTests.cs" />
     <Compile Include="Api\Document\SendDocumentTests.cs" />
-    <Compile Include="GetDocumentsTests.cs" />
-    <Compile Include="SetDocumentStatusTests.cs" />
+    <Compile Include="Api\Document\GetDocumentsTests.cs" />
+    <Compile Include="Api\Document\SetDocumentStatusTests.cs" />
     <Compile Include="SetInboxDocumentStatusTests.cs" />
     <Compile Include="EnquireCompanyTests.cs" />
     <Compile Include="Settings.cs" />

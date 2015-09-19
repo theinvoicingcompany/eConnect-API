@@ -117,6 +117,10 @@ namespace EConnectApi.Helpers
                 if (prop.PropertyType.IsArray)
                 {
                     var array = (object[])prop.GetValue(input, null);
+                    
+                    if (array==null)
+                        continue;
+                    
                     foreach (var o in array)
                     {
                         if (o != null)

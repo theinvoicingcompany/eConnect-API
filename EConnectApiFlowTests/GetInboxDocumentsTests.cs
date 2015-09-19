@@ -17,14 +17,12 @@ namespace EConnectApiFlowTests
             var result = EConnect.Client.GetInboxDocuments(new GetInboxDocumentsOfAnUser() { Limit = 2 });
             Assert.IsNotNull(result);
             var doc = result.Documents.First();
-            Assert.AreEqual(inboxDocument.Rowkey, doc.Rowkey);
             Assert.AreEqual(inboxDocument.CreatedDateTime, doc.CreatedDateTime);
             Assert.AreEqual(inboxDocument.DocumentId, doc.DocumentId);
 
             var result2 = EConnect.Client.GetInboxDocuments(new GetInboxDocumentsOfAnUser() { Limit = 2, StartRowRange = result.StartRowRange });
             Assert.IsNotNull(result2);
             var doc2 = result2.Documents.First();
-            Assert.AreEqual(result.StartRowRange, doc2.Rowkey);
             Assert.AreNotEqual(inboxDocument.CreatedDateTime, doc2.CreatedDateTime);
             Assert.AreNotEqual(inboxDocument.DocumentId, doc2.DocumentId);
         }

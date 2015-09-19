@@ -26,14 +26,12 @@ namespace EConnectApiFlowTests
             }});
             Assert.IsNotNull(result);
             var doc = result.Documents.First();
-            Assert.AreEqual(OutboxDocument.Rowkey, doc.Rowkey);
             Assert.AreEqual(OutboxDocument.CreatedDateTime, doc.CreatedDateTime);
             Assert.AreEqual(OutboxDocument.DocumentId, doc.DocumentId);
 
             var result2 = EConnect.Client.GetOutboxDocuments(new GetOutboxDocumentsOfAnUser() { Limit = 2, StartRowRange = result.StartRowRange });
             Assert.IsNotNull(result2);
             var doc2 = result2.Documents.First();
-            Assert.AreEqual(result.StartRowRange, doc2.Rowkey);
             Assert.AreNotEqual(OutboxDocument.CreatedDateTime, doc2.CreatedDateTime);
             Assert.AreNotEqual(OutboxDocument.DocumentId, doc2.DocumentId);
         }
