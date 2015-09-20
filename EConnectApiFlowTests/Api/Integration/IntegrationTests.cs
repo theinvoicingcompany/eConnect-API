@@ -5,7 +5,7 @@ using EConnectApi.Definitions;
 using EConnectApiFlowTests.Helpers;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace EConnectApiFlowTests
+namespace EConnectApiFlowTests.Api.Integration
 {
     [TestClass]
     public class IntegrationTests
@@ -68,8 +68,8 @@ namespace EConnectApiFlowTests
                                                               IntegrationRequestId = req.RequestTrackingId
                                                           });
 
-            Assert.IsNotNull(cred.AppIntegrationKey);
-            Assert.IsNotNull(cred.AppIntegrationSecret);
+            Assert.AreEqual(cred.AppIntegrationKey, req.GeneratedKey);
+            Assert.AreEqual(cred.AppIntegrationSecret, req.GeneratedSecret);
             Assert.IsNotNull(cred.ApproverId);
 
             using (var client = new EConnectClient(new EConnectClientConfigBase()

@@ -3,10 +3,10 @@ using System.Linq;
 using EConnectApi.Definitions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace EConnectApiFlowTests
+namespace EConnectApiFlowTests.Api.Template
 {
     [TestClass]
-    public class TemplatesTest
+    public class GetTemplatesTests
     {
         [TestMethod]
         public void GetTemplates()

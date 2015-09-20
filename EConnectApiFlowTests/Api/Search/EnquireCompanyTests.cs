@@ -1,8 +1,7 @@
-﻿using System;
-using EConnectApi.Definitions;
+﻿using EConnectApi.Definitions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace EConnectApiFlowTests
+namespace EConnectApiFlowTests.Api.Search
 {
     [TestClass]
     public class EnquireCompanyTests

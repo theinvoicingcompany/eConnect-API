@@ -143,9 +143,9 @@ namespace EConnectApiUnitTests
 
             var response = new GetInboxDocumentsResponse()
                                {
-                                   Documents = new []
+                                   Documents = new[]
                                                    {
-                                                       new DocumentBase()
+                                                       new DocumentBaseExtensions()
                                                            {
                                                                SenderAccountId = "A000000191",
                                                                SenderAccountName = "selmit.nl",

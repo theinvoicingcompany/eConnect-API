@@ -2,16 +2,20 @@ using System.Linq;
 using EConnectApi.Definitions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace EConnectApiFlowTests
+namespace EConnectApiFlowTests.Api.Inbox.Status
 {
     [TestClass]
     public class SetInboxDocumentStatusTests
     {
-        protected DocumentBase InboxDocument;
+        protected DocumentBaseExtensions InboxDocument;
 
         public SetInboxDocumentStatusTests()
         {
-            var result = EConnect.Client.GetInboxDocuments(new GetInboxDocumentsOfAnUser() { Limit = 1 });
+            var result = EConnect.Client.GetInboxDocuments(new GetInboxDocumentsFromEntity()
+                                                           {
+                                                               EntityId = Properties.Settings.Default.EntityId,
+                                                               Limit = 1
+                                                           });
             Assert.IsNotNull(result);
             InboxDocument = result.Documents.Single();
         }

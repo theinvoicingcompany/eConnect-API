@@ -2,16 +2,20 @@ using System.Linq;
 using EConnectApi.Definitions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace EConnectApiFlowTests
+namespace EConnectApiFlowTests.Api.Inbox.Status
 {
     [TestClass]
     public class GetInboxDocumentStatusTests
     {
-        protected DocumentBase InboxDocument;
+        protected DocumentBaseExtensions InboxDocument;
 
         public GetInboxDocumentStatusTests()
         {
-            var result = EConnect.Client.GetInboxDocuments(new GetInboxDocumentsOfAnUser() { Limit = 1 });
+            var result = EConnect.Client.GetInboxDocuments(new GetInboxDocumentsFromEntity()
+                                                           {
+                                                               EntityId = Properties.Settings.Default.EntityId,
+                                                               Limit = 1
+                                                           });
             Assert.IsNotNull(result);
             InboxDocument = result.Documents.Single();
         }
@@ -26,6 +30,8 @@ namespace EConnectApiFlowTests
 
             Assert.AreEqual(result.Status, InboxDocument.LatestStatus);
             Assert.AreEqual(result.StatusCode, InboxDocument.LatestStatusCode);
+            Assert.IsNotNull(result.StatusSetByAccountId);
+            Assert.IsNotNull(result.StatusSetByUserId);
         }
 
 
@@ -39,6 +45,8 @@ namespace EConnectApiFlowTests
 
             Assert.AreEqual(result.Status, InboxDocument.LatestStatus);
             Assert.AreEqual(result.StatusCode, InboxDocument.LatestStatusCode);
+            Assert.IsNotNull(result.StatusSetByAccountId);
+            Assert.IsNotNull(result.StatusSetByUserId);
         }
     }
 }

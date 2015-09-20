@@ -54,37 +54,36 @@
     <Compile Include="Api\Document\CreateDocumentTests.cs" />
     <Compile Include="Api\Document\UpdateDocumentTests.cs" />
     <Compile Include="EConnect.cs" />
-    <Compile Include="EConnectClientTest.cs" />
+    <Compile Include="EConnectClientTests.cs" />
     <Compile Include="Api\Account\GetAccountDetailsTests.cs" />
     <Compile Include="Api\Company\GetCompaniesTest.cs" />
-    <Compile Include="GetDocumentPdf.cs" />
-    <Compile Include="GetDocumentStatusTests.cs" />
-    <Compile Include="GetInboxDocumentStatusTests.cs" />
-    <Compile Include="GetOutboxDocumentStatusTests.cs" />
-    <Compile Include="GetOutboxDocumentsTests.cs" />
+    <Compile Include="Api\Pdf\GetDocumentPdf.cs" />
+    <Compile Include="Api\Document\Status\GetDocumentStatusTests.cs" />
+    <Compile Include="Api\Inbox\Status\GetInboxDocumentStatusTests.cs" />
+    <Compile Include="Api\Outbox\Status\GetOutboxDocumentStatusTests.cs" />
+    <Compile Include="Api\Outbox\GetOutboxDocumentsTests.cs" />
     <Compile Include="Helpers\DocumentsRequesterFilters.cs" />
     <Compile Include="Helpers\TestResources.cs" />
-    <Compile Include="TemplatesTest.cs" />
+    <Compile Include="Api\Template\GetTemplatesTests.cs" />
     <Compile Include="Helpers\DateUtils.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="GetInboxDocumentTests.cs" />
-    <Compile Include="GetInboxDocumentsTests.cs" />
-    <Compile Include="GetOutboxDocumentTests.cs" />
+    <Compile Include="Api\Inbox\GetInboxDocumentTests.cs" />
+    <Compile Include="Api\Inbox\GetInboxDocumentsTests.cs" />
+    <Compile Include="Api\Outbox\GetOutboxDocumentTests.cs" />
     <Compile Include="Api\Document\GetDocumentTests.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="SearchCompanyTests.cs" />
+    <Compile Include="Api\Search\SearchCompanyTests.cs" />
     <Compile Include="Api\Document\SendDocumentTests.cs" />
     <Compile Include="Api\Document\GetDocumentsTests.cs" />
-    <Compile Include="Api\Document\SetDocumentStatusTests.cs" />
-    <Compile Include="SetInboxDocumentStatusTests.cs" />
-    <Compile Include="EnquireCompanyTests.cs" />
-    <Compile Include="Settings.cs" />
+    <Compile Include="Api\Document\Status\SetDocumentStatusTests.cs" />
+    <Compile Include="Api\Inbox\Status\SetInboxDocumentStatusTests.cs" />
+    <Compile Include="Api\Search\EnquireCompanyTests.cs" />
     <Compile Include="Api\Document\ShareDocumentTests.cs" />
-    <Compile Include="IntegrationTests.cs" />
+    <Compile Include="Api\Integration\IntegrationTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -110,10 +109,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Api\Inbox\" />
-    <Folder Include="Api\Outbox\" />
-  </ItemGroup>
+  <ItemGroup />
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>

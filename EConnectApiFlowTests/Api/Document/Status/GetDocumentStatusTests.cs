@@ -2,7 +2,7 @@ using System.Linq;
 using EConnectApi.Definitions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace EConnectApiFlowTests
+namespace EConnectApiFlowTests.Api.Document.Status
 {
     [TestClass]
     public class GetDocumentStatusTests
@@ -26,6 +26,8 @@ namespace EConnectApiFlowTests
 
             Assert.AreEqual(result.Status, Document.LatestStatus);
             Assert.AreEqual(result.StatusCode, Document.LatestStatusCode);
+            Assert.IsNotNull(result.StatusSetByAccountId);
+            Assert.IsNotNull(result.StatusSetByUserId);
         }
     }
 }

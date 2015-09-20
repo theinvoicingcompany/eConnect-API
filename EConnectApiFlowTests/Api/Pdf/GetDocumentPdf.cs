@@ -1,14 +1,13 @@
-using System;
 using System.IO;
 using System.Linq;
-using System.Xml.Linq;
+using System.Net.Configuration;
 using EConnectApi.Definitions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace EConnectApiFlowTests
+namespace EConnectApiFlowTests.Api.Pdf
 {
     [TestClass]
-    public class GetDocumentPdfTest
+    public class GetDocumentPdfTests
     {
         private void ValidatePdf(GetDocumentPdfResponse test)
         {
@@ -27,19 +26,23 @@ namespace EConnectApiFlowTests
         }
 
         [TestMethod]
-        public void DownloadAndStorePdf()
+        public void GetDocumentPdf_Inbox()
         {
             // Download PDF form first inbox doc
-            var doc1 = EConnect.Client.GetInboxDocuments(new GetInboxDocumentsOfAnUser() { Limit = 1 }).Documents.First();
+            var doc1 = EConnect.Client.GetInboxDocuments(new GetInboxDocumentsFromEntity()
+                                                         {
+                                                             EntityId = Properties.Settings.Default.EntityId,
+                                                             Limit = 1
+                                                         }).Documents.First();
             var test = EConnect.Client.GetDocumentPdf(new GetDocumentPdf() { ConsignmentId = doc1.ConsignmentId });
 
             ValidatePdf(test);
         }
 
         [TestMethod]
-        public void TestNormalPdf()
+        public void GetDocumentPdf_Outbox_UblInvoiceWithoutPdfAttachment()
         {
-            var externalId = "XCNIN44018";
+            var externalId = "XCNIN50006";
             var result = EConnect.Client.GetOutboxDocument(new GetOutboxDocument()
             {
                 ExternalId = externalId

@@ -21,7 +21,7 @@ namespace EConnectApi.Definitions
             public string OwnerUserName { get; set; }
 
             public string OwnerAccountId { get; set; }
-
+            
             public string OwnerAccountName { get; set; }
 
             public string CreatorUserId { get; set; }

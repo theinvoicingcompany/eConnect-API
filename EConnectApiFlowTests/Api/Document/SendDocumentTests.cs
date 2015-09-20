@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Linq;
+using System.Threading;
 using System.Xml.Linq;
 using EConnectApi;
 using EConnectApi.Definitions;
@@ -43,6 +44,9 @@ namespace EConnectApiFlowTests.Api.Document
             // Send
             var sendRes = EConnect.Client.SendDocument(send);
 
+            // Give the platform some space to process the document
+            Thread.Sleep(60000 * 5);
+
             // Check outbox
             var outbox = EConnect.Client.GetOutboxDocument(new GetOutboxDocument()
                                                               {
@@ -52,15 +56,16 @@ namespace EConnectApiFlowTests.Api.Document
             Validate(sendRes, outbox);
             Validate(send, outbox);
 
-            //// Check inbox
-            //var inboxdocs = EConnect.Client2.GetInboxDocuments(new GetInboxDocumentsFromEntity()
-            //                                   {
-            //                                       EntityId = Properties.Settings.Default.EntityId2,
-            //                                       Limit = 1
-            //                                   });
-            //var inbox = inboxdocs.Documents.Single();
 
-            //Assert.AreEqual(outbox.Subject, inbox.Subject);
+            // Check inbox
+            var inboxdocs = EConnect.Client2.GetInboxDocuments(new GetInboxDocumentsFromEntity()
+                                               {
+                                                   EntityId = Properties.Settings.Default.EntityId2,
+                                                   Limit = 1
+                                               });
+            var inbox = inboxdocs.Documents.Single();
+
+            Assert.AreEqual(outbox.Subject, inbox.Subject);
         }
 
         [TestMethod]
@@ -80,28 +85,18 @@ namespace EConnectApiFlowTests.Api.Document
         }
 
         [TestMethod]
-        [DeploymentItem(@"TestData\UBLWITHATTACHEMENT.txt", "OutputDir")]
+        [DeploymentItem(TestResources.InvoiceNoAttachmentForRecipient2Path)]
         public void SendDocumentFor()
         {
-            const string fileName = @"OutputDir\UBLWITHATTACHEMENT.txt";
-            Assert.IsNotNull(fileName);
-            Assert.IsTrue(File.Exists(fileName), "deployment not successfull");
-
-            string ubltext = File.ReadAllText(fileName);
-            Assert.IsFalse(string.IsNullOrEmpty(ubltext), "test file seems to be empty");
-
-            var ubl = XElement.Parse(ubltext);
-            Assert.IsNotNull(ubl);
-
-            var doc = new SendDocumentFor()
+            var send = new SendDocumentFor()
             {
                 DocumentTemplateId = "GLDT9223370666504283001RA000000006DTP2000001",
-                Subject = "Test factuur " + Guid.NewGuid(),
-                Recipient = "NL:KVK:00006661",
-                Payload = ubl,
+                Subject = "Unit test " + Guid.NewGuid(),
+                Recipient = Properties.Settings.Default.RequesterId2,
+                Payload = TestResources.InvoiceNoAttachmentForRecipient2,
             };
 
-            EConnect.Client.SendDocumentFor("NL:KVK:00006663", doc);
+            EConnect.Client.SendDocumentFor("NL:KVK:00006663", send);
         }
     }
 }

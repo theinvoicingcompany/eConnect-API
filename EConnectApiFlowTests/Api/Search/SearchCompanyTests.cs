@@ -1,7 +1,7 @@
 using EConnectApi.Definitions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace EConnectApiFlowTests
+namespace EConnectApiFlowTests.Api.Search
 {
     [TestClass]
     public class SearchCompanyTests
@@ -9,8 +9,6 @@ namespace EConnectApiFlowTests
         [TestMethod]
         public void SearchCompanyEConnect()
         {
-            // http://help.everbinding.nl/content/api-search-company
-
             var search = EConnect.Client.SearchCompany(new SearchCompany()
                 {
                       CompanyName = "eVerbinding"
@@ -21,10 +19,7 @@ namespace EConnectApiFlowTests
             Assert.AreEqual("NL:KVK:54441587", company.TemporaryId);
             Assert.AreEqual("Herenweg", company.StreetName);
             Assert.AreEqual("115", company.HouseNumber);
-            //Assert.AreEqual(string.Empty, company.HouseNumberSupplement);
             Assert.AreEqual("2402ND", company.PostalCode);
-            //Assert.AreEqual(string.Empty, company.Url);
-            //Assert.AreEqual(string.Empty, company.EmailAddress);
         }
 
         [TestMethod]
@@ -35,7 +30,7 @@ namespace EConnectApiFlowTests
             var search = EConnect.Client.SearchCompany(new SearchCompany()
                 {
                     CountryCode = "NL",
-                    CompanyName = "lat",
+                    CompanyName = "Selm",
                     City = "UTRECHT",
                     KvkNumber = "",
                     TemporaryId = "",
@@ -53,7 +48,7 @@ namespace EConnectApiFlowTests
             var search3 = EConnect.Client.SearchCompany(new SearchCompany()
                 {
                     CountryCode = "NL",
-                    CompanyName = "lat",
+                    CompanyName = "Selm",
                     City = "UTRECHT",
                     KvkNumber = "",
                     TemporaryId = "",

@@ -2,12 +2,12 @@ using System.Linq;
 using EConnectApi.Definitions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace EConnectApiFlowTests
+namespace EConnectApiFlowTests.Api.Outbox.Status
 {
     [TestClass]
     public class GetOutboxDocumentStatusTests
     {
-        protected DocumentBase OutboxDocument;
+        protected DocumentBaseExtensions OutboxDocument;
 
         public GetOutboxDocumentStatusTests()
         {

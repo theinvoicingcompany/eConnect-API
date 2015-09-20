@@ -10,7 +10,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace EConnectApiFlowTests
 {
     [TestClass]
-    public class EConnectClientTest
+    public class EConnectClientTests
     {
         [TestMethod]
         [ExpectedException(typeof(UnauthorizedException), "Invalid consumer key or no such app available in registry")]
@@ -40,17 +40,17 @@ namespace EConnectApiFlowTests
             client.Ping();
         }
 
-        //[TestMethod]
-        //[ExpectedException(typeof(EConnectClientException), "Invalid consumer key or no such app available in registry")]
-        //public void WrongRequesterId()
-        //{
-        //    var client = new EConnectClient(new EConnectClientConfigBase()
-        //    {
-        //        ConsumerKey = Properties.Settings.Default.ConsumerKey,
-        //        ConsumerSecret = Properties.Settings.Default.ConsumerSecret,
-        //        RequesterId = "wrong"
-        //    });
-        //    client.Ping();
-        //}
+        [TestMethod]
+        [ExpectedException(typeof(EConnectClientException), "Invalid consumer key or no such app available in registry")]
+        public void WrongRequesterId()
+        {
+            var client = new EConnectClient(new EConnectClientConfigBase()
+            {
+                ConsumerKey = Properties.Settings.Default.ConsumerKey,
+                ConsumerSecret = Properties.Settings.Default.ConsumerSecret,
+                RequesterId = "wrong"
+            });
+            client.Ping();
+        }
     }
 }

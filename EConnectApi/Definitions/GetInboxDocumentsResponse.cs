@@ -7,7 +7,7 @@ namespace EConnectApi.Definitions
     public class GetInboxDocumentsResponse
     {
         [XmlElement(ElementName = "tuple")]
-        public DocumentBase[] Documents { get; set; }
+        public DocumentBaseExtensions[] Documents { get; set; }
 
         [XmlElement(ElementName = "startrowrange")]
         public string StartRowRange { get; set; }

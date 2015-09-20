@@ -1,4 +1,5 @@
-﻿using System.Xml.Serialization;
+﻿using System;
+using System.Xml.Serialization;
 
 namespace EConnectApi.Definitions
 {
@@ -37,6 +38,7 @@ namespace EConnectApi.Definitions
         /// This parameter gives the searchKey parameter from the previous batch of search results.
         /// </summary>
         [XmlElement(ElementName = "searchKey")]
+        [Obsolete]
         public string SearchKey { get; set; }
 
         /// <summary>

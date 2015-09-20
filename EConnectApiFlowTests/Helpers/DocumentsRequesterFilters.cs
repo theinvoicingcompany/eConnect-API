@@ -53,7 +53,30 @@ namespace EConnectApiFlowTests.Helpers
             }
         }
 
-        private static void ValidateTimeSpanFilter(TimeSpanFilter filter, Document[] docs)
+        public static GetDocumentsFiltersBase IsReadFalse
+        {
+            get
+            {
+                return new GetDocumentsFiltersBase()
+                {
+                    IsRead = false
+                };
+            }
+        }
+
+        public static GetDocumentsFiltersBase IsReadTrue
+        {
+            get
+            {
+                return new GetDocumentsFiltersBase()
+                {
+                    IsRead = true
+                };
+            }
+        }
+
+
+        private static void ValidateTimeSpanFilter(TimeSpanFilter filter, DocumentBase[] docs)
         {
             var to = filter.To;
             if (to.HasValue)
@@ -64,7 +87,7 @@ namespace EConnectApiFlowTests.Helpers
                 Assert.AreEqual(0, docs.Count(a => a.CreatedDateTime < from), "From filter not applied");
         }
 
-        public static void Validate(GetDocumentsFiltersBase filter, Document[] docs)
+        public static void Validate(GetDocumentsFiltersBase filter, DocumentBase[] docs)
         {
             if (docs == null || !docs.Any())
                 Assert.Inconclusive("No documents found");
@@ -83,7 +106,18 @@ namespace EConnectApiFlowTests.Helpers
 
             if (!string.IsNullOrWhiteSpace(filter.DocumentTemplateId))
                 Assert.AreEqual(0, docs.Count(a => a.DocumentTemplateId != filter.DocumentTemplateId), "DocumentTemplateId filter not applied");
+
         }
 
+        public static void Validate(GetDocumentsFiltersBase filter, DocumentBaseExtensions[] docs)
+        {
+            if (docs == null || !docs.Any())
+                Assert.Inconclusive("No documents found");
+
+            Validate(filter, docs.Select(d => d as DocumentBase).ToArray());
+
+            if (filter.IsRead.HasValue)
+                Assert.AreEqual(0, docs.Count(a => a.IsRead != filter.IsRead), "Is Read filter not applied");
+        }
     }
 }

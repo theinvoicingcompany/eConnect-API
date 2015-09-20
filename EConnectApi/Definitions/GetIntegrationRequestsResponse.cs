@@ -18,6 +18,16 @@ namespace EConnectApi.Definitions
 
             public string AppName { get; set; }
 
+            public string GeneratedKey { get; set; }
+
+            public string GeneratedSecret { get; set; }
+
+            public string PayForAccountId { get; set; }
+
+            public string PayFor { get; set; }
+
+            public string PayForAccountName { get; set; }
+
             [XmlIgnore]
             public DateTime RequestedDateTime { get; set; }
 
@@ -35,21 +45,26 @@ namespace EConnectApi.Definitions
                 }
             }
 
-            public string RecipientCompanyEntityId { get; set; }
-
             [XmlIgnore]
-            public string RecipientCompanyId
+            public DateTime ActivatedDateTime { get; set; }
+
+            // Proxied property
+            [XmlElement(ElementName = "ActivatedDate")]
+            public long RawActivatedDate
             {
                 get
                 {
-                    return RecipientCompanyEntityId;
+                    return ActivatedDateTime.ToJavaTimestamp();
                 }
                 set
                 {
-                    RecipientCompanyEntityId = value;
+                    ActivatedDateTime = value.ToDateTime();
                 }
             }
 
+
+            public string RecipientCompanyEntityId { get; set; }
+            public string RecipientCompanyId { get; set; }
 
             [XmlElement(ElementName = "RecipientCompanyKVK")]
             public string RecipientCompanyKvk { get; set; }
