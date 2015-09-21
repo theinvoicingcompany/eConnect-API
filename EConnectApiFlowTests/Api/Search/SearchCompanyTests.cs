@@ -22,41 +22,41 @@ namespace EConnectApiFlowTests.Api.Search
             Assert.AreEqual("2402ND", company.PostalCode);
         }
 
-        [TestMethod]
-        public void SearchCompanyPagingTest()
-        {
-            byte pagesize = 2;
+        //[TestMethod]
+        //public void SearchCompanyPagingTest()
+        //{
+        //    byte pagesize = 2;
 
-            var search = EConnect.Client.SearchCompany(new SearchCompany()
-                {
-                    CountryCode = "NL",
-                    CompanyName = "Selm",
-                    City = "UTRECHT",
-                    KvkNumber = "",
-                    TemporaryId = "",
-                    Limit = pagesize
-                });
+        //    var search = EConnect.Client.SearchCompany(new SearchCompany()
+        //        {
+        //            CountryCode = "NL",
+        //            CompanyName = "Selm",
+        //            City = "UTRECHT",
+        //            KvkNumber = "",
+        //            TemporaryId = "",
+        //            Limit = pagesize
+        //        });
 
-            Assert.AreEqual(pagesize, search.Companies.Length);
+        //    Assert.AreEqual(pagesize, search.Companies.Length);
 
-            var search2 = EConnect.Client.SearchCompany(new SearchCompany() {SearchKey = search.SearchKey, Limit = pagesize});
+        //    var search2 = EConnect.Client.SearchCompany(new SearchCompany() {SearchKey = search.SearchKey, Limit = pagesize});
 
-            Assert.AreEqual(pagesize, search2.Companies.Length);
+        //    Assert.AreEqual(pagesize, search2.Companies.Length);
 
-            Assert.AreNotEqual(search.Companies[0].TemporaryId, search2.Companies[0].TemporaryId);
+        //    Assert.AreNotEqual(search.Companies[0].TemporaryId, search2.Companies[0].TemporaryId);
 
-            var search3 = EConnect.Client.SearchCompany(new SearchCompany()
-                {
-                    CountryCode = "NL",
-                    CompanyName = "Selm",
-                    City = "UTRECHT",
-                    KvkNumber = "",
-                    TemporaryId = "",
-                    Limit = 4
-                });
+        //    var search3 = EConnect.Client.SearchCompany(new SearchCompany()
+        //        {
+        //            CountryCode = "NL",
+        //            CompanyName = "Selm",
+        //            City = "UTRECHT",
+        //            KvkNumber = "",
+        //            TemporaryId = "",
+        //            Limit = 4
+        //        });
 
-            Assert.AreEqual(search3.Companies[2].TemporaryId, search2.Companies[0].TemporaryId);
-        }
+        //    Assert.AreEqual(search3.Companies[2].TemporaryId, search2.Companies[0].TemporaryId);
+        //}
 
         [TestMethod]
         public void SearchCompany_ByTemporaryId()
