@@ -10,10 +10,10 @@ namespace EConnectApiFlowTests.Api.Inbox
 
         public GetInboxDocumentTests()
         {
-            var page1 = EConnect.Client.GetInboxDocuments(new GetInboxDocumentsFromEntity()
+            var page1 = EConnect.Client2.GetInboxDocuments(new GetInboxDocumentsFromEntity()
             {
                 Limit = 2,
-                EntityId = Properties.Settings.Default.EntityId
+                EntityId = Properties.Settings.Default.EntityId2
             });
             if (page1 == null || page1.Documents == null)
                 Assert.Inconclusive("No documents returned");
@@ -22,7 +22,7 @@ namespace EConnectApiFlowTests.Api.Inbox
 
         public void GetDocument(GetInboxDocument parameters)
         {
-            var details = EConnect.Client.GetInboxDocument(parameters);
+            var details = EConnect.Client2.GetInboxDocument(parameters);
 
             Assert.IsTrue(InboxDocument.Equals(details));
             Assert.IsNotNull(details.Payload);

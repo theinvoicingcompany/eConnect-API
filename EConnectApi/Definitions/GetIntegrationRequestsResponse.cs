@@ -75,8 +75,6 @@ namespace EConnectApi.Definitions
 
             public string RequestTrackingId { get; set; }
 
-            public string IntegrationId { get; set; }
-
             public bool PayByRequester { get; set; }
 
             public string RequestorAccountId { get; set; }

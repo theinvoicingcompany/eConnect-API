@@ -12,6 +12,8 @@ namespace EConnectApi.Definitions
             public bool? MyCompaniesOnly { get; set; }
 
             public bool ShouldSerializeVerifiedOnly() { return VerifiedOnly.HasValue; }
+
+            [XmlElement(ElementName = "VerfiedOnly")]
             public bool? VerifiedOnly { get; set; }
 
             public bool ShouldSerializeSimplerInvoicingRegisteredOnly() { return SimplerInvoicingRegisteredOnly.HasValue; }

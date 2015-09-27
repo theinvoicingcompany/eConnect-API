@@ -27,6 +27,7 @@ namespace EConnectApi.Definitions
 
         public string ReceiverEntityId { get; set; }
         public string ReceiverEntityName { get; set; }
+        public string RecipientEmailId { get; set; }
         [XmlElement(ElementName = "TrustedReceiver")]
         public bool IsTrustedReceiver { get; set; }
 

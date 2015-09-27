@@ -1,8 +1,7 @@
-using System.Linq;
 using EConnectApi.Definitions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace EConnectApiFlowTests.Api.Document
+namespace EConnectApiFlowTests.Api.Document.Status
 {
     [TestClass]
     public class SetDocumentStatusTests

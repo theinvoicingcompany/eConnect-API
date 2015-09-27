@@ -85,7 +85,7 @@ namespace EConnectApiFlowTests.Api.Inbox
         {
             GetDocuments(new GetInboxDocumentsFromGroup()
             {
-                GroupId = "XGI214007441664201365"
+                GroupId = "XGL114433656877296961"
             });
         }
 
@@ -118,6 +118,13 @@ namespace EConnectApiFlowTests.Api.Inbox
         {
             TestFilter(DocumentsRequesterFilters.CreatedDateTime2);
         }
+
+        [TestMethod]
+        public void GetInboxDocuments_FilterCreatedDateTime3()
+        {
+            TestFilter(DocumentsRequesterFilters.CreatedDateTime3);
+        }
+        
 
         [TestMethod]
         public void GetInboxDocuments_FilterModifiedDateTime1()

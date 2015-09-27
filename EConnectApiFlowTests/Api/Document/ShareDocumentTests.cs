@@ -8,16 +8,16 @@ namespace EConnectApiFlowTests.Api.Document
     public class ShareDocumentTests
     {
         [TestMethod]
-        public void ShareDocument()
+        public void ShareDocument_FromEntity()
         {
-            var inbox = EConnect.Client.GetInboxDocuments(new GetInboxDocumentsFromEntity()
+            var inbox = EConnect.Client2.GetInboxDocuments(new GetInboxDocumentsFromEntity()
                                                           {
-                                                              EntityId = Properties.Settings.Default.EntityId,
+                                                              EntityId = Properties.Settings.Default.EntityId2,
                                                               Limit = 1
                                                           });
             var doc = inbox.Documents.Single();
 
-            EConnect.Client.ShareDocument(new ShareDocument()
+            EConnect.Client2.ShareDocument(new ShareDocument()
                              {
                                  DocumentId = doc.DocumentId,
                                  DocumentType = DocumentType.Inbox,
@@ -25,13 +25,13 @@ namespace EConnectApiFlowTests.Api.Document
                                                 {
                                                     new ShareDocument.User()
                                                     {
-                                                        Id = Properties.Settings.Default.RequesterId2,
+                                                        Id = Properties.Settings.Default.RequesterId,
                                                         Permission = Permission.Read
                                                     }
                                                 }
                              });
 
-            var doc2 = EConnect.Client2.GetDocument(new GetDocument()
+            var doc2 = EConnect.Client.GetDocument(new GetDocument()
                                          {
                                              DocumentId = doc.DocumentId
                                          });
@@ -40,7 +40,7 @@ namespace EConnectApiFlowTests.Api.Document
         }
 
         [TestMethod]
-        public void ShareDocument2()
+        public void ShareDocument_OfAnUser()
         {
             var docs = EConnect.Client.GetDocuments(new GetDocumentsOfAnUser()
                                                    {
@@ -62,18 +62,14 @@ namespace EConnectApiFlowTests.Api.Document
                                                 }
             });
 
-            //var res2d = EConnect.Client2.GetDocuments(new GetDocumentsOfAnUser()
-            //                              {
-            //                                  Limit = 1
-            //                              });
-
-            //var doc2d = res2d.Documents.Single();
+            Assert.AreEqual(doc.DocumentId, res.DocumentId);
+            
             var doc2 = EConnect.Client2.GetDocument(new GetDocument()
             {
                 DocumentId = doc.DocumentId
             });
 
-            Assert.AreEqual(doc2, doc);
+            Assert.IsTrue((doc as EConnectApi.Definitions.Document).Equals(doc2), "documents are not the same");
         }
     }
 }

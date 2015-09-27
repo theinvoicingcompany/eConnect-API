@@ -38,6 +38,20 @@ namespace EConnectApiFlowTests.Helpers
             }
         }
 
+        public static GetDocumentsFiltersBase CreatedDateTime3
+        {
+            get
+            {
+                return new GetDocumentsFiltersBase()
+                {
+                    CreatedDateTime = new TimeSpanFilter()
+                    {
+                        From = DateTime.Now.AddDays(-300)
+                    }
+                };
+            }
+        }
+
         public static GetDocumentsFiltersBase ModifiedDateTime1
         {
             get

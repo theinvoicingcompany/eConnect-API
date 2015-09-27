@@ -11,9 +11,10 @@ namespace EConnectApiFlowTests.Api.Outbox.Status
 
         public GetOutboxDocumentStatusTests()
         {
-            var result = EConnect.Client.GetOutboxDocuments(new GetOutboxDocumentsOfAnUser() { Limit = 1 });
+            var result = EConnect.Client.GetOutboxDocuments(new GetOutboxDocumentsOfAnUser() { Limit = 5 });
             Assert.IsNotNull(result);
-            OutboxDocument = result.Documents.Single();
+            // Take the last one, because of the first one cloud be a doucment which was send a couple of seconds ago by another unit test
+            OutboxDocument = result.Documents.Last();
         }
         
         [TestMethod]

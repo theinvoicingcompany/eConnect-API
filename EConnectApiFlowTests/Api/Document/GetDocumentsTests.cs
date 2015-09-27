@@ -22,11 +22,10 @@ namespace EConnectApiFlowTests.Api.Document
                 Assert.Inconclusive("No documents returned");
 
             Assert.AreEqual(page1.Documents.Length, get.Limit);
-            Assert.IsNotNull(page1.StartRowRange);
             return page1;
         }
 
-        protected void TestFilter(GetDocumentsFiltersBase filter)
+        protected GetDocumentsResponse TestFilter(GetDocumentsFiltersBase filter)
         {
             var page1 = GetDocuments(new GetDocumentsOfAnUser()
             {
@@ -34,6 +33,8 @@ namespace EConnectApiFlowTests.Api.Document
             });
 
             DocumentsRequesterFilters.Validate(filter, page1.Documents.Select(d => d as DocumentBase).ToArray());
+
+            return page1;
         }
         #endregion
 
@@ -103,7 +104,9 @@ namespace EConnectApiFlowTests.Api.Document
         [TestMethod]
         public void GetDocuments_FilterDocumentId()
         {
-            TestFilter(new GetDocumentsFiltersBase() { DocumentId = "RA000000218DMP1000215" });
+            var doc = TestFilter(new GetDocumentsFiltersBase() { DocumentId = "RA000000218DMP1000215" }).Documents.First();
+            Assert.AreEqual("RA000000218DTL1000001", doc.DocumentTemplateId);
+            Assert.AreEqual("User", doc.TemplateSource);
         }
 
         [TestMethod]

@@ -12,6 +12,7 @@ namespace EConnectApi.Definitions
         {
             public string AccountId { get; set; }
             public string AccountName { get; set; }
+            public string EmailAddress { get; set; }
 
             [XmlIgnore]
             public DateTime CreatedDateTime { get; set; }
@@ -34,10 +35,9 @@ namespace EConnectApi.Definitions
             public string Residence { get; set; }
             public string Description { get; set; }
 
-            /// <summary>
-            /// Entity id
-            /// </summary>
+            public string EntityId { get; set; }
             public string CompanyId { get; set; }
+            public string TemporaryIdentifier { get; set; }
 
             public string AdministratorUserId { get; set; }
             public string AdministratorUserName { get; set; }
@@ -47,6 +47,9 @@ namespace EConnectApi.Definitions
             public string Url { get; set; }
 
             public string HouseNumber { get; set; }
+
+            [XmlElement(ElementName = "PeppolRegisterationRefernceList")]
+            public string PeppolRegisterationReferenceList { get; set; }
             public bool IsRegisteredToPeppol { get; set; }
             public bool IsVerified { get; set; }
             public int MemberCount { get; set; }
@@ -75,10 +78,5 @@ namespace EConnectApi.Definitions
 
         [XmlElement(ElementName = "tuple")]
         public CompanyDetails[] Companies { get; set; }
-
-
-        [XmlElement(ElementName = "cursor")]
-        public string Cursor { get; set; }
-
     }
 }

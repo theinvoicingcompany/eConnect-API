@@ -26,5 +26,15 @@ namespace EConnectApi.Helpers
         {
             return (long)(dt.ToUniversalTime() - EPoch).TotalMilliseconds;
         }
+
+        public static long ToReverseTimestamp(DateTime dateTime)
+        {
+            return (long.MaxValue - ToJavaTimestamp(dateTime));
+        }
+
+        public static DateTime ToDateTimeFromReverseTimestamp(long javaTimeStamp)
+        {
+            return ToDateTime(long.MaxValue - javaTimeStamp);
+        }
     }
 }

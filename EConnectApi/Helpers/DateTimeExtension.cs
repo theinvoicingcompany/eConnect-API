@@ -8,5 +8,10 @@ namespace EConnectApi.Helpers
         {
             return DateTimeConverter.ToJavaTimestamp(dt);
         }
+
+        public static long ToReverseTimestamp(this DateTime dt)
+        {
+            return DateTimeConverter.ToReverseTimestamp(dt);
+        }
     }
 }

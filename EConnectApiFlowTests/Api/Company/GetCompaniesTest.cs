@@ -50,7 +50,7 @@ namespace EConnectApiFlowTests.Api.Company
         {
             var res = EConnect.Client.GetCompanies(new GetCompanies() { Limit = 1 });
             ValidateCompanies(res);
-            var res2 = EConnect.Client.GetCompanies(new GetCompanies() { Limit = 1, StartRowRange = res.StartRowRange });
+            var res2 = EConnect.Client.GetCompanies(new GetCompanies() { Limit = 1, Cursor = res.Cursor });
             ValidateCompanies(res2);
             Assert.AreNotEqual(res.Companies[0].CompanyId, res2.Companies[0].CompanyId);
         }

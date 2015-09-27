@@ -15,14 +15,20 @@ namespace EConnectApi.Definitions
             }
         }
         
-        [XmlElement(ElementName = "startrowrange")]
-        public string StartRowRange { get; set; }
+        //[XmlElement(ElementName = "startrowrange")]
+        //public string StartRowRange { get; set; }
+
+        [XmlElement(ElementName = "cursor")]
+        public string Cursor { get; set; }
     }
 
     public class PageAbleResponse
     {
 
-        [XmlElement(ElementName = "startrowrange")]
-        public string StartRowRange { get; set; }
+        //[XmlElement(ElementName = "startrowrange")]
+        //public string StartRowRange { get; set; }
+
+        [XmlElement(ElementName = "cursor")]
+        public string Cursor { get; set; }
     }
 }
