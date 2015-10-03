@@ -16,3 +16,9 @@ This will disable strong name verification for all assemblies signed with your p
 ```
 sn -Vl
 ```
+
+Remove the skip validation
+
+```
+sn -Vu
+```
