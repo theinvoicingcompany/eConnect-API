@@ -20,5 +20,5 @@ sn -Vl
 Remove the skip validation
 
 ```
-sn -Vu
+sn -Vu *,12c39828a76d120f
 ```
