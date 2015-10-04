@@ -9,7 +9,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eConnectApiUnitTests", "eCo
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Api", "Api", "{54326F15-ECA8-43FC-8253-14877839CC28}"
 	ProjectSection(SolutionItems) = preProject
-		howto-deploy.txt = howto-deploy.txt
 		readme.md = readme.md
 		setup.md = setup.md
 	EndProjectSection

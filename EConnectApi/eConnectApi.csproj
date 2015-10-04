@@ -64,10 +64,10 @@
     <Compile Include="Definitions\Company.cs" />
     <Compile Include="Definitions\CreateDocument.cs" />
     <Compile Include="Definitions\CreateDocumentResponse.cs" />
-    <Compile Include="Definitions\Document.cs" />
+    <Compile Include="Definitions\EConnectDocument.cs" />
     <Compile Include="Definitions\DocumentBaseExtensions.cs" />
     <Compile Include="Definitions\DocumentBaseExtensionsDetails.cs" />
-    <Compile Include="Definitions\DocumentDetails.cs" />
+    <Compile Include="Definitions\EConnectDocumentDetails.cs" />
     <Compile Include="Definitions\FileWrapper.cs" />
     <Compile Include="Definitions\GetAccountDetails.cs" />
     <Compile Include="Definitions\GetAccountDetailsResponse.cs" />

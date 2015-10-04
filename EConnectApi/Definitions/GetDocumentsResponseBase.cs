@@ -5,7 +5,7 @@ namespace EConnectApi.Definitions
     public class GetDocumentsResponseBase
     {
         [XmlElement(ElementName = "tuple")]
-        public Document[] Documents { get; set; }
+        public EConnectDocument[] Documents { get; set; }
 
         [XmlElement(ElementName = "startrowrange")]
         public string StartRowRange { get; set; }

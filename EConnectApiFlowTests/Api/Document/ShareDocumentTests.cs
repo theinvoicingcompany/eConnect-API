@@ -69,7 +69,7 @@ namespace EConnectApiFlowTests.Api.Document
                 DocumentId = doc.DocumentId
             });
 
-            Assert.IsTrue((doc as EConnectApi.Definitions.Document).Equals(doc2), "documents are not the same");
+            Assert.IsTrue((doc as EConnectApi.Definitions.EConnectDocument).Equals(doc2), "documents are not the same");
         }
     }
 }

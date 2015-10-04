@@ -7,7 +7,7 @@ namespace EConnectApi.Definitions
     /// <summary>
     /// Used by GetDocument
     /// </summary>
-    public class DocumentDetails : Document, IDocumentDetails, IEquatable<DocumentDetails>
+    public class EConnectDocumentDetails : EConnectDocument, IDocumentDetails, IEquatable<EConnectDocumentDetails>
     {
         public XElement Payload { get; set; }
 
@@ -83,12 +83,12 @@ namespace EConnectApi.Definitions
         #endregion
 
         #region equality
-        public bool Equals(DocumentDetails other)
+        public bool Equals(EConnectDocumentDetails other)
         {
             if (other == null)
                 return false;
 
-            if (!(this as Document).Equals(other))
+            if (!(this as EConnectDocument).Equals(other))
                 return false;
 
             return Payload == other.Payload &&
@@ -104,7 +104,7 @@ namespace EConnectApi.Definitions
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != GetType()) return false;
-            return Equals(obj as DocumentDetails);
+            return Equals(obj as EConnectDocumentDetails);
         }
         #endregion
     }

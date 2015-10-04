@@ -6,7 +6,7 @@ namespace EConnectApi.Definitions
     /// <summary>
     /// Used by GetInboxDocument
     /// </summary>
-    public class Document : DocumentBase, IEquatable<Document>
+    public class EConnectDocument : DocumentBase, IEquatable<EConnectDocument>
     {
         public string DocumentName { get; set; }
         public string Description { get; set; }
@@ -72,7 +72,7 @@ namespace EConnectApi.Definitions
         #endregion
 
         #region equality
-        public bool Equals(Document other)
+        public bool Equals(EConnectDocument other)
         {
             if (other == null)
                 return false;
@@ -98,7 +98,7 @@ namespace EConnectApi.Definitions
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != GetType()) return false;
-            return Equals(obj as Document);
+            return Equals(obj as EConnectDocument);
         }
         #endregion
     }
