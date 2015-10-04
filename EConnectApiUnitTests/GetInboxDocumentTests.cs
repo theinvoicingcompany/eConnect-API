@@ -30,9 +30,9 @@ namespace EConnectApiUnitTests
 
             var xml =
                 string.Format(@"<GetInboxDocumentResponse>
-                <Payload>{0}</Payload>
-                <RuleApplicable><Rules/></RuleApplicable>
-                <SenderAccountId>A000000191</SenderAccountId>
+                <Payload>{0}</Payload>"+
+                //<RuleApplicable><Rules/></RuleApplicable>
+                @"<SenderAccountId>A000000191</SenderAccountId>
                 <SenderAccountName>selmit.nl</SenderAccountName>
                 <CreatedDateTime>1385244409859</CreatedDateTime>
                 <ConsignmentId>CUA000000191000001INCC9223370651610366013UA000000191000001</ConsignmentId>
@@ -58,7 +58,7 @@ namespace EConnectApiUnitTests
             var response = new GetInboxDocumentResponse()
             {
                 Payload = XElement.Parse(payload),
-                RuleApplicable = new RuleApplicable() { Rules = string.Empty },
+                //RuleApplicable = new RuleApplicable() { Rules = string.Empty },
                 SenderAccountId = "A000000191",
                 SenderAccountName = "selmit.nl",
                 RawCreatedDateTime = 1385244409859,

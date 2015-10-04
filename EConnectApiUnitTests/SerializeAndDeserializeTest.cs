@@ -63,6 +63,15 @@ namespace EConnectApiUnitTests
             Assert.AreEqual(senddoc.DocumentTemplateId, senddoc2.DocumentTemplateId);
             Assert.AreEqual(senddoc.Subject, senddoc2.Subject);
         }
+
+
+        [TestMethod]
+        public void Deserialize_EmptyResponse()
+        {
+            var res = GenericXml.Deserialize<GetDocumentsResponse>("<GetDocumentsResponse/>");
+            Assert.AreEqual(res.Documents, null);
+            Assert.AreEqual(res.StartRowRange, null);
+        }
     }
 
 }

@@ -6,35 +6,50 @@ namespace EConnectApi.Definitions
 {
     [XmlType(AnonymousType = true)]
     [XmlRoot(Namespace = "", IsNullable = false)]
-    public class GetCompaniesResponse
+    public class GetCompaniesResponse : PageAbleResponse
     {
         public class CompanyDetails
         {
             public string AccountId { get; set; }
             public string AccountName { get; set; }
+            public string EmailAddress { get; set; }
+
             [XmlIgnore]
             public DateTime CreatedDateTime { get; set; }
+
             // Proxied property
             [XmlElement(ElementName = "CreatedDate")]
             public long RawCreatedDateTime
             {
-                get { return CreatedDateTime.ToJavaTimestamp(); }
-                set { CreatedDateTime = value.ToDateTime(); }
+                get
+                {
+                    return CreatedDateTime.ToJavaTimestamp();
+                }
+                set
+                {
+                    CreatedDateTime = value.ToDateTime();
+                }
             }
+
             public string Country { get; set; }
             public string Residence { get; set; }
             public string Description { get; set; }
-            /// <summary>
-            /// Entity id
-            /// </summary>
+
+            public string EntityId { get; set; }
             public string CompanyId { get; set; }
+            public string TemporaryIdentifier { get; set; }
+
             public string AdministratorUserId { get; set; }
             public string AdministratorUserName { get; set; }
             public string CompanyName { get; set; }
 
             [XmlElement(ElementName = "URL")]
             public string Url { get; set; }
+
             public string HouseNumber { get; set; }
+
+            [XmlElement(ElementName = "PeppolRegisterationRefernceList")]
+            public string PeppolRegisterationReferenceList { get; set; }
             public bool IsRegisteredToPeppol { get; set; }
             public bool IsVerified { get; set; }
             public int MemberCount { get; set; }
@@ -45,23 +60,23 @@ namespace EConnectApi.Definitions
 
             [XmlIgnore]
             public DateTime ActivatedDate { get; set; }
+
             [XmlElement(ElementName = "ActivatedDate")]
             public long RawActivatedDate
             {
-                get { return ActivatedDate.ToJavaTimestamp(); }
-                set { ActivatedDate = value.ToDateTime(); }
+                get
+                {
+                    return ActivatedDate.ToJavaTimestamp();
+                }
+                set
+                {
+                    ActivatedDate = value.ToDateTime();
+                }
             }
 
         }
 
         [XmlElement(ElementName = "tuple")]
         public CompanyDetails[] Companies { get; set; }
-
-
-        [XmlElement(ElementName = "cursor")]
-        public string Cursor { get; set; }
-
-        [XmlElement(ElementName = "startrowrange")]
-        public string StartRowRange { get; set; }
     }
 }

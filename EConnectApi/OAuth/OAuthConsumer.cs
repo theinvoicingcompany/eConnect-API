@@ -130,7 +130,7 @@ namespace EConnectApi.OAuth
             var oAuthUtils = new OAuthUtils();
             var authorizationHeader = oAuthUtils.send(userInfoEndpoint, realm, consumerKey, consumerSecret, token, verifier, tokenSecret, scope, signatureMethod, "POST");
 
-            var request = WebRequest.Create(userInfoEndpoint + "?xoauth_requestor_id=" + requestorId);
+            var request = WebRequest.Create(userInfoEndpoint + "?xoauth_requestor_id=" + OAuthUtils.UrlEncode(requestorId));
             request.Timeout = 180000;
             request.Headers.Add("Authorization", authorizationHeader.ToString());
             request.ContentType = "text/xml; charset=utf-8";

@@ -26,7 +26,7 @@
     </DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>none</DebugType>
+    <DebugType>full</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
@@ -34,12 +34,20 @@
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
     <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <PropertyGroup>
     <SignAssembly>true</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
-    <AssemblyOriginatorKeyFile>eConnectKey.pfx</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>eConnectKey.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <DelaySign>true</DelaySign>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SGenUseProxyTypes>false</SGenUseProxyTypes>
+    <SGenPlatformTarget>$(Platform)</SGenPlatformTarget>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -54,6 +62,12 @@
     <Compile Include="AccessTokenManager.cs" />
     <Compile Include="AccessTokenStoreItem.cs" />
     <Compile Include="Definitions\Company.cs" />
+    <Compile Include="Definitions\CreateDocument.cs" />
+    <Compile Include="Definitions\CreateDocumentResponse.cs" />
+    <Compile Include="Definitions\Document.cs" />
+    <Compile Include="Definitions\DocumentBaseExtensions.cs" />
+    <Compile Include="Definitions\DocumentBaseExtensionsDetails.cs" />
+    <Compile Include="Definitions\DocumentDetails.cs" />
     <Compile Include="Definitions\FileWrapper.cs" />
     <Compile Include="Definitions\GetAccountDetails.cs" />
     <Compile Include="Definitions\GetAccountDetailsResponse.cs" />
@@ -63,7 +77,14 @@
     <Compile Include="Definitions\GetDocumentPdfResponse.cs" />
     <Compile Include="Definitions\GetDocumentsResponseBase.cs" />
     <Compile Include="Definitions\GetInboxDocumentStatusResponse.cs" />
+    <Compile Include="Definitions\GetIntegrationRequests.cs" />
+    <Compile Include="Definitions\GetIntegrationRequestsResponse.cs" />
     <Compile Include="Definitions\GetOutboxDocumentStatusResponse.cs" />
+    <Compile Include="Definitions\GetTemplates.cs" />
+    <Compile Include="Definitions\GetTemplatesResponse.cs" />
+    <Compile Include="Definitions\IDocumentDetails.cs" />
+    <Compile Include="Definitions\IDocumentsRequest.cs" />
+    <Compile Include="Definitions\PageAble.cs" />
     <Compile Include="Definitions\RequestAppIntegration.cs" />
     <Compile Include="Definitions\RequestAppIntegrationResponse.cs" />
     <Compile Include="Definitions\RequestIntegrationCredentials.cs" />
@@ -107,7 +128,6 @@
     <Compile Include="Definitions\GetOutboxDocumentsOfAnUser.cs" />
     <Compile Include="Definitions\GetOutboxDocumentsResponse.cs" />
     <Compile Include="Definitions\GetOutboxDocumentStatus.cs" />
-    <Compile Include="Definitions\IDocumentsRequest.cs" />
     <Compile Include="Definitions\IInboxDocumentRequest.cs" />
     <Compile Include="Definitions\IInboxDocumentsRequest.cs" />
     <Compile Include="Definitions\IOutboxDocumentRequest.cs" />
@@ -122,6 +142,8 @@
     <Compile Include="Definitions\SetInboxDocumentStatusResponse.cs" />
     <Compile Include="Definitions\SendDocument.cs" />
     <Compile Include="Definitions\TimeSpanFilter.cs" />
+    <Compile Include="Definitions\UpdateDocument.cs" />
+    <Compile Include="Definitions\UpdateDocumentResponse.cs" />
     <Compile Include="UnauthorizedException.cs" />
     <Compile Include="EConnectClient.cs" />
     <Compile Include="BaseClient.cs" />
@@ -129,8 +151,7 @@
     <Compile Include="EConnectClientException.cs" />
     <Compile Include="Helpers\DateTimeConverter.cs" />
     <Compile Include="Helpers\DateTimeExtension.cs" />
-    <Compile Include="Helpers\DoubleExtension.cs" />
-    <Compile Include="Helpers\Encoder.cs" />
+    <Compile Include="Helpers\LongExtension.cs" />
     <Compile Include="Helpers\GenericXml.cs" />
     <Compile Include="IEConnectClientConfig.cs" />
     <Compile Include="OAuth\AuthorizationHeader.cs" />
@@ -150,7 +171,7 @@
     <None Include="eConnectApi.nuspec">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="eConnectKey.pfx" />
+    <None Include="eConnectKey.snk" />
     <None Include="Properties\Settings.settings">
       <Generator>PublicSettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

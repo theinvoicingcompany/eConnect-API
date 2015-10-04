@@ -149,7 +149,33 @@ namespace EConnectApi
 
             return _client.SendRequest<GetCompaniesResponse>("GET_PROFILE", parameters);
         }
-        
+
+        public GetTemplatesResponse GetTemplates(GetTemplates parameters = null)
+        {
+            if (parameters == null)
+                parameters = new GetTemplates();
+
+            return _client.SendRequest<GetTemplatesResponse>("GET_PROFILE", parameters);
+        }
+
+        public GetIntegrationRequestsResponse GetIntegrationRequests(GetIntegrationRequests parameters = null)
+        {
+            if (parameters == null)
+                parameters = new GetIntegrationRequests();
+
+            return _client.SendRequest<GetIntegrationRequestsResponse>("GET_PROFILE", parameters);
+        }
+
+        public CreateDocumentResponse CreateDocument(CreateDocument parameters)
+        {
+            return _client.SendRequest<CreateDocumentResponse>("CREATE_DOC", parameters);
+        }
+
+        public UpdateDocumentResponse UpdateDocument(UpdateDocument parameters)
+        {
+            return _client.SendRequest<UpdateDocumentResponse>("UPDATE_DOC", parameters);
+        }
+
         public void Dispose()
         {
             // Clean up

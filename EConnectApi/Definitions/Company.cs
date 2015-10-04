@@ -21,5 +21,7 @@ namespace EConnectApi.Definitions
         [XmlElement(ElementName = "KVKNo")]
         public string KvkNumber { get; set; }
         public string SettlementNumber { get; set; }
+
+        public bool Active { get; set; }
     }
 }

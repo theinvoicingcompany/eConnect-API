@@ -6,6 +6,8 @@ namespace EConnectApi.Definitions
     [XmlRoot(Namespace = "", IsNullable = false, ElementName = "GetDocumentPDFResponse")]
     public class GetDocumentPdfResponse : FileWrapper
     {
+        public string ConsignmentId { get; set; }
+
         public string DocumentId { get; set; }
 
         [XmlElement(ElementName = "DocumentFileName")]

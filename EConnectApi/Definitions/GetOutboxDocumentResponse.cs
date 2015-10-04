@@ -1,12 +1,13 @@
+using System;
 using System.Xml.Serialization;
 
 namespace EConnectApi.Definitions
 {
     [XmlType(AnonymousType = true)]
     [XmlRoot(Namespace = "", IsNullable = false)]
-    public class GetOutboxDocumentResponse : DocumentBase
+    public class GetOutboxDocumentResponse : DocumentBaseExtensionsDetails
     {
-        // TODO: Investigate use of this property
+        [Obsolete]
         public RuleApplicable RuleApplicable { get; set; }
     }
 }

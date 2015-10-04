@@ -9,7 +9,8 @@
         <iconUrl>http://everbinding.nl/wp-content/uploads/2014/10/favicon.png</iconUrl>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <description>Documentation: http://help.everbinding.nl/content/api-application-programming-interface
-Source code: https://github.com/johanschaeffer/eConnect-API</description>
+Source code: https://github.com/johanschaeffer/eConnect-API
+</description>
         <summary />
         <releaseNotes>eConnectApi package</releaseNotes>
         <tags>eConnectApi EConnect eVerbinding</tags>

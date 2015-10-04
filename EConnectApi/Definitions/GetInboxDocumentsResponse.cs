@@ -4,8 +4,12 @@ namespace EConnectApi.Definitions
 {
     [XmlType(AnonymousType = true)]
     [XmlRoot(Namespace = "", IsNullable = false)]
-    public class GetInboxDocumentsResponse : GetDocumentsResponseBase
+    public class GetInboxDocumentsResponse
     {
+        [XmlElement(ElementName = "tuple")]
+        public DocumentBaseExtensions[] Documents { get; set; }
 
+        [XmlElement(ElementName = "startrowrange")]
+        public string StartRowRange { get; set; }
     }
 }

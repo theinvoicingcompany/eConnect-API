@@ -13,22 +13,14 @@ namespace EConnectApi.Definitions
         /// Company Id or Login Id to whom the app integration request has to be sent.
         /// </summary>
         [XmlElement(ElementName = "to")]
-        public string To
-        {
-            get { return Encoder.MailAddressForUrl(_to); }
-            set { _to = value; }
-        }
+        public string To { get; set; }
 
         private string _emailAddress;
         /// <summary>
         /// Login Id or Email Id to whom the integration / on-boarding request has to be sent. Compulsory parameter if 'to' field is a KvK value.
         /// </summary>
         [XmlElement(ElementName = "Email")]
-        public string EmailAddress
-        {
-            get { return Encoder.MailAddressForUrl(_emailAddress); }
-            set { _emailAddress = value; }
-        }
+        public string EmailAddress { get; set; }
 
         [XmlIgnore]
         [Obsolete("Use EmailAddress")]

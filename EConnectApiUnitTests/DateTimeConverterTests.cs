@@ -47,6 +47,20 @@ namespace EConnectApiUnitTests
             var stamp2 = DateTimeConverter.ToJavaTimestamp(dt);
 
             Assert.AreEqual(stamp, stamp2);
-        }        
+        }
+        
+        [TestMethod]
+        public void DateTimeConverterReverseTimestampTest()
+        {
+            const long javaReverseTimeStamp = 9223370593488085187;
+
+            // Convert to .net DateTime object
+            var dt = DateTimeConverter.ToDateTimeFromReverseTimestamp(javaReverseTimeStamp);
+            Assert.AreEqual(new DateTime(2015, 9, 27, 15, 11, 30, 620, DateTimeKind.Utc), dt);
+
+            // Convert back to java timestamp
+            var stamp = DateTimeConverter.ToReverseTimestamp(dt);
+            Assert.AreEqual(javaReverseTimeStamp, stamp);
+        }
     }
 }
