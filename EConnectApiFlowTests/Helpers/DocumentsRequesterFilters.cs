@@ -90,7 +90,7 @@ namespace EConnectApiFlowTests.Helpers
         }
 
 
-        private static void ValidateTimeSpanFilter(TimeSpanFilter filter, DocumentBase[] docs)
+        private static void ValidateTimeSpanFilter(TimeSpanFilter filter, DocumentShared[] docs)
         {
             var to = filter.To;
             if (to.HasValue)
@@ -101,7 +101,7 @@ namespace EConnectApiFlowTests.Helpers
                 Assert.AreEqual(0, docs.Count(a => a.CreatedDateTime < from), "From filter not applied");
         }
 
-        public static void Validate(GetDocumentsFiltersBase filter, DocumentBase[] docs)
+        public static void Validate(GetDocumentsFiltersBase filter, DocumentShared[] docs)
         {
             if (docs == null || !docs.Any())
                 Assert.Inconclusive("No documents found");
@@ -123,12 +123,12 @@ namespace EConnectApiFlowTests.Helpers
 
         }
 
-        public static void Validate(GetDocumentsFiltersBase filter, DocumentBaseExtensions[] docs)
+        public static void Validate(GetDocumentsFiltersBase filter, DocumentSharedExtensions[] docs)
         {
             if (docs == null || !docs.Any())
                 Assert.Inconclusive("No documents found");
 
-            Validate(filter, docs.Select(d => d as DocumentBase).ToArray());
+            Validate(filter, docs.Select(d => d as DocumentShared).ToArray());
 
             if (filter.IsRead.HasValue)
                 Assert.AreEqual(0, docs.Count(a => a.IsRead != filter.IsRead), "Is Read filter not applied");

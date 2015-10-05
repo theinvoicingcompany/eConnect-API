@@ -6,7 +6,7 @@ namespace EConnectApi.Definitions
     /// <summary>
     /// Used by GetInboxDocument
     /// </summary>
-    public class EConnectDocument : DocumentBase, IEquatable<EConnectDocument>
+    public class EConnectDocument : DocumentShared, IEquatable<EConnectDocument>
     {
         public string DocumentName { get; set; }
         public string Description { get; set; }
@@ -77,7 +77,7 @@ namespace EConnectApi.Definitions
             if (other == null)
                 return false;
 
-            if (!(this as DocumentBase).Equals(other))
+            if (!(this as DocumentShared).Equals(other))
                 return false;
 
             return DocumentName == other.DocumentName &&

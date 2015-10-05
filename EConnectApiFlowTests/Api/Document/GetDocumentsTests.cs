@@ -32,7 +32,7 @@ namespace EConnectApiFlowTests.Api.Document
                 Filters = filter
             });
 
-            DocumentsRequesterFilters.Validate(filter, page1.Documents.Select(d => d as DocumentBase).ToArray());
+            DocumentsRequesterFilters.Validate(filter, page1.Documents.Select(d => d as DocumentShared).ToArray());
 
             return page1;
         }

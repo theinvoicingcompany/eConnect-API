@@ -7,7 +7,7 @@ namespace EConnectApiFlowTests.Api.Inbox.Status
     [TestClass]
     public class SetInboxDocumentStatusTests
     {
-        protected DocumentBaseExtensions InboxDocument;
+        protected DocumentSharedExtensions InboxDocument;
 
         public SetInboxDocumentStatusTests()
         {

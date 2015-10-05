@@ -7,7 +7,7 @@ namespace EConnectApi.Definitions
     public class GetOutboxDocumentsResponse 
     {
         [XmlElement(ElementName = "tuple")]
-        public DocumentBaseExtensions[] Documents { get; set; }
+        public DocumentSharedExtensions[] Documents { get; set; }
 
         [XmlElement(ElementName = "startrowrange")]
         public string StartRowRange { get; set; }

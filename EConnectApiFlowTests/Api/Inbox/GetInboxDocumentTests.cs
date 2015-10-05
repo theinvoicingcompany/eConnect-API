@@ -6,7 +6,7 @@ namespace EConnectApiFlowTests.Api.Inbox
     [TestClass]
     public class GetInboxDocumentTests
     {
-        protected DocumentBaseExtensions InboxDocument;
+        protected DocumentSharedExtensions InboxDocument;
 
         public GetInboxDocumentTests()
         {

@@ -7,7 +7,7 @@ namespace EConnectApiFlowTests.Api.Outbox.Status
     [TestClass]
     public class GetOutboxDocumentStatusTests
     {
-        protected DocumentBaseExtensions OutboxDocument;
+        protected DocumentSharedExtensions OutboxDocument;
 
         public GetOutboxDocumentStatusTests()
         {
