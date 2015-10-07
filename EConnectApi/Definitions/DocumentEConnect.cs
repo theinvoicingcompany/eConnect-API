@@ -3,10 +3,7 @@ using System.Xml.Serialization;
 
 namespace EConnectApi.Definitions
 {
-    /// <summary>
-    /// Used by GetInboxDocument
-    /// </summary>
-    public class EConnectDocument : DocumentShared, IEquatable<EConnectDocument>
+    public class DocumentEConnect : DocumentMetaData, IEquatable<DocumentEConnect>
     {
         public string DocumentName { get; set; }
         public string Description { get; set; }
@@ -72,12 +69,12 @@ namespace EConnectApi.Definitions
         #endregion
 
         #region equality
-        public bool Equals(EConnectDocument other)
+        public bool Equals(DocumentEConnect other)
         {
             if (other == null)
                 return false;
 
-            if (!(this as DocumentShared).Equals(other))
+            if (!(this as DocumentMetaData).Equals(other))
                 return false;
 
             return DocumentName == other.DocumentName &&
@@ -98,7 +95,7 @@ namespace EConnectApi.Definitions
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != GetType()) return false;
-            return Equals(obj as EConnectDocument);
+            return Equals(obj as DocumentEConnect);
         }
         #endregion
     }

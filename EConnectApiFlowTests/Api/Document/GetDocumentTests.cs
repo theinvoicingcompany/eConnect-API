@@ -14,9 +14,10 @@ namespace EConnectApiFlowTests.Api.Document
 
             var details = EConnect.Client.GetDocument(new GetDocument() { DocumentId = doc.DocumentId });
 
-            Assert.IsTrue(doc.Equals(details));
+            Assert.AreEqual(doc.DocumentEConnect, details.DocumentEConnect);
             Assert.IsNotNull(details.Payload);
             Assert.IsNotNull(details.PossibleStatuses);
+            Assert.IsNotNull(details.DocumentEConnectDetails);
         }
     }
 }

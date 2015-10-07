@@ -4,9 +4,8 @@ using System.Xml.Serialization;
 
 namespace EConnectApi.Definitions
 {
-    public class DocumentSharedExtensionsDetails : DocumentSharedExtensions, IDocumentDetails, IEquatable<DocumentSharedExtensionsDetails>
+    public class DocumentDetails : DocumentInOrOutboxMetaData, IDocumentDetails, IEquatable<DocumentDetails>
     {
-        public string reml { get; set; }
         public XElement Payload { get; set; }
 
         [XmlIgnore]
@@ -44,12 +43,12 @@ namespace EConnectApi.Definitions
         #endregion
 
         #region equality
-        public bool Equals(DocumentSharedExtensionsDetails other)
+        public bool Equals(DocumentDetails other)
         {
             if (other == null)
                 return false;
 
-            if (!(this as DocumentSharedExtensions).Equals(other))
+            if (!(this as DocumentInOrOutboxMetaData).Equals(other))
                 return false;
 
             return Payload == other.Payload &&
@@ -62,7 +61,7 @@ namespace EConnectApi.Definitions
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != GetType()) return false;
-            return Equals(obj as DocumentSharedExtensionsDetails);
+            return Equals(obj as DocumentDetails);
         }
         #endregion
     }

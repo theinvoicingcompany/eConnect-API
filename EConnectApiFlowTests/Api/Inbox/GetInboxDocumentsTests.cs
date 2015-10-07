@@ -35,7 +35,7 @@ namespace EConnectApiFlowTests.Api.Inbox
                 Filters = filter
             });
 
-            DocumentsRequesterFilters.Validate(filter, page1.Documents);
+            DocumentsRequesterFilters.Validate(filter, page1.Documents.Select(d => d.DocumentInbox).ToArray());
         }
         #endregion
 
@@ -124,7 +124,7 @@ namespace EConnectApiFlowTests.Api.Inbox
         {
             TestFilter(DocumentsRequesterFilters.CreatedDateTime3);
         }
-        
+
 
         [TestMethod]
         public void GetInboxDocuments_FilterModifiedDateTime1()

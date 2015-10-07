@@ -13,7 +13,7 @@ namespace EConnectApiUnitTests
         [TestMethod]
         public void DeserializationTest()
         {
-            var doc = new EConnectDocumentDetails()
+            var doc = new DocumentEConnectDetails()
             {
                 LatestStatusCode = "20",
                 RawPossibleConsignmentStatuses =
@@ -55,7 +55,7 @@ namespace EConnectApiUnitTests
         [TestMethod]
         public void NextAndBackStatusTestWithNextNull()
         {
-            var doc = new EConnectDocumentDetails()
+            var doc = new DocumentEConnectDetails()
             {
                 LatestStatusCode = "20",
                 RawPossibleConsignmentStatuses =

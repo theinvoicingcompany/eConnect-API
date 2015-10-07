@@ -6,7 +6,7 @@ namespace EConnectApiFlowTests.Api.Document.Status
     [TestClass]
     public class SetDocumentStatusTests
     {
-        public EConnectDocumentDetails GetDocument1()
+        public DocumentBase GetDocument1()
         {
             return EConnect.Client.GetDocument(new GetDocument() { DocumentId = "RA000000218DML1000031" });
         }

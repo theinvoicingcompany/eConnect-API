@@ -6,7 +6,7 @@ namespace EConnectApiFlowTests.Api.Inbox
     [TestClass]
     public class GetInboxDocumentTests
     {
-        protected DocumentSharedExtensions InboxDocument;
+        protected DocumentInOrOutboxMetaData InboxDocument;
 
         public GetInboxDocumentTests()
         {
@@ -17,14 +17,14 @@ namespace EConnectApiFlowTests.Api.Inbox
             });
             if (page1 == null || page1.Documents == null)
                 Assert.Inconclusive("No documents returned");
-            InboxDocument = page1.Documents[1];
+            InboxDocument = page1.Documents[1].DocumentInbox;
         }
 
         public void GetDocument(GetInboxDocument parameters)
         {
             var details = EConnect.Client2.GetInboxDocument(parameters);
 
-            Assert.IsTrue(InboxDocument.Equals(details));
+            Assert.IsTrue(InboxDocument.Equals(details.DocumentInbox));
             Assert.IsNotNull(details.Payload);
             Assert.IsNotNull(details.PossibleStatuses);
         }

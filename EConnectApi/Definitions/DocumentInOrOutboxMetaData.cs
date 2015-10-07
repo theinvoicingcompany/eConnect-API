@@ -6,7 +6,7 @@ namespace EConnectApi.Definitions
     /// <summary>
     /// Used by Inbox or Outbox documents
     /// </summary>
-    public class DocumentSharedExtensions : DocumentShared, IEquatable<DocumentSharedExtensions>
+    public class DocumentInOrOutboxMetaData : DocumentMetaData, IEquatable<DocumentInOrOutboxMetaData>
     {
         public string ConsignmentId { get; set; }
         public string ConsignmentName { get; set; }
@@ -38,12 +38,12 @@ namespace EConnectApi.Definitions
 
         #region equality
 
-        public bool Equals(DocumentSharedExtensions other)
+        public bool Equals(DocumentInOrOutboxMetaData other)
         {
             if (other == null)
                 return false;
 
-            if (!(this as DocumentShared).Equals(other))
+            if (!(this as DocumentMetaData).Equals(other))
                 return false;
 
             return ConsignmentId == other.ConsignmentId &&
@@ -72,7 +72,7 @@ namespace EConnectApi.Definitions
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != GetType()) return false;
-            return Equals(obj as DocumentSharedExtensions);
+            return Equals(obj as DocumentInOrOutboxMetaData);
         }
         #endregion
     }

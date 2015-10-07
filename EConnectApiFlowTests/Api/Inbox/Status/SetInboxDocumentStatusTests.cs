@@ -7,7 +7,7 @@ namespace EConnectApiFlowTests.Api.Inbox.Status
     [TestClass]
     public class SetInboxDocumentStatusTests
     {
-        protected DocumentSharedExtensions InboxDocument;
+        protected DocumentInOrOutboxMetaData InboxDocument;
 
         public SetInboxDocumentStatusTests()
         {
@@ -17,7 +17,7 @@ namespace EConnectApiFlowTests.Api.Inbox.Status
                                                                Limit = 1
                                                            });
             Assert.IsNotNull(result);
-            InboxDocument = result.Documents.Single();
+            InboxDocument = result.Documents.Single().DocumentInbox;
         }
         
         [TestMethod]

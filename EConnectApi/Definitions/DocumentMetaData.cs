@@ -7,7 +7,7 @@ namespace EConnectApi.Definitions
     /// <summary>
     /// Share document class for all document types
     /// </summary>
-    public class DocumentShared : IEquatable<DocumentShared>
+    public class DocumentMetaData : IEquatable<DocumentMetaData>
     {
         public string ExternalId { get; set; }
 
@@ -53,7 +53,7 @@ namespace EConnectApi.Definitions
 
         #region equality
 
-        public bool Equals(DocumentShared other)
+        public bool Equals(DocumentMetaData other)
         {
             if (other == null)
                 return false;
@@ -80,7 +80,7 @@ namespace EConnectApi.Definitions
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != GetType()) return false;
-            return Equals(obj as DocumentShared);
+            return Equals(obj as DocumentMetaData);
         }
         #endregion
     }

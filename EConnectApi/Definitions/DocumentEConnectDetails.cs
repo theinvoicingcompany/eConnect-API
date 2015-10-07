@@ -4,19 +4,39 @@ using System.Xml.Serialization;
 
 namespace EConnectApi.Definitions
 {
-    /// <summary>
-    /// Used by GetDocument
-    /// </summary>
-    public class EConnectDocumentDetails : EConnectDocument, IDocumentDetails, IEquatable<EConnectDocumentDetails>
+    [XmlType(AnonymousType = true)]
+    [XmlRoot(Namespace = "", IsNullable = false)]
+    public class DocumentEConnectDetails : DocumentEConnect, IDocumentDetails, IEquatable<DocumentEConnectDetails>
     {
-        public XElement Payload { get; set; }
+        public DocumentEConnectDetails() : this(null)
+        {
+            
+        }
+
+        private DocumentDetails _details;
+        public DocumentEConnectDetails(DocumentDetails details = null)
+        {
+            _details = details ?? new DocumentDetails();
+        }
+
+        public XElement Payload
+        {
+            get
+            {
+                return _details.Payload;
+            }
+            set
+            {
+                _details.Payload = value;
+            }
+        }
 
         [XmlIgnore]
         public Statuses PossibleStatuses
         {
             get
             {
-                return _possibleStatuses ?? (_possibleStatuses = new Statuses(RawPossibleConsignmentStatuses, LatestStatusCode));
+                return _details.PossibleStatuses;
             }
         }
 
@@ -27,26 +47,18 @@ namespace EConnectApi.Definitions
 
         #region Proxied properties
 
-        private string _rawPossibleConsignmentStatuses;
-        private Statuses _possibleStatuses;
-
         [XmlElement(ElementName = "PossibleConsignmentStatuses")]
         public string RawPossibleConsignmentStatuses
         {
-            get { return _rawPossibleConsignmentStatuses; }
-            set
-            {
-
-                _rawPossibleConsignmentStatuses = value;
-                _possibleStatuses = null;
-            }
+            get { return _details.RawPossibleConsignmentStatuses; }
+            set { _details.RawPossibleConsignmentStatuses = value; }
         }
 
         [XmlElement(ElementName = "PossibleDocumentStatuses")]
         public string RawPossibleDocumentStatuses
         {
-            get { return RawPossibleConsignmentStatuses; }
-            set { RawPossibleConsignmentStatuses = value; }
+            get { return _details.RawPossibleDocumentStatuses; }
+            set { _details.RawPossibleDocumentStatuses = value; }
         }
 
         [XmlElement(ElementName = "UserImageUrl")]
@@ -83,12 +95,12 @@ namespace EConnectApi.Definitions
         #endregion
 
         #region equality
-        public bool Equals(EConnectDocumentDetails other)
+        public bool Equals(DocumentEConnectDetails other)
         {
             if (other == null)
                 return false;
 
-            if (!(this as EConnectDocument).Equals(other))
+            if (!(this as DocumentEConnect).Equals(other))
                 return false;
 
             return Payload == other.Payload &&
@@ -104,7 +116,7 @@ namespace EConnectApi.Definitions
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != GetType()) return false;
-            return Equals(obj as EConnectDocumentDetails);
+            return Equals(obj as DocumentEConnectDetails);
         }
         #endregion
     }

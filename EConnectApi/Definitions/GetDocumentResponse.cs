@@ -6,7 +6,7 @@ namespace EConnectApi.Definitions
 {
     [XmlType(AnonymousType = true)]
     [XmlRoot(Namespace = "", IsNullable = false)]
-    public class GetDocumentResponse : EConnectDocumentDetails
+    public class GetDocumentResponse : DocumentBase
     {
         [Obsolete]
         public XElement DocumentXML { get; set; }

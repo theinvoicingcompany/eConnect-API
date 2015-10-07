@@ -7,14 +7,14 @@ namespace EConnectApiFlowTests.Api.Outbox
     [TestClass]
     public class GetOutboxDocumentTests
     {
-        protected DocumentSharedExtensions OutboxDocument;
+        protected DocumentInOrOutboxMetaData OutboxDocument;
 
         public GetOutboxDocumentTests()
         {
             var page1 = EConnect.Client.GetOutboxDocuments(new GetOutboxDocumentsOfAnUser() { Limit = 1 });
             if(page1 == null || page1.Documents == null)
                 Assert.Inconclusive("No documents returned");
-            OutboxDocument = page1.Documents.Single();
+            OutboxDocument = page1.Documents.Single().DocumentOutbox;
         }
 
         public void GetDocument(GetOutboxDocument parameters)

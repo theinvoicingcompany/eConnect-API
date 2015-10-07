@@ -7,14 +7,14 @@ namespace EConnectApiFlowTests.Api.Outbox.Status
     [TestClass]
     public class GetOutboxDocumentStatusTests
     {
-        protected DocumentSharedExtensions OutboxDocument;
+        protected DocumentInOrOutboxMetaData OutboxDocument;
 
         public GetOutboxDocumentStatusTests()
         {
             var result = EConnect.Client.GetOutboxDocuments(new GetOutboxDocumentsOfAnUser() { Limit = 5 });
             Assert.IsNotNull(result);
             // Take the last one, because of the first one cloud be a doucment which was send a couple of seconds ago by another unit test
-            OutboxDocument = result.Documents.Last();
+            OutboxDocument = result.Documents.Last().DocumentOutbox;
         }
         
         [TestMethod]

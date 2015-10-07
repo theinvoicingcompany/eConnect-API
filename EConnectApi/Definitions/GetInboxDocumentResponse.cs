@@ -5,11 +5,9 @@ namespace EConnectApi.Definitions
 {
     [XmlType(AnonymousType = true)]
     [XmlRoot(Namespace = "", IsNullable = false)]
-    public class GetInboxDocumentResponse : DocumentSharedExtensionsDetails
+    public class GetInboxDocumentResponse : DocumentBase
     {
         [Obsolete]
         public RuleApplicable RuleApplicable { get; set; }
     }
-
-
 }

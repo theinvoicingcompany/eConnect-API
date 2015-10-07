@@ -145,7 +145,7 @@ namespace EConnectApiUnitTests
                                {
                                    Documents = new[]
                                                    {
-                                                       new DocumentSharedExtensions()
+                                                       new DocumentBase() 
                                                            {
                                                                SenderAccountId = "A000000191",
                                                                SenderAccountName = "selmit.nl",

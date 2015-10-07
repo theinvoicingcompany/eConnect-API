@@ -7,7 +7,7 @@ namespace EConnectApiFlowTests.Api.Document.Status
     [TestClass]
     public class GetDocumentStatusTests
     {
-        protected EConnectDocumentDetails Document;
+        protected DocumentBase Document;
 
         public GetDocumentStatusTests()
         {

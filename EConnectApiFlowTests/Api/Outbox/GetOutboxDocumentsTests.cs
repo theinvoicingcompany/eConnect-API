@@ -35,7 +35,7 @@ namespace EConnectApiFlowTests.Api.Outbox
                 Filters = filter
             });
 
-            DocumentsRequesterFilters.Validate(filter, page1.Documents.Select(d=> d as DocumentShared).ToArray());
+            DocumentsRequesterFilters.Validate(filter, page1.Documents.Select(d=> d.DocumentOutbox).ToArray());
         }
         #endregion
 
