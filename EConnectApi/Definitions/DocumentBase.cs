@@ -40,19 +40,13 @@ namespace EConnectApi.Definitions
                 return Type == "Outbox" ? Details : null;
             }
         }
-
-        private DocumentEConnect _doc;
-        private DocumentEConnectDetails _details;
+        
         [XmlIgnore]
         public DocumentEConnect DocumentEConnect
         {
             get
             {
-                return string.IsNullOrEmpty(Type) ? _doc : null;
-            }
-            private set
-            {
-                _doc = value;
+                return string.IsNullOrEmpty(Type) ? _ecDoc : null;
             }
         }
 
@@ -61,19 +55,18 @@ namespace EConnectApi.Definitions
         {
             get
             {
-                return string.IsNullOrEmpty(Type) ? _details : null;
-            }
-            private set
-            {
-                _details = value;
+                return string.IsNullOrEmpty(Type) ? _ecDetails : null;
             }
         }
-        
+
+        private readonly DocumentEConnect _ecDoc;
+        private readonly DocumentEConnectDetails _ecDetails;
+
         public DocumentBase()
         {
             Details = new DocumentDetails();
-            DocumentEConnect = new DocumentEConnect();
-            DocumentEConnectDetails = new DocumentEConnectDetails(Details);
+            _ecDoc = new DocumentEConnect();
+            _ecDetails = new DocumentEConnectDetails(Details);
         }
 
         #region backwards compatibility
@@ -83,132 +76,132 @@ namespace EConnectApi.Definitions
         {
             get
             {
-                return DocumentEConnect.DocumentName;
+                return _ecDoc.DocumentName;
             }
             set
             {
-                DocumentEConnect.DocumentName = value;
+                _ecDoc.DocumentName = value;
             }
         }
         public string Description
         {
             get
             {
-                return DocumentEConnect.Description;
+                return _ecDoc.Description;
             }
             set
             {
-                DocumentEConnect.Description = value;
+                _ecDoc.Description = value;
             }
         }
         public string TemplateSource
         {
             get
             {
-                return DocumentEConnect.TemplateSource;
+                return _ecDoc.TemplateSource;
             }
             set
             {
-                DocumentEConnect.TemplateSource = value;
+                _ecDoc.TemplateSource = value;
             }
         }
         public string FolderId
         {
             get
             {
-                return DocumentEConnect.FolderId;
+                return _ecDoc.FolderId;
             }
             set
             {
-                DocumentEConnect.FolderId = value;
+                _ecDoc.FolderId = value;
             }
         }
         public string FolderName
         {
             get
             {
-                return DocumentEConnect.FolderName;
+                return _ecDoc.FolderName;
             }
             set
             {
-                DocumentEConnect.FolderName = value;
+                _ecDoc.FolderName = value;
             }
         }
         public string IsDocumentSent
         {
             get
             {
-                return DocumentEConnect.IsDocumentSent;
+                return _ecDoc.IsDocumentSent;
             }
             set
             {
-                DocumentEConnect.IsDocumentSent = value;
+                _ecDoc.IsDocumentSent = value;
             }
         }
         public string AccountId
         {
             get
             {
-                return DocumentEConnect.AccountId;
+                return _ecDoc.AccountId;
             }
             set
             {
-                DocumentEConnect.AccountId = value;
+                _ecDoc.AccountId = value;
             }
         }
         public string AccountName
         {
             get
             {
-                return DocumentEConnect.AccountName;
+                return _ecDoc.AccountName;
             }
             set
             {
-                DocumentEConnect.AccountName = value;
+                _ecDoc.AccountName = value;
             }
         }
         public string OwnerUserId
         {
             get
             {
-                return DocumentEConnect.OwnerUserId;
+                return _ecDoc.OwnerUserId;
             }
             set
             {
-                DocumentEConnect.OwnerUserId = value;
+                _ecDoc.OwnerUserId = value;
             }
         }
         public string OwnerUserName
         {
             get
             {
-                return DocumentEConnect.OwnerUserName;
+                return _ecDoc.OwnerUserName;
             }
             set
             {
-                DocumentEConnect.OwnerUserName = value;
+                _ecDoc.OwnerUserName = value;
             }
         }
         public string ModifiedByUserName
         {
             get
             {
-                return DocumentEConnect.ModifiedByUserName;
+                return _ecDoc.ModifiedByUserName;
             }
             set
             {
-                DocumentEConnect.ModifiedByUserName = value;
+                _ecDoc.ModifiedByUserName = value;
             }
         }
         public string ModifiedByUserId
         {
             get
             {
-                return DocumentEConnect.ModifiedByUserId;
+                return _ecDoc.ModifiedByUserId;
             }
             set
             {
-                DocumentEConnect.ModifiedByUserId = value;
+                _ecDoc.ModifiedByUserId = value;
             }
         }
         [XmlIgnore]
@@ -216,11 +209,11 @@ namespace EConnectApi.Definitions
         {
             get
             {
-                return DocumentEConnect.DocExUri;
+                return _ecDoc.DocExUri;
             }
             set
             {
-                DocumentEConnect.DocExUri = value;
+                _ecDoc.DocExUri = value;
             }
         }
         [XmlElement(ElementName = "DocExURI")]
@@ -228,11 +221,11 @@ namespace EConnectApi.Definitions
         {
             get
             {
-                return DocumentEConnect.RawDocEx;
+                return _ecDoc.RawDocEx;
             }
             set
             {
-                DocumentEConnect.RawDocEx = value;
+                _ecDoc.RawDocEx = value;
             }
         }
         [XmlIgnore]
@@ -240,11 +233,11 @@ namespace EConnectApi.Definitions
         {
             get
             {
-                return DocumentEConnect.DocumentViewerImageUrl;
+                return _ecDoc.DocumentViewerImageUrl;
             }
             set
             {
-                DocumentEConnect.DocumentViewerImageUrl = value;
+                _ecDoc.DocumentViewerImageUrl = value;
             }
         }
         [XmlElement(ElementName = "DocumentViewerImageURL")]
@@ -252,11 +245,11 @@ namespace EConnectApi.Definitions
         {
             get
             {
-                return DocumentEConnect.RawDocumentViewerImageUrl;
+                return _ecDoc.RawDocumentViewerImageUrl;
             }
             set
             {
-                DocumentEConnect.RawDocumentViewerImageUrl = value;
+                _ecDoc.RawDocumentViewerImageUrl = value;
             }
         }
         #endregion
@@ -267,33 +260,33 @@ namespace EConnectApi.Definitions
         {
             get
             {
-                return DocumentEConnectDetails.UserImageUrl;
+                return _ecDetails.UserImageUrl;
             }
             set
             {
-                DocumentEConnectDetails.UserImageUrl = value;
+                _ecDetails.UserImageUrl = value;
             }
         }
         public string CreatorUserId
         {
             get
             {
-                return DocumentEConnectDetails.CreatorUserId;
+                return _ecDetails.CreatorUserId;
             }
             set
             {
-                DocumentEConnectDetails.CreatorUserId = value;
+                _ecDetails.CreatorUserId = value;
             }
         }
         public string CreatorUserName
         {
             get
             {
-                return DocumentEConnectDetails.CreatorUserName;
+                return _ecDetails.CreatorUserName;
             }
             set
             {
-                DocumentEConnectDetails.CreatorUserName = value;
+                _ecDetails.CreatorUserName = value;
             }
         }
 
@@ -303,11 +296,11 @@ namespace EConnectApi.Definitions
         {
             get
             {
-                return DocumentEConnectDetails.RawUserImageUrl;
+                return _ecDetails.RawUserImageUrl;
             }
             set
             {
-                DocumentEConnectDetails.RawUserImageUrl = value;
+                _ecDetails.RawUserImageUrl = value;
             }
         }
 
@@ -316,11 +309,11 @@ namespace EConnectApi.Definitions
         {
             get
             {
-                return DocumentEConnectDetails.TemplateSource;
+                return _ecDetails.TemplateSource;
             }
             set
             {
-                DocumentEConnectDetails.TemplateSource = value;
+                _ecDetails.TemplateSource = value;
             }
         }
         #endregion
