@@ -17,7 +17,7 @@ namespace EConnectApi
         /// </summary>
         public void Ping()
         {
-            _client.GetRequestToken();
+            _client.GetRequestToken("SEARCH_COMPANY");
         }
 
         public SendDocumentResponse SendDocument(SendDocument document)
@@ -117,8 +117,9 @@ namespace EConnectApi
         {
             try
             {
-                var req = _client.GetRequestToken();
-                var token = _client.GetAccessToken(req, "APP_INTEGRATION");
+                var scope = "APP_INTEGRATION";
+                var req = _client.GetRequestToken(scope);
+                var token = _client.GetAccessToken(req, scope);
                 return token != null;
             }
             catch
