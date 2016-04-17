@@ -64,6 +64,9 @@
     <Compile Include="Definitions\Company.cs" />
     <Compile Include="Definitions\CreateDocument.cs" />
     <Compile Include="Definitions\CreateDocumentResponse.cs" />
+    <Compile Include="Definitions\CreateOutboxDocument.cs" />
+    <Compile Include="Definitions\CreateOutboxDocumentHeader.cs" />
+    <Compile Include="Definitions\CreateOutboxDocumentResponse.cs" />
     <Compile Include="Definitions\DocumentBase.cs" />
     <Compile Include="Definitions\DocumentEConnect.cs" />
     <Compile Include="Definitions\DocumentInOrOutboxMetaData.cs" />
@@ -170,6 +173,7 @@
     <None Include="app.config" />
     <None Include="eConnectApi.nuspec">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </None>
     <None Include="eConnectKey.snk" />
     <None Include="Properties\Settings.settings">

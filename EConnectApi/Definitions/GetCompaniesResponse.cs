@@ -51,7 +51,22 @@ namespace EConnectApi.Definitions
             [XmlElement(ElementName = "PeppolRegisterationRefernceList")]
             public string PeppolRegisterationReferenceList { get; set; }
             public bool IsRegisteredToPeppol { get; set; }
+
+            private string _isVerified;
+            [XmlElement(ElementName = "IsVerified")]
+            public string IsVerifiedRaw
+            {
+                get { return _isVerified; }
+                set
+                {
+                    _isVerified = value;
+                    IsVerified = value.Equals("true", StringComparison.InvariantCultureIgnoreCase);
+                }
+            }
+
+            [XmlIgnore]
             public bool IsVerified { get; set; }
+
             public int MemberCount { get; set; }
             public string PostalCode { get; set; }
             public string StreetName { get; set; }

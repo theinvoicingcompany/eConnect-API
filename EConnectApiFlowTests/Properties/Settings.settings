@@ -2,21 +2,6 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="EConnectApiFlowTests.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="ConsumerKey" Type="System.String" Scope="User">
-      <Value Profile="(Default)">554e626351597663375241505879527</Value>
-    </Setting>
-    <Setting Name="ConsumerSecret" Type="System.String" Scope="User">
-      <Value Profile="(Default)">5735514e37564e52595735536d76497</Value>
-    </Setting>
-    <Setting Name="RequesterId" Type="System.String" Scope="User">
-      <Value Profile="(Default)">everbinding.elien+testeen@gmail.com</Value>
-    </Setting>
-    <Setting Name="ConsumerKey2" Type="System.String" Scope="User">
-      <Value Profile="(Default)">34735845686c684b4d6c534f696f6c6</Value>
-    </Setting>
-    <Setting Name="ConsumerSecret2" Type="System.String" Scope="User">
-      <Value Profile="(Default)">75356e556f577256383947546351704</Value>
-    </Setting>
     <Setting Name="RequesterId2" Type="System.String" Scope="User">
       <Value Profile="(Default)">everbinding.elien+testtwee@gmail.com</Value>
     </Setting>
@@ -25,6 +10,21 @@
     </Setting>
     <Setting Name="EntityId2" Type="System.String" Scope="User">
       <Value Profile="(Default)">XCNL10018</Value>
+    </Setting>
+    <Setting Name="ConsumerKey" Type="System.String" Scope="User">
+      <Value Profile="(Default)">4f71394166495544506e64535744694</Value>
+    </Setting>
+    <Setting Name="ConsumerSecret" Type="System.String" Scope="User">
+      <Value Profile="(Default)">6559683538587736514534344750536</Value>
+    </Setting>
+    <Setting Name="RequesterId" Type="System.String" Scope="User">
+      <Value Profile="(Default)">everbinding.elien@gmail.com</Value>
+    </Setting>
+    <Setting Name="ConsumerKey2" Type="System.String" Scope="User">
+      <Value Profile="(Default)">756a65554557687174456f56717a566</Value>
+    </Setting>
+    <Setting Name="ConsumerSecret2" Type="System.String" Scope="User">
+      <Value Profile="(Default)">5048724e473365483179476b7268634</Value>
     </Setting>
   </Settings>
 </SettingsFile>
