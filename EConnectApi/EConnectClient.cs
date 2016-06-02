@@ -177,9 +177,21 @@ namespace EConnectApi
             return _client.SendRequest<UpdateDocumentResponse>("UPDATE_DOC", parameters);
         }
 
+        [Obsolete()]
         public CreateOutboxDocumentResponse CreateOutboxDocument(string senderId, CreateOutboxDocument document)
         {
-            return _client.SendRequest<CreateOutboxDocumentResponse>("CREATE_OUTBOX_DOC", document, new CreateOutboxDocumentHeader()
+            document.SenderId = senderId;
+            return CreateOutboxDocument(document);
+        }
+
+        public CreateOutboxDocumentResponse CreateOutboxDocument(CreateOutboxDocument document)
+        {
+            return _client.SendRequest<CreateOutboxDocumentResponse>("CREATE_OUTBOX_DOC", document);
+        }
+
+        public CreateOutboxDocumentForResponse CreateOutboxDocumentFor(string senderId, CreateOutboxDocumentFor document)
+        {
+            return _client.SendRequest<CreateOutboxDocumentForResponse>("CREATE_OUTBOX_DOC_FOR", document, new SenderIdHeader()
             {
                 SenderId = senderId
             });

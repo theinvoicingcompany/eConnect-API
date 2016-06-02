@@ -8,7 +8,7 @@ namespace EConnectApi.Definitions
 {
     [XmlRoot("SenderId")]
     [XmlType(AnonymousType = true, Namespace = "")]
-    public class CreateOutboxDocumentHeader
+    public class SenderIdHeader
     {
         [XmlText]
         public string SenderId { get; set; }

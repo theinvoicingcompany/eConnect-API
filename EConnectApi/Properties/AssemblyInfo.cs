@@ -32,8 +32,9 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("3.3.1.0")]
-[assembly: AssemblyFileVersion("3.3.1.0")]
+[assembly: AssemblyVersion("3.5.1.0")]
+[assembly: AssemblyFileVersion("3.5.1.0")]
+[assembly: AssemblyInformationalVersion("3.5.1-beta")]
 [assembly: InternalsVisibleTo("eConnectApiUnitTests,PublicKey=" +
                                 "0024000004800000940000000602000000240000525341310004000001000100f1532d633d5aa0" +
                                 "9f84207637451b1f90569a6e52fc1504ab2b98cdf6ba1c5c210bec039ac42209ef576d61a7b676" +
