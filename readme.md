@@ -40,5 +40,5 @@ catch (EConnectClientException ex)
 }
 ```
 
-[API HELP]:http://help.everbinding.nl/content/api-application-programming-interface
+[API HELP]:http://development.everbinding.nl/article-categories/application-programming-interface-1-0/
 [platform.everbinding.nl]:http://platform.everbinding.nl
