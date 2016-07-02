@@ -10,7 +10,7 @@ namespace EConnectApi.Definitions
         /// Orginal filename
         /// </summary>
         [XmlIgnore]
-        protected string FileName { get; set; }
+        public string FileName { get; set; }
 
         /// <summary>
         /// File bytes
@@ -21,7 +21,7 @@ namespace EConnectApi.Definitions
         /// <summary>
         /// File bytes based on Contents propertu in base64 string
         /// </summary>       
-        protected string Base64
+        public string Base64
         {
             get
             {
