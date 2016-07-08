@@ -74,6 +74,7 @@ namespace EConnectApi.Definitions
         public void Load(string path)
         {
             Contents = File.ReadAllBytes(path);
+            FileName = Path.GetFileName(path);
         }
     }
 }
