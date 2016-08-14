@@ -4,8 +4,8 @@ using EConnectApi.Helpers;
 
 namespace EConnectApi.Definitions
 {
-    [XmlType(AnonymousType = true, Namespace = "http://ws.vg.com/pw/PWDataDx/1.0")]
-    [XmlRoot(Namespace = "http://ws.vg.com/pw/PWDataDx/1.0", IsNullable = false)]
+    [XmlType(AnonymousType = true)]
+    [XmlRoot(Namespace = "http://api.everbinding.nl/v3/requestappintegration", ElementName = "RequestAppIntegration", IsNullable = false)]
     public class RequestAppIntegration
     {
         private string _to;

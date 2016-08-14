@@ -5,7 +5,7 @@ using EConnectApi.Helpers;
 namespace EConnectApi.Definitions
 {
     [XmlType(AnonymousType = true)]
-    [XmlRoot(Namespace = "", IsNullable = false)]
+    [XmlRoot(Namespace = "http://api.everbinding.nl/v3/setdocumentstatus", ElementName = "SetDocumentStatusResponse", IsNullable = false)]
     public class SetDocumentStatusResponse
     {
         public string DocumentId { get; set; }

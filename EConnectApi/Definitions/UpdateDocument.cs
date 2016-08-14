@@ -3,8 +3,8 @@ using System.Xml.Serialization;
 
 namespace EConnectApi.Definitions
 {
-    [XmlType(AnonymousType = true, Namespace = "http://ws.vg.com/pw/PWDataDx/1.0")]
-    [XmlRoot(Namespace = "http://ws.vg.com/pw/PWDataDx/1.0", IsNullable = false)]
+    [XmlType(AnonymousType = true)]
+    [XmlRoot(Namespace = "http://api.everbinding.nl/v3/updatedocument", ElementName = "UpdateDocument", IsNullable = false)]
     public class UpdateDocument
     {
         public string DocumentId { get; set; }

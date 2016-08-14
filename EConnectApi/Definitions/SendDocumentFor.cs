@@ -2,8 +2,8 @@
 
 namespace EConnectApi.Definitions
 {
-    [XmlType(AnonymousType = true, Namespace = "http://ws.vg.pw.com/external/1.0")]
-    [XmlRoot(Namespace = "http://ws.vg.pw.com/external/1.0", IsNullable = false)]
+    [XmlType(AnonymousType = true)]
+    [XmlRoot(Namespace = "http://api.everbinding.nl/v3/senddocumentfor", ElementName = "SendDocumentFor", IsNullable = false)]
     public class SendDocumentFor : SendDocumentBase
     {
 

@@ -3,7 +3,7 @@
 namespace EConnectApi.Definitions
 {
     [XmlType(AnonymousType = true)]
-    [XmlRoot(Namespace = "", IsNullable = false)]
+    [XmlRoot(Namespace = "http://api.everbinding.nl/v3/createoutboxdocument", ElementName = "CreateOutboxDocumentForResponse", IsNullable = false)]
     public class CreateOutboxDocumentForResponse : SendDocumentBaseResponse
     {
         public string AppEventResponses { get; set; }

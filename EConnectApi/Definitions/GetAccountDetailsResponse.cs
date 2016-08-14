@@ -1,11 +1,13 @@
 ﻿using System;
+using System.Runtime.Serialization;
+using System.Xml;
 using System.Xml.Serialization;
 using EConnectApi.Helpers;
 
 namespace EConnectApi.Definitions
 {
     [XmlType(AnonymousType = true)]
-    [XmlRoot(Namespace = "", IsNullable = false)]
+    [XmlRoot(Namespace = "http://api.everbinding.nl/v3/getaccountdetails", ElementName = "GetAccountDetailsResponse", IsNullable = false)]
     public class GetAccountDetailsResponse
     {
         public string UserId { get; set; }

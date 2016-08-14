@@ -35,9 +35,10 @@ namespace EConnectApi.Helpers
             var formatter = new SoapFormatter();
             // convert string to stream
             byte[] byteArray = Encoding.UTF8.GetBytes(input);
-            var stream = new MemoryStream(byteArray);
-            //
-            return (T)formatter.Deserialize(stream);
+            using (var stream = new MemoryStream(byteArray))
+            {
+                return (T) formatter.Deserialize(stream);
+            }
         }
 
         public static string Serialize(object input)

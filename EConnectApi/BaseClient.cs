@@ -1,5 +1,9 @@
 using System;
+using System.IO;
+using System.Linq;
 using System.Runtime.Serialization.Formatters;
+using System.Xml.Linq;
+using System.Xml.XPath;
 using EConnectApi.Helpers;
 using EConnectApi.OAuth;
 
@@ -87,6 +91,16 @@ namespace EConnectApi
             return xmlResponse;
         }
 
+        protected string GetSoapBody(string envelope)
+        {
+            var xDoc = XDocument.Load(new StringReader(envelope));
+            var body = xDoc.Descendants((XNamespace)"http://schemas.xmlsoap.org/soap/envelope/" + "Body")
+                .First()
+                .FirstNode.ToString();
+
+            return body;
+        }
+
         public T SendRequest<T>(string scope, object body, object header = null) where T : class
         {
             return SafeExecutor(() =>
@@ -118,16 +132,10 @@ namespace EConnectApi
                 // Send request
                 var result = Send(accessToken, scope, soap);
 
-                // Convert string to object
-                return GenericXml.Deserialize<T>(result);
-
-                //XDocument xDoc = XDocument.Load(new StringReader(result));
-                //var unwrappedResponse = xDoc.Descendants((XNamespace)"http://schemas.xmlsoap.org/soap/envelope/" + "Body")
-                //    .First()
-                //    .FirstNode.ToString();
+                var envelopeBody = GetSoapBody(result);
 
                 // Convert string to object
-                //return GenericXml.Deserialize<T>(unwrappedResponse);
+                return GenericXml.Deserialize<T>(envelopeBody);
             });
         }
 
@@ -146,7 +154,14 @@ namespace EConnectApi
         {
             try
             {
-                fault = GenericXml.DeserializeSoap<SoapFault>(ex.Message);
+                XDocument xDoc = XDocument.Load(new StringReader(ex.Message));
+
+                var faultNode = xDoc.Descendants((XNamespace)"http://schemas.xmlsoap.org/soap/envelope/" + "Fault").First();
+
+                var error = faultNode.XPathSelectElement("detail/Message");
+
+                fault = new SoapFault("", error.Value, "", null);
+                //fault = GenericXml.DeserializeSoap<SoapFault>(ex.Message);
                 return true;
             }
             catch

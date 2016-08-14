@@ -3,7 +3,7 @@
 namespace EConnectApi.Definitions
 {
     [XmlType(AnonymousType = true)]
-    [XmlRoot(Namespace = "", IsNullable = false)]
+    [XmlRoot(Namespace = "http://api.everbinding.nl/v3/sharedocument", ElementName = "ShareDocumentResponse", IsNullable = false)]
     public class ShareDocumentResponse
     {
         public string DocumentId { get; set; }

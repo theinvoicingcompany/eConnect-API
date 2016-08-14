@@ -2,8 +2,8 @@ using System.Xml.Serialization;
 
 namespace EConnectApi.Definitions
 {
-    [XmlType(AnonymousType = true, Namespace = "http://ws.vg.pw.com/external/1.0")]
-    [XmlRoot(Namespace = "http://ws.vg.pw.com/external/1.0", ElementName = "SetInboxDocumentStatus", IsNullable = false)]
+    [XmlType(AnonymousType = true)]
+    [XmlRoot(Namespace = "http://api.everbinding.nl/v3/setinboxdocumentstatus", ElementName = "SetInboxDocumentStatus", IsNullable = false)]
     public class SetInboxDocumentStatus : SetDocumentStatusBase
     {
         public string ConsignmentId { get; set; }

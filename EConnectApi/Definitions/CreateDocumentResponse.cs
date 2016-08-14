@@ -3,7 +3,7 @@
 namespace EConnectApi.Definitions
 {
     [XmlType(AnonymousType = true)]
-    [XmlRoot(Namespace = "", IsNullable = false)]
+    [XmlRoot(Namespace = "http://api.everbinding.nl/v3/createdocument", ElementName = "CreateDocumentResponse", IsNullable = false)]
     public class CreateDocumentResponse
     {
         public string DocumentId { get; set; }

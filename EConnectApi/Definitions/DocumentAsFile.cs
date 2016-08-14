@@ -2,7 +2,6 @@ using System.Xml.Serialization;
 
 namespace EConnectApi.Definitions
 {
-    [XmlTypeAttribute(AnonymousType = true, Namespace = "http://ws.vg.pw.com/external/1.0")]
     public class DocumentAsFile
     {
         [XmlAttribute(AttributeName = "fileName")]

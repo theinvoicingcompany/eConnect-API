@@ -14,7 +14,7 @@ namespace EConnectApi
         public EConnectClientException(SoapFault fault)
             : base(fault.FaultString)
         {
-            Details = fault.Detail.ToString();
+            Details = fault.Detail?.ToString();
             Code = fault.FaultCode;
         }
 

@@ -5,7 +5,7 @@ using EConnectApi.Helpers;
 namespace EConnectApi.Definitions
 {
     [XmlType(AnonymousType = true)]
-    [XmlRoot(Namespace = "", IsNullable = false)]
+    [XmlRoot(Namespace = "http://api.everbinding.nl/v3/getintegrationrequests", ElementName = "GetIntegrationRequestsResponse", IsNullable = false)]
     public class GetIntegrationRequestsResponse : PageAbleResponse
     {
         public class IntegrationRequestDetails

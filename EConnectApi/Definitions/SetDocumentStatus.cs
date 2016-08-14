@@ -2,8 +2,8 @@
 
 namespace EConnectApi.Definitions
 {
-    [XmlType(AnonymousType = true, Namespace = "http://ws.vg.pw.com/external/1.0")]
-    [XmlRoot(Namespace = "http://ws.vg.pw.com/external/1.0", ElementName = "SetDocumentStatus", IsNullable = false)]
+    [XmlType(AnonymousType = true)]
+    [XmlRoot(Namespace = "http://api.everbinding.nl/v3/setdocumentstatus", ElementName = "SetDocumentStatus", IsNullable = false)]
     public class SetDocumentStatus : SetDocumentStatusBase
     {
         public string DocumentId { get; set; }

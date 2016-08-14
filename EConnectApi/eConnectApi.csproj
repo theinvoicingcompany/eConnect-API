@@ -52,6 +52,10 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Runtime.Serialization.dll</HintPath>
+    </Reference>
     <Reference Include="System.Runtime.Serialization.Formatters.Soap" />
     <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
@@ -67,6 +71,8 @@
     <Compile Include="Definitions\CreateOutboxDocument.cs" />
     <Compile Include="Definitions\CreateOutboxDocumentFor.cs" />
     <Compile Include="Definitions\CreateOutboxDocumentForResponse.cs" />
+    <Compile Include="Definitions\SendDocumentBaseResponse.cs" />
+    <Compile Include="Definitions\SendDocumentForResponse.cs" />
     <Compile Include="Definitions\SenderIdHeader.cs" />
     <Compile Include="Definitions\CreateOutboxDocumentResponse.cs" />
     <Compile Include="Definitions\DocumentBase.cs" />

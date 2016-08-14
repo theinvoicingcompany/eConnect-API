@@ -3,8 +3,8 @@ using System.Xml.Serialization;
 
 namespace EConnectApi.Definitions
 {
-    [XmlType(AnonymousType = true, Namespace = "http://ws.vg.pw.com/external/1.0")]
-    [XmlRoot(Namespace = "http://ws.vg.pw.com/external/1.0", IsNullable = false)]
+    [XmlType(AnonymousType = true)]
+    [XmlRoot(Namespace = "http://api.everbinding.nl/v3/enquirecompany", ElementName = "EnquireCompany", IsNullable = false)]
     public class EnquireCompany
     {
         [Obsolete]

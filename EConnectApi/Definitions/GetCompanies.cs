@@ -3,7 +3,7 @@
 namespace EConnectApi.Definitions
 {
     [XmlType(AnonymousType = true)]
-    [XmlRoot(Namespace = "", IsNullable = false)]
+    [XmlRoot(Namespace = "http://api.everbinding.nl/v3/getcompanies", ElementName = "GetCompanies", IsNullable = false)]
     public class GetCompanies : PageAble
     {
         public class GetCompaniesFilters

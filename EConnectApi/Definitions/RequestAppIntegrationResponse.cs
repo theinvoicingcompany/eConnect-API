@@ -3,7 +3,7 @@ using System.Xml.Serialization;
 namespace EConnectApi.Definitions
 {
     [XmlType(AnonymousType = true)]
-    [XmlRoot(Namespace = "", IsNullable = false)]
+    [XmlRoot(Namespace = "http://api.everbinding.nl/v3/requestappintegration", ElementName = "RequestAppIntegrationResponse", IsNullable = false)]
     public class RequestAppIntegrationResponse
     {
         /// <summary>

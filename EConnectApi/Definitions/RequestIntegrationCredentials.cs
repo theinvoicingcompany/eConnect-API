@@ -2,8 +2,8 @@ using System.Xml.Serialization;
 
 namespace EConnectApi.Definitions
 {
-    [XmlType(AnonymousType = true, Namespace = "http://ws.vg.com/pw/PWDataDx/1.0")]
-    [XmlRoot(Namespace = "http://ws.vg.com/pw/PWDataDx/1.0", IsNullable = false)]
+    [XmlType(AnonymousType = true)]
+    [XmlRoot(Namespace = "http://api.everbinding.nl/v3/requestintegrationcredentials", ElementName = "RequestIntegrationCredentials", IsNullable = false)]
     public class RequestIntegrationCredentials
     {
         /// <summary>

@@ -3,7 +3,7 @@ using System.Xml.Serialization;
 namespace EConnectApi.Definitions
 {
     [XmlType(AnonymousType = true)]
-    [XmlRoot(Namespace = "", IsNullable = false, ElementName = "GetDocumentPDFResponse")]
+    [XmlRoot(Namespace = "http://api.everbinding.nl/v3/getdocumentpdf", ElementName = "GetDocumentPDFResponse", IsNullable = false)]
     public class GetDocumentPdfResponse : FileWrapper
     {
         public string ConsignmentId { get; set; }

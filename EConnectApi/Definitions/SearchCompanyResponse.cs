@@ -3,7 +3,7 @@
 namespace EConnectApi.Definitions
 {
     [XmlType(AnonymousType = true)]
-    [XmlRootAttribute(Namespace = "", IsNullable = false)]
+    [XmlRoot(Namespace = "http://api.everbinding.nl/v3/searchcompany", ElementName = "SearchCompanyResponse", IsNullable = false)]
     public class SearchCompanyResponse
     {
         [XmlElement(ElementName = "tuple")]
