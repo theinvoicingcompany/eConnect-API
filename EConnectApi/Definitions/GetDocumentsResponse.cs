@@ -5,10 +5,10 @@ using System.Xml.Serialization;
 namespace EConnectApi.Definitions
 {
     [XmlType(AnonymousType = true)]
-    [XmlRoot(Namespace = "http://api.everbinding.nl/v3/getdocuments", ElementName = "GetDocuments", IsNullable = false)]
+    [XmlRoot(Namespace = "http://api.everbinding.nl/v3/getdocuments", ElementName = "GetDocumentsResponse", IsNullable = false)]
     public class GetDocumentsResponse
     {
-        [XmlElement(ElementName = "tuple")]
+        [XmlElement(ElementName = "tuple", Namespace = "http://api.everbinding.nl/v3/getdocuments")]
         public DocumentBase[] Documents { get; set; }
 
         [XmlElement(ElementName = "startrowrange")]

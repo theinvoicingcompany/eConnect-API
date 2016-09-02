@@ -71,6 +71,9 @@
     <Compile Include="Definitions\CreateOutboxDocument.cs" />
     <Compile Include="Definitions\CreateOutboxDocumentFor.cs" />
     <Compile Include="Definitions\CreateOutboxDocumentForResponse.cs" />
+    <Compile Include="Definitions\GetDocuments.cs" />
+    <Compile Include="Definitions\GetInboxDocuments.cs" />
+    <Compile Include="Definitions\GetOutboxDocuments.cs" />
     <Compile Include="Definitions\SendDocumentBaseResponse.cs" />
     <Compile Include="Definitions\SendDocumentForResponse.cs" />
     <Compile Include="Definitions\SenderIdHeader.cs" />
