@@ -1,6 +1,7 @@
-EConnect API Client
+EConnect API Client (Deprecated)
 =========
 This library makes it easier to connect to the EConnect platform.
+This library is based on the old eVerbinding API V1. The API V1 is deprecated.
 
 Platform API documentation:
 * [API HELP] 
@@ -40,5 +41,5 @@ catch (EConnectClientException ex)
 }
 ```
 
-[API HELP]:http://development.everbinding.nl/article-categories/application-programming-interface-1-0/
+[API HELP]:https://development.everbinding.nl/article-categories/api-interface-reference/
 [platform.everbinding.nl]:http://platform.everbinding.nl
